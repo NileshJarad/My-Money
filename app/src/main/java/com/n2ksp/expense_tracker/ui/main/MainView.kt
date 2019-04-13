@@ -36,26 +36,12 @@ class MainView(activity: AppCompatActivity) : LinearLayout(activity), Navigation
         drawerLayout.addDrawerListener(toggle)
 
         toggle.syncState()
-        navView.setNavigationItemSelectedListener(this)
+//        navView.setNavigationItemSelectedListener(this)
 
-        changeColorOfNavigationMenus()
     }
 
-    private fun changeColorOfNavigationMenus() {
-        changeIconColors(R.id.navMenuSetting, R.color.red_400)
-        changeIconColors(R.id.navMenuRateUs, R.color.jungle_green)
-    }
 
-    private fun changeIconColors(navMenuId: Int, color: Int) {
-        var drawable = navView.menu.getItem(0).icon
 
-        drawable.mutate()
-        drawable.setColorFilter(ContextCompat.getColor(context, color), PorterDuff.Mode.SRC_ATOP)
-
-//        drawable = DrawableCompat.wrap(drawable)
-//        DrawableCompat.setTint(drawable, ContextCompat.getColor(context, color))
-        navView.menu.getItem(0).icon = drawable
-    }
 
     fun closeNavigationViewIfItsOpen(): Boolean {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
