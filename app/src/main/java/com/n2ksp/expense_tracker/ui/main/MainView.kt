@@ -1,23 +1,23 @@
 package com.n2ksp.expense_tracker.ui.main
 
 import android.annotation.SuppressLint
-import android.graphics.PorterDuff
 import android.view.LayoutInflater
-import android.view.MenuItem
+import android.view.View
 import android.widget.LinearLayout
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
-import androidx.core.graphics.drawable.DrawableCompat
 import androidx.core.view.GravityCompat
-import com.google.android.material.navigation.NavigationView
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.ui.NavigationUI
 import com.n2ksp.expense_tracker.R
 import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.app_bar_main.view.*
+import kotlinx.android.synthetic.main.content_main.view.*
 
 
 @SuppressLint("ViewConstructor")
-class MainView(activity: AppCompatActivity) : LinearLayout(activity), NavigationView.OnNavigationItemSelectedListener {
+class MainView(activity: AppCompatActivity) : LinearLayout(activity) {
     init {
         initView(activity)
     }
@@ -34,13 +34,26 @@ class MainView(activity: AppCompatActivity) : LinearLayout(activity), Navigation
         )
 
         drawerLayout.addDrawerListener(toggle)
-
         toggle.syncState()
-//        navView.setNavigationItemSelectedListener(this)
+
+        navMenuOpenSource.setOnClickListener {
+            onNavigationItemSelected(navMenuOpenSource)
+        }
+
+        navMenuAbout.setOnClickListener {
+            onNavigationItemSelected(navMenuAbout)
+        }
+
+        navMenuSetting.setOnClickListener {
+            onNavigationItemSelected(navMenuSetting)
+        }
+
+
+        navMenuRateUs.setOnClickListener {
+            onNavigationItemSelected(navMenuRateUs)
+        }
 
     }
-
-
 
 
     fun closeNavigationViewIfItsOpen(): Boolean {
@@ -52,29 +65,17 @@ class MainView(activity: AppCompatActivity) : LinearLayout(activity), Navigation
     }
 
 
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+    private fun onNavigationItemSelected(view: View): Boolean {
         // Handle navigation view item clicks here.
-        when (item.itemId) {
-//            R.id.nav_camera -> {
-//
-//            }
-//            R.id.nav_gallery -> {
-//
-//            }
-//            R.id.nav_slideshow -> {
-//
-//            }
-//            R.id.nav_manage -> {
-//
-//            }
-//            R.id.nav_share -> {
-//
-//            }
-//            R.id.nav_send -> {
-//
-//            }
+        when (view.id) {
+            R.id.navMenuOpenSource -> {
+            }
         }
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    fun syncNavControllerWithView(navController: NavController) {
+        NavigationUI.setupWithNavController(bottomNavigationView, navController)
     }
 }

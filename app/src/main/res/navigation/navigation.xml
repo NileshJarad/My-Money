@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/navigation"
+            app:startDestination="@id/navigationDashboard">
+
+
+    <fragment android:id="@+id/navigationDashboard"
+              android:name="com.n2ksp.expense_tracker.ui.dashboard.DashboardFragment"
+              android:label="fragment_dashboard"
+              tools:layout="@layout/fragment_dashboard"/>
+
+    <fragment android:id="@+id/navigationChart"
+              android:name="com.n2ksp.expense_tracker.ui.chart.ChartFragment"
+              android:label="fragment_chart"
+              tools:layout="@layout/fragment_chart"/>
+
+    <fragment android:id="@+id/navigationExport"
+              android:name="com.n2ksp.expense_tracker.ui.export.ExportFragment"
+              android:label="fragment_export"
+              tools:layout="@layout/fragment_export"/>
+
+    <fragment android:id="@+id/navigationCategories"
+              android:name="com.n2ksp.expense_tracker.ui.categories.CategoriesFragment"
+              android:label="fragment_categories"
+              tools:layout="@layout/fragment_categories"/>
+
+
+</navigation>

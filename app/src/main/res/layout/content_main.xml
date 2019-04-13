@@ -6,8 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:showIn="@layout/app_bar_main"
-        tools:context=".ui.main.MainActivity">
+        tools:showIn="@layout/app_bar_main">
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -19,15 +18,19 @@
             app:menu="@menu/bottom_navigation_menu"
             android:background="@color/colorButtonBackground"
             app:itemIconTint="@color/bottom_nav_color_selector"
-            app:itemTextColor="@color/bottom_nav_color_selector" android:id="@+id/bottomNavigationView"/>
-    <FrameLayout
+            app:itemTextColor="@color/bottom_nav_color_selector"
+            android:id="@+id/bottomNavigationView"/>
+    <fragment
+            android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:navGraph="@navigation/navigation"
+            app:defaultNavHost="true"
+            android:id="@+id/navHostFragment"
             app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
             app:layout_constraintTop_toTopOf="parent"
-            android:id="@+id/frameMainScreen">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
 
-    </FrameLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

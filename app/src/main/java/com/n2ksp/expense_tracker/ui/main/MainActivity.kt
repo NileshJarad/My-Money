@@ -3,6 +3,7 @@ package com.n2ksp.expense_tracker.ui.main
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.navigation.Navigation
 import com.n2ksp.expense_tracker.R
 import com.n2ksp.expense_tracker.base.ETBaseActivity
 
@@ -14,6 +15,9 @@ class MainActivity : ETBaseActivity() {
         super.onCreate(savedInstanceState)
         mainView = MainView(this)
         setContentView(mainView)
+        val navController = Navigation.findNavController(this, R.id.navHostFragment)
+
+        mainView.syncNavControllerWithView(navController)
     }
 
     override fun onBackPressed() {

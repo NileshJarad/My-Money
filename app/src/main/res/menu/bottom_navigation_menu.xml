@@ -2,24 +2,24 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-            android:id="@+id/navigation_shop"
+            android:id="@+id/navigationDashboard"
             android:icon="@drawable/ic_bottom_nav_dashboard_black"
             android:title="Dashboard"/>
 
 
     <item
-            android:id="@+id/navigation_cart"
+            android:id="@+id/navigationChart"
             android:icon="@drawable/ic_bottom_nav_chart_black"
             android:title="Chart"/>
 
     <item
-            android:id="@+id/navigation_gifts"
+            android:id="@+id/navigationExport"
             android:icon="@drawable/ic_bottom_nav_export_black"
             android:title="Export"/>
 
 
     <item
-            android:id="@+id/navigation_profile"
+            android:id="@+id/navigationCategories"
             android:icon="@drawable/ic_bottom_nav_category_black"
             android:title="Categories"/>
 
