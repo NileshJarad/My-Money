@@ -1,6 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+
+    <color name="big_stone">#112A40</color>
+    <color name="teal_900">#002A40</color>
+    <color name="willow_grove">#687361</color>
+
+
+    <color name="colorPrimary">@color/big_stone</color>
+    <color name="colorPrimaryDark">@color/teal_900</color>
+    <color name="colorAccent">@color/willow_grove</color>
+    <!--<color name="indigo_700">#484487</color>-->
+    <!--<color name="indigo_800">#383474</color>-->
+    <!--<color name="light_blue_a200">#27DCFD</color>-->
+
+
+    <color name="colorButtonBackground">@color/colorPrimary</color>
+    <color name="colorBottomNavIconSelected">@android:color/black</color>
+
+    <color name="indigo_700">#31538E</color>
+
+    <color name="deep_purple_800">#513A67</color>
+    <color name="indigo_900">#172E51</color>
+    <color name="cyan_900">#1B6873</color>
+
+
+    <!--Color used for the navigation slider item-->
+    <color name="red_400">#ef5350</color>
+    <color name="jungle_green">#26a69a</color>
+    <color name="deep_purple_400">#7e57c2</color>
+    <color name="purple_400">#ab47bc</color>
 </resources>

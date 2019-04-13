@@ -3,10 +3,10 @@ package com.n2ksp.expense_tracker.ui.main
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import androidx.appcompat.app.AppCompatActivity
 import com.n2ksp.expense_tracker.R
+import com.n2ksp.expense_tracker.base.ETBaseActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : ETBaseActivity() {
 
     private lateinit var mainView: MainView
 
@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        if (!mainView.closeNaviagtionViewIfItsOpen()) {
+        if (!mainView.closeNavigationViewIfItsOpen()) {
             super.onBackPressed()
         }
     }

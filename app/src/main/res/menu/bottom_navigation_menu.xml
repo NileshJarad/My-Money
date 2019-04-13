@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+            android:id="@+id/navigation_shop"
+            android:icon="@drawable/ic_bottom_nav_dashboard_black"
+            android:title="Dashboard"/>
+
+
+    <item
+            android:id="@+id/navigation_cart"
+            android:icon="@drawable/ic_bottom_nav_chart_black"
+            android:title="Chart"/>
+
+    <item
+            android:id="@+id/navigation_gifts"
+            android:icon="@drawable/ic_bottom_nav_export_black"
+            android:title="Export"/>
+
+
+    <item
+            android:id="@+id/navigation_profile"
+            android:icon="@drawable/ic_bottom_nav_category_black"
+            android:title="Categories"/>
+
+</menu>
