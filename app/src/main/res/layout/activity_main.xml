@@ -26,7 +26,7 @@
         <include layout="@layout/nav_header_main"/>
 
         <com.n2ksp.expense_tracker.ui.common.NavigationMenuItemView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:id="@+id/navMenuSetting"
                 android:layout_marginTop="@dimen/nav_header_vertical_spacing"
                 app:navMenuTitle="Settings"
@@ -34,21 +34,21 @@
                 android:layout_height="wrap_content"/>
         <com.n2ksp.expense_tracker.ui.common.NavigationMenuItemView
                 android:id="@+id/navMenuRateUs"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_marginTop="@dimen/nav_header_vertical_spacing"
                 app:navMenuTitle="Rate Us"
                 app:namMenuImage="@drawable/ic_nav_rate_us"
                 android:layout_height="wrap_content"/>
         <com.n2ksp.expense_tracker.ui.common.NavigationMenuItemView
                 android:id="@+id/navMenuAbout"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 app:navMenuTitle="About"
                 android:layout_marginTop="@dimen/nav_header_vertical_spacing"
                 app:namMenuImage="@drawable/ic_nav_about"
                 android:layout_height="wrap_content"/>
         <com.n2ksp.expense_tracker.ui.common.NavigationMenuItemView
                 android:id="@+id/navMenuOpenSource"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 app:navMenuTitle="Open Source"
                 app:namMenuImage="@drawable/ic_nav_open_source"
                 android:layout_marginTop="@dimen/nav_header_vertical_spacing"

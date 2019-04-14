@@ -5,23 +5,39 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.LinearLayout
 import androidx.core.app.NavUtils
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.n2ksp.expense_tracker.R
 import com.n2ksp.expense_tracker.data.model.OpenSourceInfoModelCreator
+import com.n2ksp.expense_tracker.di.component.DaggerOpenSourceAdapterComponent
+import com.n2ksp.expense_tracker.di.module.ContextModule
 import kotlinx.android.synthetic.main.activity_open_source_info.view.*
+import javax.inject.Inject
 
 @SuppressLint("ViewConstructor")
 class OpenSourceInfoView(private val activity: OpenSourceInfoActivity) : LinearLayout(activity) {
+
+
+    @Inject
+    lateinit var openSourceInfoAdapter: OpenSourceInfoAdapter
+
+    @Inject
+    lateinit var dividerItemDecoration: DividerItemDecoration
+
+    @Inject
+    lateinit var linearLayoutManager: LinearLayoutManager
 
     init {
         initView(activity)
     }
 
     private fun initView(activity: OpenSourceInfoActivity) {
-        View.inflate(activity, R.layout.activity_open_source_info, this)
+        DaggerOpenSourceAdapterComponent.builder()
+            .contextModule(ContextModule(context))
+            .build()
+            .inject(this)
 
+        View.inflate(activity, R.layout.activity_open_source_info, this)
 
         activity.setSupportActionBar(toolbarOpenSource)
 
@@ -30,15 +46,12 @@ class OpenSourceInfoView(private val activity: OpenSourceInfoActivity) : LinearL
             it.setDisplayShowHomeEnabled(true)
         }
 
-        rvOpenSource.layoutManager = LinearLayoutManager(activity)
-        rvOpenSource.adapter = OpenSourceInfoAdapter(OpenSourceInfoModelCreator.getOpenSourceInfoList())
+        rvOpenSource.layoutManager = linearLayoutManager
 
-        val dividerItemDecoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
+        openSourceInfoAdapter.addAllData(OpenSourceInfoModelCreator.getOpenSourceInfoList())
+        rvOpenSource.adapter = openSourceInfoAdapter
+
         rvOpenSource.addItemDecoration(dividerItemDecoration)
-        val drawable = ContextCompat.getDrawable(context, R.drawable.divider_open_source)
-        drawable?.let {
-            dividerItemDecoration.setDrawable(it)
-        }
     }
 
     fun onOptionsItemSelected(item: MenuItem?) {

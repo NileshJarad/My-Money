@@ -7,10 +7,16 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.n2ksp.expense_tracker.R
 import com.n2ksp.expense_tracker.data.model.OpenSourceInfoModel
+import javax.inject.Inject
 
-class OpenSourceInfoAdapter constructor(var openSourceInfoList: ArrayList<OpenSourceInfoModel>) :
-    RecyclerView.Adapter<OpenSourceInfoAdapter.ViewHolder>() {
+class OpenSourceInfoAdapter @Inject constructor() : RecyclerView.Adapter<OpenSourceInfoAdapter.ViewHolder>() {
 
+
+    lateinit var openSourceInfoList: ArrayList<OpenSourceInfoModel>
+
+    fun addAllData(openSourceInfoList: ArrayList<OpenSourceInfoModel>) {
+        this.openSourceInfoList = openSourceInfoList
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
