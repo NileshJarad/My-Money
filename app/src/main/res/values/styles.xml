@@ -19,4 +19,34 @@
     </style>
 
 
+    <style name="MuliTextViewStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/muli_bold</item>
+    </style>
+    <style name="MuliButtonStyle" parent="android:Widget.Holo.Button">
+        <item name="android:fontFamily">@font/muli_bold</item>
+    </style>
+
+
+    <style name="openSourceTitleStyle">
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:fontFamily">@font/muli_regular</item>
+    </style>
+    <style name="openSourceItemTitle">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/muli_bold</item>
+    </style>
+
+    <style name="openSourceItemSubTitle">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/muli_regular</item>
+    </style>
+
+
 </resources>

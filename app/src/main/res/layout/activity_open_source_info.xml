@@ -6,6 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:background="@color/colorScreenBackground"
         tools:context=".ui.open_source.OpenSourceInfoActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -13,14 +14,21 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorPrimary"
-            app:theme="@style/ToolBarStyle"
-    />
+            app:theme="@style/ToolBarStyle"/>
+
+    <TextView
+            android:text="@string/open_source_and_resource_label"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            style="@style/openSourceTitleStyle"/>
+
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvOpenSource"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginTop="16dp"
+            android:paddingEnd="16dp"
+            android:paddingStart="16dp"
+            android:overScrollMode="never"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="match_parent"/>
 
 </LinearLayout>

@@ -2,12 +2,12 @@ package com.n2ksp.expense_tracker.ui.open_source
 
 import android.os.Bundle
 import android.view.MenuItem
-import androidx.appcompat.app.AppCompatActivity
+import com.n2ksp.expense_tracker.base.ETBaseActivity
 import com.n2ksp.expense_tracker.di.component.DaggerOpenSourceInfoComponent
 import com.n2ksp.expense_tracker.di.module.OpenSourceInfoModule
 import javax.inject.Inject
 
-class OpenSourceInfoActivity : AppCompatActivity() {
+class OpenSourceInfoActivity : ETBaseActivity() {
 
     @Inject
     lateinit var view: OpenSourceInfoView

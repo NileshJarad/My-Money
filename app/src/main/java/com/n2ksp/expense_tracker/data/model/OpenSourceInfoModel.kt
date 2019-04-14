@@ -20,12 +20,21 @@ object OpenSourceInfoModelCreator {
 
         data.add(
             OpenSourceInfoModel(
-                libName = "Dagger",
+                libName = "RxAndroid",
                 copyright = "Copyright 2015 The RxAndroid authors",
                 license = "Apache License, Version 2.0",
-                website = "https://github.com/google/dagger"
+                website = "https://github.com/ReactiveX/RxAndroid"
             )
         )
+
+//        data.add(
+//            OpenSourceInfoModel(
+//                libName = "Calligraphy",
+//                copyright = "Copyright 2013 Christopher Jenkins",
+//                license = "Apache License, Version 2.0",
+//                website = "https://github.com/chrisjenx/Calligraphy"
+//            )
+//        )
 
         return data
     }
