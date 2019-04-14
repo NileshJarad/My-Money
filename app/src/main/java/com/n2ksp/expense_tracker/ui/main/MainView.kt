@@ -5,37 +5,42 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.n2ksp.expense_tracker.R
 import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.app_bar_main.view.*
 import kotlinx.android.synthetic.main.content_main.view.*
+import javax.inject.Inject
 
 
 @SuppressLint("ViewConstructor")
-class MainView(activity: AppCompatActivity) : LinearLayout(activity) {
+class MainView @Inject constructor(activity: MainActivity) : LinearLayout(activity) {
+    private lateinit var navController: NavController
+
     init {
         initView(activity)
     }
 
-    private fun initView(activity: AppCompatActivity) {
+    private fun initView(activity: MainActivity) {
         LayoutInflater.from(context).inflate(R.layout.activity_main, this, true)
-
         activity.setSupportActionBar(toolbarMain)
+        setupDrawerLayout(activity)
+        attachNavigationMenuListener()
+    }
 
+    private fun setupDrawerLayout(activity: MainActivity) {
         val toggle = ActionBarDrawerToggle(
             activity, drawerLayout, toolbarMain,
             R.string.navigation_drawer_open,
             R.string.navigation_drawer_close
         )
-
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
+    }
 
+    private fun attachNavigationMenuListener() {
         navMenuOpenSource.setOnClickListener {
             onNavigationItemSelected(navMenuOpenSource)
         }
@@ -52,7 +57,6 @@ class MainView(activity: AppCompatActivity) : LinearLayout(activity) {
         navMenuRateUs.setOnClickListener {
             onNavigationItemSelected(navMenuRateUs)
         }
-
     }
 
 
@@ -66,9 +70,9 @@ class MainView(activity: AppCompatActivity) : LinearLayout(activity) {
 
 
     private fun onNavigationItemSelected(view: View): Boolean {
-        // Handle navigation view item clicks here.
         when (view.id) {
             R.id.navMenuOpenSource -> {
+                navController.navigate(R.id.openSourceInfoActivity)
             }
         }
         drawerLayout.closeDrawer(GravityCompat.START)
@@ -76,6 +80,7 @@ class MainView(activity: AppCompatActivity) : LinearLayout(activity) {
     }
 
     fun syncNavControllerWithView(navController: NavController) {
+        this.navController = navController
         NavigationUI.setupWithNavController(bottomNavigationView, navController)
     }
 }

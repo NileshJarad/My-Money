@@ -25,6 +25,9 @@
               android:name="com.n2ksp.expense_tracker.ui.categories.CategoriesFragment"
               android:label="fragment_categories"
               tools:layout="@layout/fragment_categories"/>
+    <activity android:id="@+id/openSourceInfoActivity"
+              android:name="com.n2ksp.expense_tracker.ui.open_source.OpenSourceInfoActivity"
+              android:label="activity_open_source_info" tools:layout="@layout/activity_open_source_info"/>
 
 
 </navigation>
