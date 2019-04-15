@@ -17,10 +17,12 @@
             app:theme="@style/ToolBarStyle"/>
 
     <TextView
+            android:layout_marginTop="16dp"
             android:text="@string/open_source_and_resource_label"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            style="@style/openSourceTitleStyle"/>
+            android:gravity="center"
+            style="@style/AppSubTitleStyleBlack"/>
 
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvOpenSource"

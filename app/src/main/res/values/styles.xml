@@ -35,19 +35,6 @@
         <item name="android:textColor">@color/colorBlack</item>
         <item name="android:fontFamily">@font/muli_regular</item>
     </style>
-    <style name="openSourceItemTitle">
-        <item name="android:textColor">@android:color/black</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:fontFamily">@font/muli_bold</item>
-    </style>
-
-    <style name="openSourceItemSubTitle">
-        <item name="android:textColor">@color/colorBlack</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:fontFamily">@font/muli_regular</item>
-    </style>
-
 
     <style name="AppTitleStyleBlack">
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Headline</item>
@@ -64,11 +51,23 @@
 
     <style name="AppSubTitleStyleBlack">
         <item name="android:textColor">@color/colorBlack</item>
-        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Body1</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Medium</item>
         <item name="android:fontFamily">@font/muli_regular</item>
     </style>
 
     <style name="AppSubTitleStyleWhite">
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Medium</item>
+        <item name="android:fontFamily">@font/muli_regular</item>
+    </style>
+
+    <style name="AppBodyStyleBlack">
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Body1</item>
+        <item name="android:fontFamily">@font/muli_regular</item>
+    </style>
+
+    <style name="AppBodyStyleWhite">
         <item name="android:textColor">@color/colorWhite</item>
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Body1</item>
         <item name="android:fontFamily">@font/muli_regular</item>
