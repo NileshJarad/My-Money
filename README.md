@@ -3,7 +3,7 @@
 
 ## Screenshots
 
-#### Intro Screens
+###  Intro Screens
 
 One Click Expense Management | Instinctive Graph | Cloud Backup & Export data  
 :-------------------------:|:-------------------------:|:-------------------------:

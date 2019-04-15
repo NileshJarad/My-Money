@@ -51,7 +51,7 @@
             app:cardElevation="5dp"
             app:cardPreventCornerOverlap="false"
             app:cardUseCompatPadding="true"
-            app:cardCornerRadius="5dp">
+            app:cardCornerRadius="15dp">
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"

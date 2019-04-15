@@ -63,15 +63,21 @@ class IntroScreenView(activity: IntroScreenActivity) : LinearLayout(activity) {
             override fun onPageSelected(position: Int) {
                 Timber.e("onPageSelected: $position")
                 selectedIndex = position
-                if(selectedIndex == pageCounts-1) {
+                if (selectedIndex == pageCounts - 1) {
                     skipOrDoneButton.text = context.getString(R.string.got_it)
-                }else{
-                    skipOrDoneButton.text = "Skip"
+                } else {
+                    skipOrDoneButton.text = context.getString(R.string.skip)
                 }
                 addSplashIntroIndicator()
             }
 
         })
+
+        introViewPager.setPageTransformer(false) { page, position ->
+            val normalizedPosition = Math.abs(Math.abs(position) - 1)
+            page.alpha = normalizedPosition
+        }
+
     }
 
 
@@ -112,3 +118,5 @@ class IntroPageAdapter @Inject constructor(fragmentManager: FragmentManager) :
 
     override fun getCount(): Int = IntroScreenView.pageCounts
 }
+
+
