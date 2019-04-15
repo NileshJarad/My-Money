@@ -63,6 +63,11 @@ class IntroScreenView(activity: IntroScreenActivity) : LinearLayout(activity) {
             override fun onPageSelected(position: Int) {
                 Timber.e("onPageSelected: $position")
                 selectedIndex = position
+                if(selectedIndex == pageCounts-1) {
+                    skipOrDoneButton.text = context.getString(R.string.got_it)
+                }else{
+                    skipOrDoneButton.text = "Skip"
+                }
                 addSplashIntroIndicator()
             }
 

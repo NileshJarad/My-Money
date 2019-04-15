@@ -81,6 +81,7 @@
                     tools:layout_conversion_absoluteWidth="0dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
+                    android:textAllCaps="true"
                     app:layout_constraintBottom_toBottomOf="parent" android:paddingBottom="12dp"
                     android:paddingTop="12dp" android:gravity="center"/>
             <LinearLayout
