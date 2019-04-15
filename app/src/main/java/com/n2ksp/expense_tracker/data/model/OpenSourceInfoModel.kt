@@ -27,14 +27,14 @@ object OpenSourceInfoModelCreator {
             )
         )
 
-//        data.add(
-//            OpenSourceInfoModel(
-//                libName = "Calligraphy",
-//                copyright = "Copyright 2013 Christopher Jenkins",
-//                license = "Apache License, Version 2.0",
-//                website = "https://github.com/chrisjenx/Calligraphy"
-//            )
-//        )
+        data.add(
+            OpenSourceInfoModel(
+                libName = "Timber",
+                copyright = "Copyright 2013 Jake Wharton",
+                license = "Apache License, Version 2.0",
+                website = "https://github.com/JakeWharton/timber"
+            )
+        )
 
         return data
     }

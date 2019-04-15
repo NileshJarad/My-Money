@@ -27,10 +27,12 @@
     <color name="colorBottomNavIconSelected">@android:color/black</color>
     <color name="colorBlack">#000000</color>
     <color name="colorWhite">#FFFFFF</color>
+    <color name="colorSplashBackground">#5131538E</color>
 
     <!--Color used for the navigation slider item-->
     <color name="red_400">#EF5350</color>
     <color name="deep_purple_400">#7e57c2</color>
     <color name="jungle_green">#26a69a</color>
     <color name="purple_400">#ab47bc</color>
+    <color name="colorTransparent">#00FFFFFF</color>
 </resources>

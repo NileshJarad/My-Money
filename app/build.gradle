@@ -55,7 +55,7 @@ dependencies {
     implementation 'com.google.dagger:dagger:2.22.1'
     kapt 'com.google.dagger:dagger-compiler:2.22.1'
 
-    //Calligraphy
-    implementation 'uk.co.chrisjenx:calligraphy:2.3.0'
+    //Timber
+    implementation 'com.jakewharton.timber:timber:4.7.1'
 
 }
