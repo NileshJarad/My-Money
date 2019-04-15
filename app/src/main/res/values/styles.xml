@@ -36,6 +36,9 @@
         <item name="android:fontFamily">@font/muli_regular</item>
     </style>
 
+
+
+
     <style name="AppTitleStyleBlack">
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Headline</item>
         <item name="android:fontFamily">@font/muli_bold</item>
@@ -59,6 +62,19 @@
         <item name="android:textColor">@color/colorWhite</item>
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Medium</item>
         <item name="android:fontFamily">@font/muli_regular</item>
+    </style>
+
+
+    <style name="AppSubTitleStyleBlackBold">
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Medium</item>
+        <item name="android:fontFamily">@font/muli_bold</item>
+    </style>
+
+    <style name="AppSubTitleStyleWhiteBold">
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Medium</item>
+        <item name="android:fontFamily">@font/muli_bold</item>
     </style>
 
     <style name="AppBodyStyleBlack">
