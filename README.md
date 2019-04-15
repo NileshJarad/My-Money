@@ -7,7 +7,7 @@
 
 One Click Expense Management | Instinctive Graph | Cloud Backup & Export data  
 :-------------------------:|:-------------------------:|:-------------------------:
-![](https://github.com/NileshJarad/Expense-tracker/screenshots/Intro1.png) |![](https://github.com/NileshJarad/Expense-tracker/screenshots/Intro2.png)|![](https://github.com/NileshJarad/Expense-tracker/screenshots/Intro2.png)
+![](https://github.com/NileshJarad/Expense-tracker/blob/master/screenshots/Intro1.png) |![](https://github.com/NileshJarad/Expense-tracker/blob/master/screenshots/Intro2.png)|![](https://github.com/NileshJarad/Expense-tracker/blob/master/screenshots/Intro3.png)
 
 
 ## Contributors
