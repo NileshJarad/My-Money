@@ -1,4 +1,8 @@
-# Expense-tracker
+### App Icon
+
+![](https://github.com/NileshJarad/Expense-tracker/blob/master/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png)
+
+# My Money
 
 
 ## Screenshots
