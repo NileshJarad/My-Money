@@ -1,13 +1,12 @@
+# My Money
+
 ### App Icon
 
 ![](https://github.com/NileshJarad/Expense-tracker/blob/master/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png)
 
-# My Money
-
-
 ## Screenshots
 
-###  Intro Screens
+<p align="center"><b>Intro Screens</b> </p>
 
 One Click Expense Management | Instinctive Graph | Cloud Backup & Export data  
 :-------------------------:|:-------------------------:|:-------------------------:
