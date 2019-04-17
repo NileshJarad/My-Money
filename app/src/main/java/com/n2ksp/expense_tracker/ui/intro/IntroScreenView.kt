@@ -10,7 +10,9 @@ import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.n2ksp.expense_tracker.R
 import com.n2ksp.expense_tracker.data.model.IntroScreenModelCreator
+import com.n2ksp.expense_tracker.data.sharedpreference.SharedPrefUtil
 import com.n2ksp.expense_tracker.di.component.DaggerIntroScreenViewComponent
+import com.n2ksp.expense_tracker.di.module.ContextModule
 import com.n2ksp.expense_tracker.di.module.IntroScreenViewModule
 import com.n2ksp.expense_tracker.ui.main.MainActivity
 import io.reactivex.Observable
@@ -28,6 +30,9 @@ class IntroScreenView(activity: IntroScreenActivity) : LinearLayout(activity) {
     @Inject
     lateinit var sizeParams: LayoutParams
 
+    @Inject
+    lateinit var sharedPrefUtil: SharedPrefUtil
+
     companion object {
         private var selectedIndex = 0
         var pageCounts = 3
@@ -35,23 +40,36 @@ class IntroScreenView(activity: IntroScreenActivity) : LinearLayout(activity) {
     }
 
     init {
-        initView(activity)
+
+        DaggerIntroScreenViewComponent.builder()
+            .introScreenViewModule(IntroScreenViewModule(activity.supportFragmentManager))
+            .contextModule(ContextModule(context))
+            .build()
+            .inject(this)
+
+        if (sharedPrefUtil.introScreenShown()) {
+            startMainActivity(activity)
+        } else {
+            initView(activity)
+        }
     }
 
     private fun initView(activity: IntroScreenActivity) {
-        DaggerIntroScreenViewComponent.builder()
-            .introScreenViewModule(IntroScreenViewModule(activity.supportFragmentManager))
-            .build()
-            .inject(this)
+        selectedIndex = 0
 
         View.inflate(activity, R.layout.activity_intro_screen, this)
         setupPager()
         addSplashIntroIndicator()
 
         skipOrDoneButton.setOnClickListener {
-            MainActivity.start(context)
-            activity.finish()
+            sharedPrefUtil.setintroScreenShown()
+            startMainActivity(activity)
         }
+    }
+
+    private fun startMainActivity(activity: IntroScreenActivity) {
+        MainActivity.start(context)
+        activity.finish()
     }
 
     private fun setupPager() {
