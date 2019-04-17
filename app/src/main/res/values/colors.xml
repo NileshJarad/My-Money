@@ -32,8 +32,10 @@
 
     <!--Color used for the navigation slider item-->
     <color name="red_400">#EF5350</color>
-    <color name="deep_purple_400">#7e57c2</color>
-    <color name="jungle_green">#26a69a</color>
+    <color name="deep_purple_400">#7E57C2</color>
+    <color name="jungle_green">#26A69A</color>
     <color name="purple_400">#ab47bc</color>
     <color name="colorTransparent">#00FFFFFF</color>
+    <color name="colorIncome">#027113</color>
+    <color name="colorExpense">#F52424</color>
 </resources>
