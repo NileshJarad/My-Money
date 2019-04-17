@@ -18,7 +18,7 @@ class IntroScreenActivityModule(val activity: IntroScreenActivity) {
     }
 }
 
-@Module
+@Module(includes = [ContextModule::class, SharedPrefModule::class])
 class IntroScreenViewModule(private val supportFragmentManager: FragmentManager) {
 
     @Provides

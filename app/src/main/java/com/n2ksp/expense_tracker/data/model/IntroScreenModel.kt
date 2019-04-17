@@ -7,10 +7,9 @@ import com.n2ksp.expense_tracker.R
 data class IntroScreenModel(val image: Int, val title: String, val message: String) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
-        parcel.readString(),
-        parcel.readString()
-    ) {
-    }
+        parcel.readString() ?: "",
+        parcel.readString() ?: ""
+    )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeInt(image)
@@ -67,3 +66,5 @@ object IntroScreenModelCreator {
         return data
     }
 }
+
+
