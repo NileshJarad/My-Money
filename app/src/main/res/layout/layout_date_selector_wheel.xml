@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+    <!--<View android:layout_width="match_parent"-->
+          <!--android:background="@drawable/circle_shape"-->
+          <!--android:layout_height="160dp"/>-->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/statsInnerConstraintLayout">
+
+
+        <androidx.constraintlayout.widget.Guideline
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/guidelineBottom"
+                app:layout_constraintGuide_percent="0.45"/>
+        <TextView
+                android:text="Expense"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/statsInnerConstraintLayout"
+                android:id="@+id/expenseTextTextView"
+                style="@style/AppBodyStyleWhite"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/guidelineBottom"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp"
+        />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/statsInnerConstraintLayout"
+                android:id="@+id/incomeTextTextView"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/guidelineBottom"
+                style="@style/AppBodyStyleWhite"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toStartOf="@+id/incomeValueTextView"
+                android:text="Income"/>
+        <TextView
+                android:text="$3500"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/expenseValueTextView"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/guidelineBottom"
+                style="@style/AppSubTitleStyleWhite"
+                app:layout_constraintStart_toEndOf="@+id/expenseTextTextView"
+                android:layout_marginStart="8dp"/>
+        <TextView
+                android:text="$760"
+                style="@style/AppSubTitleStyleWhite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/incomeValueTextView"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/guidelineBottom"
+                android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
+        />
+
+        <ProgressBar
+                android:id="@+id/amountProgressView"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:indeterminate="false"
+                android:progressDrawable="@drawable/circular_progress_bar"
+                android:background="@drawable/circle_progress_shape"
+                android:max="3500"
+                app:layout_constraintBottom_toTopOf="@+id/guidelineBottom"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:progress="760"
+                style="?android:attr/progressBarStyleHorizontal"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="26dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@+id/guidelineBottom"
+                android:layout_marginTop="4dp"
+                android:id="@+id/balanceLinearLayout">
+
+            <TextView
+                    android:text="Balance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/balanceTextView"
+                    style="@style/AppBodyStyleWhite"/>
+            <TextView
+                    android:text="$2740"
+                    style="@style/AppSubTitleStyleWhite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/balanceValueTextView"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toTopOf="@+id/guidelineBottom"
+                    android:layout_marginStart="5dp"/>
+
+        </LinearLayout>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:id="@+id/centeredTopHorizontalTextView"
+                android:text=""
+                app:layout_constraintTop_toTopOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</merge>

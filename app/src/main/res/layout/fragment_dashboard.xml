@@ -1,14 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context=".ui.dashboard.DashboardFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/parent_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <com.n2ksp.expense_tracker.ui.custom.DateSelectorWheel
+            android:id="@+id/dateSelectorWheel"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Dashboard" android:gravity="center"/>
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
 
-</FrameLayout>
+    <androidx.cardview.widget.CardView
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_height="90dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintHorizontal_bias="1.0"
+            android:layout_marginTop="8dp"
+            app:cardElevation="5dp"
+            app:layout_constraintTop_toBottomOf="@+id/dateSelectorWheel"
+            android:id="@+id/todaysStatCardView" app:cardUseCompatPadding="true" app:cardCornerRadius="5dp">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="100dp"
+                    android:background="@color/jungle_green"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+                <TextView
+                        android:text="15"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorWhite"
+                        style="@style/AppTitleStyleWhite" android:id="@+id/currentDayTextView"/>
+                <TextView
+                        android:text="Nov"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:textColor="@color/colorWhite"
+                        android:layout_marginTop="5dp" style="@style/AppBodyStyleWhite"
+                        android:id="@+id/currentMonthTextView"/>
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorWhite">
+
+                <TextView
+                        android:text="Income"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" style="@style/AppBodyStyleBlack"/>
+                <TextView
+                        android:text="$210"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorIncome" android:layout_marginTop="5dp"
+                        style="@style/AppSubTitleStyleWhite" android:id="@+id/dateIncomeTextView"/>
+            </LinearLayout>
+            <View
+                    android:layout_width="1dp"
+                    android:background="@color/colorPrimary"
+                    android:layout_height="match_parent" android:layout_marginBottom="4dp"
+                    android:layout_marginTop="4dp"/>
+            <LinearLayout
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent" android:background="@color/colorWhite">
+
+                <TextView
+                        android:text="Expnese"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" style="@style/AppBodyStyleBlack"/>
+                <TextView
+                        android:text="$160"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorExpense" android:layout_marginTop="5dp"
+                        style="@style/AppSubTitleStyleWhite" android:id="@+id/dateExpenseTextView"/>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/todaysStatCardView"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="8dp"
+            android:id="@+id/incomeExpenseRecyclerView" android:overScrollMode="never"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
