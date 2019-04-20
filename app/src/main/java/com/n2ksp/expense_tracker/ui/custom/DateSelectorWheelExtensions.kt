@@ -17,6 +17,7 @@ import com.n2ksp.expense_tracker.utils.ViewUtils
 import kotlinx.android.synthetic.main.layout_date_selector_wheel.view.*
 import timber.log.Timber
 
+
 /**
  * Sets income, expense and balance amount to view
  *
@@ -33,7 +34,7 @@ fun DateSelectorWheel.setAmounts(income: Int, expense: Int) {
 }
 
 /***
- * Set constraints for dummy text to kept it in center
+ * Set constraints for dummy text to kept it in center so other views can be places accordingly
  */
 
 fun DateSelectorWheel.addCenteredTextView() {
@@ -41,17 +42,41 @@ fun DateSelectorWheel.addCenteredTextView() {
     dummyCircleLayout.addView(centeredTextViewForConstraintToAttach)
 
     c.clone(dummyCircleLayout)
-    c.connect(centeredTextViewForConstraintToAttach.id, ConstraintSet.TOP, dummyCircleLayout.id, ConstraintSet.TOP, 0)
-    c.connect(centeredTextViewForConstraintToAttach.id, ConstraintSet.BOTTOM, dummyCircleLayout.id, ConstraintSet.BOTTOM, 0)
-    c.connect(centeredTextViewForConstraintToAttach.id, ConstraintSet.START, dummyCircleLayout.id, ConstraintSet.START, 0)
-    c.connect(centeredTextViewForConstraintToAttach.id, ConstraintSet.END, dummyCircleLayout.id, ConstraintSet.END, 0)
+    c.connect(
+        centeredTextViewForConstraintToAttach.id,
+        ConstraintSet.TOP,
+        dummyCircleLayout.id,
+        ConstraintSet.TOP,
+        0
+    )
+    c.connect(
+        centeredTextViewForConstraintToAttach.id,
+        ConstraintSet.BOTTOM,
+        dummyCircleLayout.id,
+        ConstraintSet.BOTTOM,
+        0
+    )
+    c.connect(
+        centeredTextViewForConstraintToAttach.id,
+        ConstraintSet.START,
+        dummyCircleLayout.id,
+        ConstraintSet.START,
+        0
+    )
+    c.connect(
+        centeredTextViewForConstraintToAttach.id,
+        ConstraintSet.END,
+        dummyCircleLayout.id,
+        ConstraintSet.END,
+        0
+    )
 
     c.applyTo(dummyCircleLayout)
 }
 
 
 /***
- * Add dates around circle
+ * Add dates around circle in 360 view
  */
 
 fun DateSelectorWheel.addTextView() {
@@ -70,7 +95,7 @@ fun DateSelectorWheel.addTextView() {
 
 
 /**
- * Creates and add the dates in 360 view
+ * Creates the date TextView with given parameter
  */
 fun DateSelectorWheel.getTextView(number: Int, size: Float, angle: Float, radius: Int): TextView {
     return TextView(context).apply {
@@ -107,6 +132,10 @@ fun DateSelectorWheel.getTextView(number: Int, size: Float, angle: Float, radius
     }
 }
 
+
+/***
+ * Selects text based on index provided to it.
+ */
 @SuppressLint("SetTextI18n")
 fun DateSelectorWheel.selectViewBasedOnIndex(index: Int) {
     val rotationAngle = index * angle
@@ -147,6 +176,11 @@ fun DateSelectorWheel.selectViewBasedOnIndex(index: Int) {
     }
 }
 
+
+/***
+ * This function calculate TextView size for selected text
+ */
+
 fun DateSelectorWheel.calculateSelectedTextSize(
     text: CharSequence,
     textSize: Float,
@@ -167,3 +201,5 @@ fun DateSelectorWheel.calculateSelectedTextSize(
     textView.measure(widthMeasureSpec, heightMeasureSpec)
     return Pair(textView.measuredWidth, textView.measuredHeight)
 }
+
+
