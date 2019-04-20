@@ -9,7 +9,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.n2ksp.expense_tracker.R
 import com.n2ksp.expense_tracker.di.component.DaggerDashboardViewComponent
 import com.n2ksp.expense_tracker.di.module.ContextModule
+import com.n2ksp.expense_tracker.ui.custom.DateSelectorWheel
 import com.n2ksp.expense_tracker.utils.AmountUtils
+import com.n2ksp.expense_tracker.utils.DateUtils
 import kotlinx.android.synthetic.main.fragment_dashboard.view.*
 import javax.inject.Inject
 
@@ -47,6 +49,18 @@ class DashboardView(val activity: AppCompatActivity) : LinearLayout(activity) {
         dateIncomeTextView.text = AmountUtils.getAmountFormatted(210f)
         dateExpenseTextView.text = AmountUtils.getAmountFormatted(160f)
 
+        currentDayTextView.text = "${DateUtils.getCurrentDayOfMonth()}"
+        currentMonthTextView.text = DateUtils.getCurrentMonth()
+
+        dateSelectorWheel.setListener(object : DateSelectorWheel.DateSelectedListener {
+            override fun onDateSelected(dayOfMonth: Int, month: String) {
+                currentDayTextView.text = "$dayOfMonth"
+                currentMonthTextView.text = month
+            }
+        })
+
+
     }
+
 
 }

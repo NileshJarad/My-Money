@@ -9,14 +9,27 @@ import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.n2ksp.expense_tracker.R
+import com.n2ksp.expense_tracker.utils.DateUtils
 import com.n2ksp.expense_tracker.utils.ScreenDisplayUtils
 
-//https://github.com/MirzaAhmedBaig/CircularWheelView
+@Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 class DateSelectorWheel : FrameLayout {
 
+    interface DateSelectedListener {
+        fun onDateSelected(dayOfMonth: Int, month: String)
+    }
 
-    val maxElementsCount: Int = 30
-    var radiusForTheCircle: Int = 0
+    var callback: DateSelectedListener? = null
+
+    val maxElementsCount: Int = 31
+    var dummyCircleRadius: Int = 0
+
+
+    var currentSelectedIndex = 0
+    var currentPieAngle = 0
+
+    var selectedTextSize = 30f
+    var normalTextSize = 15f
 
 
     constructor(context: Context?) : super(context) {
@@ -32,21 +45,22 @@ class DateSelectorWheel : FrameLayout {
     }
 
 
-
-    val centerText = TextView(context).apply {
+    val centeredTextViewForConstraintToAttach = TextView(context).apply {
         textSize = 35f
         text = ""
         id = View.generateViewId()
     }
 
-    val dummyLayout by lazy {
+    val angle = 360 / maxElementsCount
+
+    val dummyCircleLayout by lazy {
         val size = ScreenDisplayUtils.getScreeSize(context = context as Activity)
         val dummyCircleDiameter = size.first * 2
         val marginParams = LayoutParams(
             dummyCircleDiameter, dummyCircleDiameter
         )
 
-        radiusForTheCircle = dummyCircleDiameter / 2
+        dummyCircleRadius = dummyCircleDiameter / 2
 
         marginParams.setMargins(-size.first / 2, -(size.first * 1.6).toInt(), 0, 0)
 
@@ -62,14 +76,15 @@ class DateSelectorWheel : FrameLayout {
         inflate(context, R.layout.layout_date_selector_wheel, this)
 
         setAmounts(income = 130000, expense = 80000)
-        addView(dummyLayout, 0)
+        addView(dummyCircleLayout, 0)
         addCenteredTextView()
         addTextView()
+        selectViewBasedOnIndex(DateUtils.getCurrentDayOfMonth())
     }
 
 
-
-
-
+    fun setListener(callback: DateSelectedListener) {
+        this.callback = callback
+    }
 
 }

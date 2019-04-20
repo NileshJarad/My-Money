@@ -41,12 +41,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/colorWhite"
-                        style="@style/AppTitleStyleWhite"/>
+                        style="@style/AppTitleStyleWhite" android:id="@+id/currentDayTextView"/>
                 <TextView
                         android:text="Nov"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" android:textColor="@color/colorWhite"
-                        android:layout_marginTop="5dp" style="@style/AppBodyStyleWhite"/>
+                        android:layout_marginTop="5dp" style="@style/AppBodyStyleWhite"
+                        android:id="@+id/currentMonthTextView"/>
             </LinearLayout>
             <LinearLayout
                     android:orientation="vertical"
