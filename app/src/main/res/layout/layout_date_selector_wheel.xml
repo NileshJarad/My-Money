@@ -2,8 +2,13 @@
 <merge
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
+        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+
+    <!--<View android:layout_width="match_parent"-->
+          <!--android:background="@drawable/circle_shape"-->
+          <!--android:layout_height="160dp"/>-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -11,7 +16,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:background="@drawable/circle_shape"
             android:id="@+id/statsInnerConstraintLayout">
 
 
@@ -22,11 +26,11 @@
                 android:id="@+id/guidelineBottom"
                 app:layout_constraintGuide_percent="0.45"/>
         <TextView
-                android:text="Income"
+                android:text="Expense"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/statsInnerConstraintLayout"
-                android:id="@+id/incomeTextTextView"
+                android:id="@+id/expenseTextTextView"
                 style="@style/AppBodyStyleWhite"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toTopOf="@+id/guidelineBottom"
@@ -35,36 +39,34 @@
         />
 
         <TextView
-                android:text="Expense"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/statsInnerConstraintLayout"
-                android:id="@+id/expenseTextTextView"
+                android:id="@+id/incomeTextTextView"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toTopOf="@+id/guidelineBottom"
                 style="@style/AppBodyStyleWhite"
                 android:layout_marginEnd="8dp"
-                app:layout_constraintEnd_toStartOf="@+id/expenseValueTextView"
-        />
+                app:layout_constraintEnd_toStartOf="@+id/incomeValueTextView"
+                android:text="Income"/>
         <TextView
                 android:text="$3500"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/incomeValueTextView"
+                android:id="@+id/expenseValueTextView"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toTopOf="@+id/guidelineBottom"
                 style="@style/AppSubTitleStyleWhite"
-                app:layout_constraintStart_toEndOf="@+id/incomeTextTextView"
+                app:layout_constraintStart_toEndOf="@+id/expenseTextTextView"
                 android:layout_marginStart="8dp"/>
         <TextView
                 android:text="$760"
                 style="@style/AppSubTitleStyleWhite"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/expenseValueTextView"
+                android:id="@+id/incomeValueTextView"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toTopOf="@+id/guidelineBottom"
-                app:layout_constraintVertical_bias="0.536"
                 android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
         />
 
@@ -112,6 +114,14 @@
                     android:layout_marginStart="5dp"/>
 
         </LinearLayout>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:id="@+id/centeredTopHorizontalTextView"
+                android:text=""
+                app:layout_constraintTop_toTopOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
