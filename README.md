@@ -19,6 +19,7 @@ One Click Expense Management | Instinctive Graph | Cloud Backup & Export data
 - StackOverflow: [N J][nj]
 - Facebook: [Nilesh Subhash Jarad][njfb]
 - Twitter : [@NileshJarad143][njtwitter]
+- Medium : [@nileshjarad][njmedium]
 
 ## LICENSE
 
@@ -40,4 +41,4 @@ One Click Expense Management | Instinctive Graph | Cloud Backup & Export data
 [nj]: https://stackoverflow.com/users/4626831/n-j?tab=profile
 [njfb]: https://www.facebook.com/nilesh.jarad.50
 [njtwitter]: https://twitter.com/NileshJarad143
-
+[njmedium]: https://medium.com/@nileshjarad
