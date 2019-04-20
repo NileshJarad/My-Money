@@ -16,7 +16,7 @@ import javax.inject.Inject
 
 
 @SuppressLint("ViewConstructor")
-class MainView @Inject constructor(activity: MainActivity) : LinearLayout(activity) {
+class MainView @Inject constructor(val activity: MainActivity) : LinearLayout(activity) {
     private lateinit var navController: NavController
 
     init {
@@ -82,5 +82,7 @@ class MainView @Inject constructor(activity: MainActivity) : LinearLayout(activi
     fun syncNavControllerWithView(navController: NavController) {
         this.navController = navController
         NavigationUI.setupWithNavController(bottomNavigationView, navController)
+        NavigationUI.setupWithNavController(toolbarMain, navController, drawerLayout)
     }
+
 }

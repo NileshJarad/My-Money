@@ -8,22 +8,22 @@
 
     <fragment android:id="@+id/navigationDashboard"
               android:name="com.n2ksp.expense_tracker.ui.dashboard.DashboardFragment"
-              android:label="fragment_dashboard"
+              android:label="Dashboard"
               tools:layout="@layout/fragment_dashboard"/>
 
     <fragment android:id="@+id/navigationChart"
               android:name="com.n2ksp.expense_tracker.ui.chart.ChartFragment"
-              android:label="fragment_chart"
+              android:label="Chart"
               tools:layout="@layout/fragment_chart"/>
 
     <fragment android:id="@+id/navigationExport"
               android:name="com.n2ksp.expense_tracker.ui.export.ExportFragment"
-              android:label="fragment_export"
+              android:label="Export"
               tools:layout="@layout/fragment_export"/>
 
     <fragment android:id="@+id/navigationCategories"
               android:name="com.n2ksp.expense_tracker.ui.categories.CategoriesFragment"
-              android:label="fragment_categories"
+              android:label="Categories"
               tools:layout="@layout/fragment_categories"/>
     <activity android:id="@+id/openSourceInfoActivity"
               android:name="com.n2ksp.expense_tracker.ui.open_source.OpenSourceInfoActivity"
