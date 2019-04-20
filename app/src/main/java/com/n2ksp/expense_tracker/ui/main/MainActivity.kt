@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import com.n2ksp.expense_tracker.R
 import com.n2ksp.expense_tracker.base.ETBaseActivity
 import com.n2ksp.expense_tracker.di.component.DaggerMainActivityComponent
@@ -51,8 +52,11 @@ class MainActivity : ETBaseActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_settings -> true
+            android.R.id.home -> findNavController(R.id.navHostFragment).navigateUp()
             else -> super.onOptionsItemSelected(item)
         }
     }
 
+    override fun onSupportNavigateUp() =
+        findNavController(R.id.navHostFragment).navigateUp()
 }

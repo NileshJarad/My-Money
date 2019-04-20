@@ -37,8 +37,6 @@
     </style>
 
 
-
-
     <style name="AppTitleStyleBlack">
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Headline</item>
         <item name="android:fontFamily">@font/muli_bold</item>
@@ -87,6 +85,12 @@
         <item name="android:textColor">@color/colorWhite</item>
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Body1</item>
         <item name="android:fontFamily">@font/muli_regular</item>
+    </style>
+
+
+    <style name="ExpenseIncomeSwitchTheme" parent="Theme.AppCompat.Light">
+        <!-- active thumb & track color (30% transparency) -->
+        <item name="colorControlActivated">@color/colorExpense</item>
     </style>
 
 </resources>
