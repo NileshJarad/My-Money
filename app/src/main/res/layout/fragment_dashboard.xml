@@ -65,7 +65,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/colorIncome" android:layout_marginTop="5dp"
-                        style="@style/AppSubTitleStyleWhite"/>
+                        style="@style/AppSubTitleStyleWhite" android:id="@+id/dateIncomeTextView"/>
             </LinearLayout>
             <View
                     android:layout_width="1dp"
@@ -88,7 +88,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/colorExpense" android:layout_marginTop="5dp"
-                        style="@style/AppSubTitleStyleWhite"/>
+                        style="@style/AppSubTitleStyleWhite" android:id="@+id/dateExpenseTextView"/>
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>

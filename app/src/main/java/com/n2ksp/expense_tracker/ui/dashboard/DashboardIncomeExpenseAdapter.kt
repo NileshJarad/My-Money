@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.n2ksp.expense_tracker.R
 import com.n2ksp.expense_tracker.data.model.OpenSourceInfoModel
+import com.n2ksp.expense_tracker.utils.AmountUtils
 import javax.inject.Inject
 
 class DashboardIncomeExpenseAdapter @Inject constructor() :
@@ -53,6 +54,8 @@ class DashboardIncomeExpenseAdapter @Inject constructor() :
         holder.incomeOrExpenseAmount.setTextColor(
             color
         )
+
+        holder.incomeOrExpenseAmount.text = AmountUtils.getAmountFormatted(120f)
 
     }
 

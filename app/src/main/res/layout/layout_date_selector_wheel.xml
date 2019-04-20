@@ -108,7 +108,7 @@
                     style="@style/AppSubTitleStyleWhite"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/incomeValueTextView2"
+                    android:id="@+id/balanceValueTextView"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toTopOf="@+id/guidelineBottom"
                     android:layout_marginStart="5dp"/>

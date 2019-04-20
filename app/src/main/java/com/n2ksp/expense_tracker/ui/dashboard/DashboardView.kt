@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.n2ksp.expense_tracker.R
+import com.n2ksp.expense_tracker.utils.AmountUtils
 import kotlinx.android.synthetic.main.fragment_dashboard.view.*
 
 class DashboardView(val activity: Context) : LinearLayout(activity) {
@@ -31,6 +32,11 @@ class DashboardView(val activity: Context) : LinearLayout(activity) {
             dividerItemDecoration.setDrawable(it)
         }
         incomeExpenseRecyclerView.addItemDecoration(dividerItemDecoration)
+
+
+        dateIncomeTextView.text = AmountUtils.getAmountFormatted(210f)
+        dateExpenseTextView.text = AmountUtils.getAmountFormatted(160f)
+
     }
 
 }
