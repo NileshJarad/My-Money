@@ -10,6 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import com.n2ksp.expense_tracker.R
+import com.n2ksp.expense_tracker.data.model.CategoryInfoModelCreator
+import com.n2ksp.expense_tracker.utils.Constants
 import kotlinx.android.synthetic.main.fragment_categories.*
 
 
@@ -39,7 +41,7 @@ class CategoriesFragment : Fragment() {
         categoriesRecyclerView.addItemDecoration(dividerItemDecoration)
 
         val adapter = CategoriesAdapter()
-
+        adapter.attachCategories(CategoryInfoModelCreator.getCategoryInfoModel(Constants.EXPENSE))
         categoriesRecyclerView.adapter = adapter
 
         expenseOrIncomeSwitch.setOnCheckedChangeListener { buttonView, isChecked ->
@@ -47,9 +49,13 @@ class CategoriesFragment : Fragment() {
             if (isChecked) {
                 buttonView.setTextColor(ContextCompat.getColor(context!!, R.color.colorExpense))
                 buttonView.text = "Expense"
+                adapter.attachCategories(CategoryInfoModelCreator.getCategoryInfoModel(Constants.EXPENSE))
+                adapter.notifyDataSetChanged()
             } else {
                 buttonView.setTextColor(ContextCompat.getColor(context!!, R.color.colorIncome))
                 buttonView.text = "Income"
+                adapter.attachCategories(CategoryInfoModelCreator.getCategoryInfoModel(Constants.INCOME))
+                adapter.notifyDataSetChanged()
             }
 
 
