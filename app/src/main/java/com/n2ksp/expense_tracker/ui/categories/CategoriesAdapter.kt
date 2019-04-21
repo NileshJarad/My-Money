@@ -3,17 +3,16 @@ package com.n2ksp.expense_tracker.ui.categories
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.n2ksp.expense_tracker.R
 import com.n2ksp.expense_tracker.data.model.CategoryInfoModel
+import kotlinx.android.synthetic.main.item_categoris.view.*
 
 class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.ViewHolder>() {
 
-    lateinit var categories : ArrayList<CategoryInfoModel>
+    lateinit var categories : MutableList<CategoryInfoModel>
 
-    fun attachCategories(categories : ArrayList<CategoryInfoModel>){
+    fun attachCategories(categories : MutableList<CategoryInfoModel>){
         this.categories = categories
     }
 
@@ -27,15 +26,15 @@ class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val model = categories.get(position)
-        holder.categoryImageView.setImageResource(model.categoryImage)
-        holder.categoryTitleTextView.text = model.categoryTitle
+        holder.bind(category = categories[position])
     }
 
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var categoryImageView: ImageView = itemView.findViewById(R.id.catgegoryImageView)
-        var categoryTitleTextView: TextView = itemView.findViewById(R.id.categoryTextVIew)
+        fun bind(category : CategoryInfoModel){
+            itemView.catgegoryImageView.setImageResource(category.categoryImage)
+            itemView.categoryTextVIew.text = category.categoryTitle
+        }
     }
 
 }

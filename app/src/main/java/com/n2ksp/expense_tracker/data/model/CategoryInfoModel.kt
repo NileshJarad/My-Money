@@ -40,7 +40,25 @@ object CategoryInfoModelCreator {
                 )
             )
 
+            categories.add(
+                CategoryInfoModel(
+                    type,
+                    "1",
+                    "Home"
+                    ,
+                    R.drawable.ic_home
+                )
+            )
 
+            categories.add(
+                CategoryInfoModel(
+                    type,
+                    "1",
+                    "Lending"
+                    ,
+                    R.drawable.ic_lending
+                )
+            )
 
             categories.add(
                 CategoryInfoModel(
@@ -51,6 +69,7 @@ object CategoryInfoModelCreator {
                     R.drawable.ic_others
                 )
             )
+
 
         } else {
 
@@ -69,6 +88,46 @@ object CategoryInfoModelCreator {
                     "1",
                     "Bill",
                     R.drawable.ic_bill
+                )
+            )
+
+            categories.add(
+                CategoryInfoModel(
+                    type,
+                    "1",
+                    "Lending"
+                    ,
+                    R.drawable.ic_lending
+                )
+            )
+
+            categories.add(
+                CategoryInfoModel(
+                    type,
+                    "1",
+                    "Credit card"
+                    ,
+                    R.drawable.ic_credit_card
+                )
+            )
+
+            categories.add(
+                CategoryInfoModel(
+                    type,
+                    "1",
+                    "Beautification"
+                    ,
+                    R.drawable.ic_spa
+                )
+            )
+
+            categories.add(
+                CategoryInfoModel(
+                    type,
+                    "1",
+                    "Bike"
+                    ,
+                    R.drawable.ic_bike
                 )
             )
 
