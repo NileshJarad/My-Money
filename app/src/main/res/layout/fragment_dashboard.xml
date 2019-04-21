@@ -7,7 +7,7 @@
 
     <LinearLayout android:layout_width="match_parent"
                   android:orientation="vertical"
-                  android:layout_height="wrap_content">
+                  android:layout_height="match_parent">
         <com.n2ksp.expense_tracker.ui.custom.DateSelectorWheel
                 android:id="@+id/dateSelectorWheel"
                 android:layout_width="match_parent"
@@ -21,7 +21,9 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginTop="8dp"
                 app:cardElevation="5dp"
-                app:cardUseCompatPadding="true" app:cardCornerRadius="5dp" android:id="@+id/todaysStatCardView">
+                app:cardUseCompatPadding="true"
+                app:cardCornerRadius="5dp"
+                android:id="@+id/todaysStatCardView">
 
             <LinearLayout
                     android:layout_width="match_parent"
@@ -34,16 +36,19 @@
                         android:layout_height="match_parent"
                         android:gravity="center">
                     <TextView
-                            android:text="15"
+                            android:text=""
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/colorWhite"
-                            style="@style/AppTitleStyleWhite" android:id="@+id/currentDayTextView"/>
+                            style="@style/AppTitleStyleWhite"
+                            android:id="@+id/currentDayTextView"/>
                     <TextView
-                            android:text="Nov"
+                            android:text=""
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" android:textColor="@color/colorWhite"
-                            android:layout_marginTop="5dp" style="@style/AppBodyStyleWhite"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorWhite"
+                            android:layout_marginTop="5dp"
+                            style="@style/AppBodyStyleWhite"
                             android:id="@+id/currentMonthTextView"/>
                 </LinearLayout>
                 <LinearLayout
@@ -55,42 +60,89 @@
                         android:background="@color/colorWhite">
 
                     <TextView
-                            android:text="Income"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" style="@style/AppBodyStyleBlack"/>
-                    <TextView
-                            android:text="$210"
+                            android:text="@string/income"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/colorIncome" android:layout_marginTop="5dp"
-                            style="@style/AppSubTitleStyleWhite" android:id="@+id/dateIncomeTextView"/>
+                            style="@style/AppBodyStyleBlack"/>
+                    <TextView
+                            android:text=""
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorIncome"
+                            android:layout_marginTop="5dp"
+                            style="@style/AppSubTitleStyleWhite"
+                            android:id="@+id/dateIncomeTextView"/>
                 </LinearLayout>
                 <View
                         android:layout_width="1dp"
                         android:background="@color/colorPrimary"
-                        android:layout_height="match_parent" android:layout_marginBottom="4dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="4dp"
                         android:layout_marginTop="4dp"/>
                 <LinearLayout
                         android:gravity="center"
                         android:orientation="vertical"
                         android:layout_width="0dp"
                         android:layout_weight="1"
-                        android:layout_height="match_parent" android:background="@color/colorWhite">
+                        android:layout_height="match_parent"
+                        android:background="@color/colorWhite">
 
                     <TextView
-                            android:text="Expnese"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" style="@style/AppBodyStyleBlack"/>
-                    <TextView
-                            android:text="$160"
+                            android:text="@string/expense"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/colorExpense" android:layout_marginTop="5dp"
-                            style="@style/AppSubTitleStyleWhite" android:id="@+id/dateExpenseTextView"/>
+                            style="@style/AppBodyStyleBlack"/>
+                    <TextView
+                            android:text=""
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorExpense"
+                            android:layout_marginTop="5dp"
+                            style="@style/AppSubTitleStyleWhite"
+                            android:id="@+id/dateExpenseTextView"/>
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+                android:id="@+id/emptyViewLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_margin="16dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_height="match_parent">
+
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:src="@drawable/ic_empty"
+                    android:tint="@color/colorAccent"
+                    android:contentDescription="@string/content_description_dashboard_empty_image"
+                    android:layout_height="wrap_content"/>
+
+            <TextView android:layout_width="wrap_content"
+                      style="@style/AppTitleStyleBlack"
+                      android:text="@string/dashboard_empty_title"
+                      android:layout_marginTop="16dp"
+                      android:textColor="@color/grey_600"
+                      android:layout_height="wrap_content"/>
+
+            <TextView android:layout_width="wrap_content"
+                      android:layout_marginTop="8dp"
+                      style="@style/AppSubTitleStyleBlack"
+                      android:textColor="@color/grey_600"
+                      android:text="@string/dashboard_empty_message"
+                      android:layout_height="wrap_content"/>
+
+            <TextView android:layout_width="wrap_content"
+                      android:layout_marginTop="20dp"
+                      style="@style/AppSubTitleStyleBlack"
+                      android:textColor="@color/colorPrimaryDark"
+                      android:text="@string/dashboard_empty_action"
+                      android:layout_height="wrap_content"/>
+
+        </LinearLayout>
         <androidx.recyclerview.widget.RecyclerView
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="16dp"
@@ -101,6 +153,8 @@
                 android:overScrollMode="never"/>
 
     </LinearLayout>
+
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -108,6 +162,9 @@
             app:srcCompat="@drawable/ic_add"
             android:id="@+id/addExpenseOrIncomeFAB"
             android:layout_gravity="bottom|end" android:focusable="true"
-            android:backgroundTint="@color/colorButtonBackground" android:layout_marginEnd="16dp"
+            android:backgroundTint="@color/colorButtonBackground"
+            android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"/>
+
+
 </FrameLayout>

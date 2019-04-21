@@ -19,4 +19,8 @@ object DateUtils {
         val cal = Calendar.getInstance()
         return SimpleDateFormat("MMM").format(cal.time)
     }
+
+    fun isToday(day: Int): Boolean {
+        return getCurrentDayOfMonth() == day
+    }
 }
