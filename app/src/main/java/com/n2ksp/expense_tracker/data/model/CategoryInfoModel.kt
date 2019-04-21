@@ -1,5 +1,6 @@
 package com.n2ksp.expense_tracker.data.model
 
+import android.graphics.Color
 import com.n2ksp.expense_tracker.R
 import com.n2ksp.expense_tracker.utils.Constants
 
@@ -11,7 +12,8 @@ data class CategoryInfoModel(
     val categoryType: String,
     val categoryId: String,
     val categoryTitle: String,
-    val categoryImage: Int
+    val categoryImage: Int,
+    val categoryColor: Int = Color.CYAN
 )
 
 object CategoryInfoModelCreator {
