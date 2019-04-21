@@ -26,7 +26,7 @@ object CategoryInfoModelCreator {
                     type,
                     "1",
                     "Freelancing",
-                    R.drawable.ic_bottom_nav_dashboard_black
+                    R.drawable.ic_money_24dp
                 )
             )
 
@@ -35,7 +35,7 @@ object CategoryInfoModelCreator {
                     type,
                     "1",
                     "Salary",
-                    R.drawable.ic_bottom_nav_dashboard_black
+                    R.drawable.ic_wallet_24dp
                 )
             )
 
@@ -45,7 +45,7 @@ object CategoryInfoModelCreator {
                     "1",
                     "Others"
                     ,
-                    R.drawable.ic_bottom_nav_dashboard_black
+                    R.drawable.ic_others_24dp
                 )
             )
 
@@ -56,7 +56,7 @@ object CategoryInfoModelCreator {
                     type,
                     "1",
                     "Food",
-                    R.drawable.ic_bottom_nav_dashboard_black
+                    R.drawable.ic_food
                 )
             )
 
@@ -65,7 +65,7 @@ object CategoryInfoModelCreator {
                     type,
                     "1",
                     "Bill",
-                    R.drawable.ic_bottom_nav_dashboard_black
+                    R.drawable.ic_others_24dp
                 )
             )
 
@@ -97,22 +97,13 @@ object CategoryInfoModelCreator {
                 )
             )
 
-            categories.add(
-                CategoryInfoModel(
-                    type,
-                    "1",
-                    "Bill",
-                    R.drawable.ic_bottom_nav_dashboard_black
-                )
-            )
-
 
             categories.add(
                 CategoryInfoModel(
                     type,
                     "1",
                     "Entertainment",
-                    R.drawable.ic_bottom_nav_dashboard_black
+                    R.drawable.ic_film
                 )
             )
 
@@ -132,7 +123,7 @@ object CategoryInfoModelCreator {
                     type,
                     "1",
                     "Clothing",
-                    R.drawable.ic_bottom_nav_dashboard_black
+                    R.drawable.ic_hanger
                 )
             )
 
@@ -142,7 +133,7 @@ object CategoryInfoModelCreator {
                     type,
                     "1",
                     "Tax",
-                    R.drawable.ic_bottom_nav_dashboard_black
+                    R.drawable.ic_tax
                 )
             )
 
