@@ -21,7 +21,7 @@ interface CategoryDao {
     fun countCategories(): Int
 
     @Insert
-    fun insertAll(users: Array<CategoryDBModel>)
+    fun insertAll(users: ArrayList<CategoryDBModel>)
 
     @Insert
     fun insert(users: CategoryDBModel)
