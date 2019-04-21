@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.n2ksp.expense_tracker.R
 import com.n2ksp.expense_tracker.data.model.CategoryInfoModel
 import kotlinx.android.synthetic.main.item_categoris.view.*
+import timber.log.Timber
+import java.lang.Exception
 
 class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.ViewHolder>() {
 
@@ -32,7 +34,12 @@ class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(category : CategoryInfoModel){
-            itemView.catgegoryImageView.setImageResource(category.categoryImage)
+            Timber.e("bind : ${category.categoryImage} ${category.categoryTitle} ")
+            try {
+                itemView.catgegoryImageView.setImageResource(category.categoryImage)
+            } catch (e : Exception){
+                e.printStackTrace()
+            }
             itemView.categoryTextVIew.text = category.categoryTitle
         }
     }

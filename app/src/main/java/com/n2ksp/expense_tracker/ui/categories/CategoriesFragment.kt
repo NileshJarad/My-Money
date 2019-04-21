@@ -8,19 +8,16 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
-import com.jakewharton.rxbinding2.widget.textChanges
 import com.n2ksp.expense_tracker.R
-import com.n2ksp.expense_tracker.utils.CategoryDiffUtilCallback
+import com.n2ksp.expense_tracker.base.ETBaseActivity
+import com.n2ksp.expense_tracker.data.model.CategoryInfoModelCreator
 import com.n2ksp.expense_tracker.utils.Constants
-import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_categories.*
-import java.util.concurrent.TimeUnit
 
 
 class CategoriesFragment : Fragment() {
@@ -51,26 +48,34 @@ class CategoriesFragment : Fragment() {
         categoriesRecyclerView.addItemDecoration(dividerItemDecoration)
 
         val adapter = CategoriesAdapter()
-
         viewModel = ViewModelProviders.of(this).get(CategoryViewModel::class.java)
-        adapter.attachCategories(viewModel.getCategories(Constants.EXPENSE))
-        categoriesRecyclerView.adapter = adapter
 
-        searchEditText.
-            textChanges().
-            debounce(200, TimeUnit.MILLISECONDS)
+        Observable.just((activity as ETBaseActivity).getAppDatabase())
+            .subscribeOn(Schedulers.io())
             .subscribe {
-                viewModel
-                    .search(it.toString())
-                    .subscribeOn(Schedulers.computation())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe {
-                        val diffResult = DiffUtil.calculateDiff(CategoryDiffUtilCallback(viewModel.oldFilteredCategories, viewModel.filteredCategories))
-                        viewModel.oldFilteredCategories.clear()
-                        viewModel.oldFilteredCategories.addAll(viewModel.filteredCategories)
-                        diffResult.dispatchUpdatesTo(categoriesRecyclerView.adapter as CategoriesAdapter)
-                    }.addTo(disposable)
-            }.addTo(disposable)
+                val categories = it.userDao().findByType(Constants.EXPENSE)
+                (activity as ETBaseActivity).runOnUiThread {
+                    adapter.attachCategories(CategoryInfoModelCreator.convertToCategoryInfoModel(categories))
+                    categoriesRecyclerView.adapter = adapter
+                }
+            }
+
+
+//        searchEditText.
+//            textChanges().
+//            debounce(200, TimeUnit.MILLISECONDS)
+//            .subscribe {
+//                viewModel
+//                    .search(it.toString())
+//                    .subscribeOn(Schedulers.computation())
+//                    .observeOn(AndroidSchedulers.mainThread())
+//                    .subscribe {
+//                        val diffResult = DiffUtil.calculateDiff(CategoryDiffUtilCallback(viewModel.oldFilteredCategories, viewModel.filteredCategories))
+//                        viewModel.oldFilteredCategories.clear()
+//                        viewModel.oldFilteredCategories.addAll(viewModel.filteredCategories)
+//                        diffResult.dispatchUpdatesTo(categoriesRecyclerView.adapter as CategoriesAdapter)
+//                    }.addTo(disposable)
+//            }.addTo(disposable)
 
         expenseOrIncomeSwitch.setOnCheckedChangeListener { buttonView, isChecked ->
 
@@ -79,17 +84,34 @@ class CategoriesFragment : Fragment() {
             if (isChecked) {
                 buttonView.setTextColor(ContextCompat.getColor(context!!, R.color.colorExpense))
                 buttonView.text = "Expense"
-                adapter.attachCategories(viewModel.getCategories(Constants.EXPENSE))
-                adapter.notifyDataSetChanged()
+                getAndAttachCategory(Constants.EXPENSE)
             } else {
                 buttonView.setTextColor(ContextCompat.getColor(context!!, R.color.colorIncome))
                 buttonView.text = "Income"
-                adapter.attachCategories(viewModel.getCategories(Constants.INCOME))
-                adapter.notifyDataSetChanged()
+                getAndAttachCategory(Constants.INCOME)
             }
 
 
         }
+    }
+
+    fun getAndAttachCategory(type: String) {
+        Observable.just((activity as ETBaseActivity).getAppDatabase())
+            .subscribeOn(Schedulers.io())
+            .subscribe {
+
+                val categories = it.userDao().findByType(type)
+
+                (activity as ETBaseActivity).runOnUiThread {
+                    //                adapter.attachCategories(viewModel.getCategories(Constants.EXPENSE))
+                    (categoriesRecyclerView.adapter as CategoriesAdapter).attachCategories(
+                        CategoryInfoModelCreator.convertToCategoryInfoModel(
+                            categories
+                        )
+                    )
+                    (categoriesRecyclerView.adapter as CategoriesAdapter).notifyDataSetChanged()
+                }
+            }
     }
 
 }

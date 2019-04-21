@@ -5,6 +5,7 @@ import com.n2ksp.expense_tracker.R
 import com.n2ksp.expense_tracker.data.room.CategoryDBModel
 import com.n2ksp.expense_tracker.utils.Constants
 import com.n2ksp.expense_tracker.utils.RoomDrawableMappingUtil
+import timber.log.Timber
 
 /**
  * Created by SHRIKANT EKADE on 20/04/19.
@@ -19,6 +20,24 @@ data class CategoryInfoModel(
 )
 
 object CategoryInfoModelCreator {
+
+    fun convertToCategoryInfoModel(categories:List<CategoryDBModel>) : ArrayList<CategoryInfoModel> {
+        val categoriesModel = ArrayList<CategoryInfoModel>()
+        categories.forEach {
+            Timber.e("convertToCategoryInfoModel : ${it.categoryId} ${it.categoryTitle} ${it.categoryImage}")
+            Timber.e("convertToCategoryInfoModel : ${RoomDrawableMappingUtil.getRoomNameToDrawable(it.categoryImage!!)} ${RoomDrawableMappingUtil.getRoomNameToDrawable(it.categoryImage!!).first}")
+            categoriesModel.add(
+                CategoryInfoModel(
+                    it.categoryType!!,
+                    it.categoryId,
+                    it.categoryTitle!!,
+                    RoomDrawableMappingUtil.getRoomNameToDrawable(it.categoryImage!!).first
+                )
+            )
+        }
+
+        return categoriesModel
+    }
 
     fun getCategoryInfoModel(type: String): ArrayList<CategoryInfoModel> {
         val categories = ArrayList<CategoryInfoModel>()

@@ -6,9 +6,15 @@ package com.n2ksp.expense_tracker.ui.categories
 
 
 import androidx.lifecycle.ViewModel
+import com.n2ksp.expense_tracker.base.ETBaseActivity
 import com.n2ksp.expense_tracker.data.model.CategoryInfoModel
 import com.n2ksp.expense_tracker.data.model.CategoryInfoModelCreator
+import com.n2ksp.expense_tracker.data.room.AppDatabase
+import com.n2ksp.expense_tracker.utils.Constants
 import io.reactivex.Completable
+import io.reactivex.Observable
+import io.reactivex.schedulers.Schedulers
+import timber.log.Timber
 
 class CategoryViewModel : ViewModel() {
 
