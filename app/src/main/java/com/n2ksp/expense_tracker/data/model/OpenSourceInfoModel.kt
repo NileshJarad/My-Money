@@ -62,6 +62,15 @@ object OpenSourceInfoModelCreator {
             )
         )
 
+        data.add(
+            OpenSourceInfoModel(
+                libName = "MPAndroidChart ",
+                copyright = "Copyright 2019 Philipp Jahoda",
+                license = "Apache License, Version 2.0",
+                website = "https://github.com/PhilJay/MPAndroidChart"
+            )
+        )
+
         return data
     }
 }
