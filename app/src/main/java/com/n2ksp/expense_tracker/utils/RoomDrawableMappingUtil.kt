@@ -6,8 +6,12 @@ object RoomDrawableMappingUtil {
     private const val OTHER_ROOM_NAME = "other"
     private const val SALARY_ROOM_NAME = "salary"
     private const val FREELANCING_ROOM_NAME = "freelancing"
+    private const val LENDING_ROOM_NAME = "lending"
     private const val FOOD_ROOM_NAME = "food"
     private const val BILL_ROOM_NAME = "bill"
+    private const val CREDIT_CARD_ROOM_NAME = "credit_card"
+    private const val BEAUTIFICATION_ROOM_NAME = "beautification"
+    private const val BIKE_ROOM_NAME = "bike"
     private const val TRANSPORT_ROOM_NAME = "transport"
     private const val HOME_ROOM_NAME = "home"
     private const val CAR_ROOM_NAME = "car"
@@ -26,14 +30,18 @@ object RoomDrawableMappingUtil {
         return when (drawable) {
             //common categories name
              R.drawable.ic_others -> OTHER_ROOM_NAME
+            R.drawable.ic_lending -> LENDING_ROOM_NAME
 
             // income categories
-             R.drawable.ic_salary -> SALARY_ROOM_NAME
-             R.drawable.ic_freelancing -> FREELANCING_ROOM_NAME
+            R.drawable.ic_salary -> SALARY_ROOM_NAME
+            R.drawable.ic_freelancing -> FREELANCING_ROOM_NAME
 
             // expense categories
              R.drawable.ic_food -> FOOD_ROOM_NAME
              R.drawable.ic_bill -> BILL_ROOM_NAME
+             R.drawable.ic_credit_card -> CREDIT_CARD_ROOM_NAME
+             R.drawable.ic_spa -> BEAUTIFICATION_ROOM_NAME
+             R.drawable.ic_bike -> BIKE_ROOM_NAME
              R.drawable.ic_transport -> TRANSPORT_ROOM_NAME
              R.drawable.ic_home -> HOME_ROOM_NAME
              R.drawable.ic_car -> CAR_ROOM_NAME
