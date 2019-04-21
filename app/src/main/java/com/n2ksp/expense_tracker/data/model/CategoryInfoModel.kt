@@ -15,18 +15,18 @@ data class CategoryInfoModel(
 )
 
 object CategoryInfoModelCreator {
-    
+
     fun getCategoryInfoModel(type: String): ArrayList<CategoryInfoModel> {
         val categories = ArrayList<CategoryInfoModel>()
 
-        if (type.equals(Constants.INCOME,ignoreCase = true)) {
+        if (type.equals(Constants.INCOME, ignoreCase = true)) {
 
             categories.add(
                 CategoryInfoModel(
                     type,
                     "1",
                     "Freelancing",
-                    R.drawable.ic_bottom_nav_dashboard_black
+                    R.drawable.ic_freelancing
                 )
             )
 
@@ -35,7 +35,7 @@ object CategoryInfoModelCreator {
                     type,
                     "1",
                     "Salary",
-                    R.drawable.ic_bottom_nav_dashboard_black
+                    R.drawable.ic_salary
                 )
             )
 
@@ -45,7 +45,7 @@ object CategoryInfoModelCreator {
                     "1",
                     "Others"
                     ,
-                    R.drawable.ic_bottom_nav_dashboard_black
+                    R.drawable.ic_other
                 )
             )
 
@@ -56,7 +56,7 @@ object CategoryInfoModelCreator {
                     type,
                     "1",
                     "Food",
-                    R.drawable.ic_bottom_nav_dashboard_black
+                    R.drawable.ic_food
                 )
             )
 
@@ -132,7 +132,7 @@ object CategoryInfoModelCreator {
                     type,
                     "1",
                     "Clothing",
-                    R.drawable.ic_bottom_nav_dashboard_black
+                    R.drawable.ic_clothing
                 )
             )
 
@@ -153,6 +153,25 @@ object CategoryInfoModelCreator {
                     "1",
                     "Telephone",
                     R.drawable.ic_phone_24dp
+                )
+            )
+
+            categories.add(
+                CategoryInfoModel(
+                    type,
+                    "1",
+                    "Telephone",
+                    R.drawable.ic_school
+                )
+            )
+
+            categories.add(
+                CategoryInfoModel(
+                    type,
+                    "1",
+                    "Others"
+                    ,
+                    R.drawable.ic_other
                 )
             )
         }
