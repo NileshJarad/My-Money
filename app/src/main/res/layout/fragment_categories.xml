@@ -16,6 +16,22 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginStart="16dp" android:layout_marginEnd="16dp" android:layout_marginTop="16dp"
             app:layout_constraintTop_toBottomOf="@+id/expenseOrIncomeSwitch" android:overScrollMode="never"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/searchEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Search category"
+            android:imeOptions="actionGo"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="16dp" app:layout_constraintEnd_toStartOf="@+id/expenseOrIncomeSwitch"
+            android:layout_marginEnd="16dp" android:layout_marginBottom="21dp"
+            app:layout_constraintBottom_toTopOf="@+id/categoriesRecyclerView" android:maxLines="1"
+            android:textColor="@color/colorWhite"
+            android:fontFamily="@font/muli_regular"
+    />
+
     <Switch
             android:text="Expense"
             android:layout_width="wrap_content"
@@ -24,5 +40,6 @@
             android:id="@+id/expenseOrIncomeSwitch" android:checked="true" android:textOff="Expenses"
             android:textOn="Income" android:switchTextAppearance="@style/AppTitleStyleBlack"
             style="@style/AppTitleStyleBlack" android:theme="@style/ExpenseIncomeSwitchTheme" android:gravity="center"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
