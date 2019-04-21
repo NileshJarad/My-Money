@@ -1,7 +1,10 @@
 package com.n2ksp.expense_tracker.data.room
 
 import androidx.room.Dao
+import androidx.room.Delete
+import androidx.room.Insert
 import androidx.room.Query
+
 
 @Dao
 interface CategoryDao {
@@ -16,5 +19,14 @@ interface CategoryDao {
 
     @Query("SELECT COUNT(*) from category")
     fun countCategories(): Int
+
+    @Insert
+    fun insertAll(users: Array<CategoryDBModel>)
+
+    @Insert
+    fun insert(users: CategoryDBModel)
+
+    @Delete
+    fun delete(user: CategoryDBModel)
 
 }
