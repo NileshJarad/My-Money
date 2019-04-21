@@ -15,29 +15,32 @@ data class CategoryInfoModel(
 )
 
 object CategoryInfoModelCreator {
-    
+
     fun getCategoryInfoModel(type: String): ArrayList<CategoryInfoModel> {
         val categories = ArrayList<CategoryInfoModel>()
 
-        if (type.equals(Constants.INCOME,ignoreCase = true)) {
+        if (type.equals(Constants.INCOME, ignoreCase = true)) {
 
-            categories.add(
-                CategoryInfoModel(
-                    type,
-                    "1",
-                    "Freelancing",
-                    R.drawable.ic_bottom_nav_dashboard_black
-                )
-            )
 
             categories.add(
                 CategoryInfoModel(
                     type,
                     "1",
                     "Salary",
-                    R.drawable.ic_bottom_nav_dashboard_black
+                    R.drawable.ic_salary
                 )
             )
+
+            categories.add(
+                CategoryInfoModel(
+                    type,
+                    "1",
+                    "Freelancing",
+                    R.drawable.ic_freelancing
+                )
+            )
+
+
 
             categories.add(
                 CategoryInfoModel(
@@ -45,7 +48,7 @@ object CategoryInfoModelCreator {
                     "1",
                     "Others"
                     ,
-                    R.drawable.ic_bottom_nav_dashboard_black
+                    R.drawable.ic_others
                 )
             )
 
@@ -56,7 +59,7 @@ object CategoryInfoModelCreator {
                     type,
                     "1",
                     "Food",
-                    R.drawable.ic_bottom_nav_dashboard_black
+                    R.drawable.ic_food
                 )
             )
 
@@ -65,7 +68,7 @@ object CategoryInfoModelCreator {
                     type,
                     "1",
                     "Bill",
-                    R.drawable.ic_bottom_nav_dashboard_black
+                    R.drawable.ic_bill
                 )
             )
 
@@ -74,7 +77,7 @@ object CategoryInfoModelCreator {
                     type,
                     "1",
                     "Transportation",
-                    R.drawable.ic_transport_24dp
+                    R.drawable.ic_transport
                 )
             )
 
@@ -83,7 +86,7 @@ object CategoryInfoModelCreator {
                     type,
                     "1",
                     "Home",
-                    R.drawable.ic_home_24dp
+                    R.drawable.ic_home
                 )
             )
 
@@ -93,16 +96,7 @@ object CategoryInfoModelCreator {
                     type,
                     "1",
                     "Car",
-                    R.drawable.ic_car_24dp
-                )
-            )
-
-            categories.add(
-                CategoryInfoModel(
-                    type,
-                    "1",
-                    "Bill",
-                    R.drawable.ic_bottom_nav_dashboard_black
+                    R.drawable.ic_car
                 )
             )
 
@@ -112,7 +106,7 @@ object CategoryInfoModelCreator {
                     type,
                     "1",
                     "Entertainment",
-                    R.drawable.ic_bottom_nav_dashboard_black
+                    R.drawable.ic_film
                 )
             )
 
@@ -122,7 +116,7 @@ object CategoryInfoModelCreator {
                     type,
                     "1",
                     "Shopping",
-                    R.drawable.ic_shopping_cart_24dp
+                    R.drawable.ic_shopping_cart
                 )
             )
 
@@ -132,7 +126,7 @@ object CategoryInfoModelCreator {
                     type,
                     "1",
                     "Clothing",
-                    R.drawable.ic_bottom_nav_dashboard_black
+                    R.drawable.ic_clothing
                 )
             )
 
@@ -142,7 +136,7 @@ object CategoryInfoModelCreator {
                     type,
                     "1",
                     "Tax",
-                    R.drawable.ic_bottom_nav_dashboard_black
+                    R.drawable.ic_tax
                 )
             )
 
@@ -152,7 +146,62 @@ object CategoryInfoModelCreator {
                     type,
                     "1",
                     "Telephone",
-                    R.drawable.ic_phone_24dp
+                    R.drawable.ic_phone
+                )
+            )
+
+            categories.add(
+                CategoryInfoModel(
+                    type,
+                    "1",
+                    "Education",
+                    R.drawable.ic_school
+                )
+            )
+
+            categories.add(
+                CategoryInfoModel(
+                    type,
+                    "1",
+                    "Book",
+                    R.drawable.ic_books
+                )
+            )
+
+            categories.add(
+                CategoryInfoModel(
+                    type,
+                    "1",
+                    "Fitness",
+                    R.drawable.ic_fitness
+                )
+            )
+
+            categories.add(
+                CategoryInfoModel(
+                    type,
+                    "1",
+                    "Child",
+                    R.drawable.ic_child
+                )
+            )
+
+            categories.add(
+                CategoryInfoModel(
+                    type,
+                    "1",
+                    "Medical",
+                    R.drawable.ic_medical
+                )
+            )
+
+            categories.add(
+                CategoryInfoModel(
+                    type,
+                    "1",
+                    "Others"
+                    ,
+                    R.drawable.ic_others
                 )
             )
         }
