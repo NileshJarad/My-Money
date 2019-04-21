@@ -68,7 +68,7 @@ class CategoriesFragment : Fragment() {
                         val diffResult = DiffUtil.calculateDiff(CategoryDiffUtilCallback(viewModel.oldFilteredCategories, viewModel.filteredCategories))
                         viewModel.oldFilteredCategories.clear()
                         viewModel.oldFilteredCategories.addAll(viewModel.filteredCategories)
-                        diffResult.dispatchUpdatesTo(categoriesRecyclerView.adapter as CategoriesAdapter)
+                        diffResult.dispatchUpdatesTo(categoriesRecyclerView?.adapter as CategoriesAdapter)
                     }.addTo(disposable)
             }.addTo(disposable)
 
