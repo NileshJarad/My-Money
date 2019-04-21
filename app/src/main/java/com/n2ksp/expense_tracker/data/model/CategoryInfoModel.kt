@@ -15,18 +15,18 @@ data class CategoryInfoModel(
 )
 
 object CategoryInfoModelCreator {
-    
+
     fun getCategoryInfoModel(type: String): ArrayList<CategoryInfoModel> {
         val categories = ArrayList<CategoryInfoModel>()
 
-        if (type.equals(Constants.INCOME,ignoreCase = true)) {
+        if (type.equals(Constants.INCOME, ignoreCase = true)) {
 
             categories.add(
                 CategoryInfoModel(
                     type,
                     "1",
                     "Freelancing",
-                    R.drawable.ic_money_24dp
+                    R.drawable.ic_freelancing
                 )
             )
 
@@ -35,7 +35,7 @@ object CategoryInfoModelCreator {
                     type,
                     "1",
                     "Salary",
-                    R.drawable.ic_wallet_24dp
+                    R.drawable.ic_salary
                 )
             )
 
@@ -45,7 +45,7 @@ object CategoryInfoModelCreator {
                     "1",
                     "Others"
                     ,
-                    R.drawable.ic_others_24dp
+                    R.drawable.ic_other
                 )
             )
 
@@ -123,7 +123,7 @@ object CategoryInfoModelCreator {
                     type,
                     "1",
                     "Clothing",
-                    R.drawable.ic_hanger
+                    R.drawable.ic_clothing
                 )
             )
 
@@ -144,6 +144,25 @@ object CategoryInfoModelCreator {
                     "1",
                     "Telephone",
                     R.drawable.ic_phone_24dp
+                )
+            )
+
+            categories.add(
+                CategoryInfoModel(
+                    type,
+                    "1",
+                    "Telephone",
+                    R.drawable.ic_school
+                )
+            )
+
+            categories.add(
+                CategoryInfoModel(
+                    type,
+                    "1",
+                    "Others"
+                    ,
+                    R.drawable.ic_other
                 )
             )
         }
