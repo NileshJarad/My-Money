@@ -10,7 +10,7 @@ import com.n2ksp.expense_tracker.utils.Constants
 
 data class CategoryInfoModel(
     val categoryType: String,
-    val categoryId: String,
+    val categoryId: Int,
     val categoryTitle: String,
     val categoryImage: Int,
     val categoryColor: Int = Color.CYAN
@@ -27,7 +27,7 @@ object CategoryInfoModelCreator {
             categories.add(
                 CategoryInfoModel(
                     type,
-                    "1",
+                     1,
                     "Salary",
                     R.drawable.ic_salary
                 )
@@ -36,7 +36,7 @@ object CategoryInfoModelCreator {
             categories.add(
                 CategoryInfoModel(
                     type,
-                    "1",
+                     1,
                     "Freelancing",
                     R.drawable.ic_freelancing
                 )
@@ -45,7 +45,7 @@ object CategoryInfoModelCreator {
             categories.add(
                 CategoryInfoModel(
                     type,
-                    "1",
+                     1,
                     "Home"
                     ,
                     R.drawable.ic_home
@@ -55,7 +55,7 @@ object CategoryInfoModelCreator {
             categories.add(
                 CategoryInfoModel(
                     type,
-                    "1",
+                     1,
                     "Lending"
                     ,
                     R.drawable.ic_lending
@@ -65,7 +65,7 @@ object CategoryInfoModelCreator {
             categories.add(
                 CategoryInfoModel(
                     type,
-                    "1",
+                     1,
                     "Others"
                     ,
                     R.drawable.ic_others
@@ -78,7 +78,7 @@ object CategoryInfoModelCreator {
             categories.add(
                 CategoryInfoModel(
                     type,
-                    "1",
+                     1,
                     "Food",
                     R.drawable.ic_food
                 )
@@ -87,7 +87,7 @@ object CategoryInfoModelCreator {
             categories.add(
                 CategoryInfoModel(
                     type,
-                    "1",
+                     1,
                     "Bill",
                     R.drawable.ic_bill
                 )
@@ -96,7 +96,7 @@ object CategoryInfoModelCreator {
             categories.add(
                 CategoryInfoModel(
                     type,
-                    "1",
+                     1,
                     "Lending"
                     ,
                     R.drawable.ic_lending
@@ -106,7 +106,7 @@ object CategoryInfoModelCreator {
             categories.add(
                 CategoryInfoModel(
                     type,
-                    "1",
+                     1,
                     "Credit card"
                     ,
                     R.drawable.ic_credit_card
@@ -116,7 +116,7 @@ object CategoryInfoModelCreator {
             categories.add(
                 CategoryInfoModel(
                     type,
-                    "1",
+                     1,
                     "Beautification"
                     ,
                     R.drawable.ic_spa
@@ -126,7 +126,7 @@ object CategoryInfoModelCreator {
             categories.add(
                 CategoryInfoModel(
                     type,
-                    "1",
+                     1,
                     "Bike"
                     ,
                     R.drawable.ic_bike
@@ -136,7 +136,7 @@ object CategoryInfoModelCreator {
             categories.add(
                 CategoryInfoModel(
                     type,
-                    "1",
+                     1,
                     "Transportation",
                     R.drawable.ic_transport
                 )
@@ -145,7 +145,7 @@ object CategoryInfoModelCreator {
             categories.add(
                 CategoryInfoModel(
                     type,
-                    "1",
+                     1,
                     "Home",
                     R.drawable.ic_home
                 )
@@ -155,7 +155,7 @@ object CategoryInfoModelCreator {
             categories.add(
                 CategoryInfoModel(
                     type,
-                    "1",
+                     1,
                     "Car",
                     R.drawable.ic_car
                 )
@@ -165,7 +165,7 @@ object CategoryInfoModelCreator {
             categories.add(
                 CategoryInfoModel(
                     type,
-                    "1",
+                     1,
                     "Entertainment",
                     R.drawable.ic_film
                 )
@@ -175,7 +175,7 @@ object CategoryInfoModelCreator {
             categories.add(
                 CategoryInfoModel(
                     type,
-                    "1",
+                     1,
                     "Shopping",
                     R.drawable.ic_shopping_cart
                 )
@@ -185,7 +185,7 @@ object CategoryInfoModelCreator {
             categories.add(
                 CategoryInfoModel(
                     type,
-                    "1",
+                     1,
                     "Clothing",
                     R.drawable.ic_clothing
                 )
@@ -195,7 +195,7 @@ object CategoryInfoModelCreator {
             categories.add(
                 CategoryInfoModel(
                     type,
-                    "1",
+                     1,
                     "Tax",
                     R.drawable.ic_tax
                 )
@@ -205,7 +205,7 @@ object CategoryInfoModelCreator {
             categories.add(
                 CategoryInfoModel(
                     type,
-                    "1",
+                     1,
                     "Telephone",
                     R.drawable.ic_phone
                 )
@@ -214,7 +214,7 @@ object CategoryInfoModelCreator {
             categories.add(
                 CategoryInfoModel(
                     type,
-                    "1",
+                     1,
                     "Education",
                     R.drawable.ic_school
                 )
@@ -223,7 +223,7 @@ object CategoryInfoModelCreator {
             categories.add(
                 CategoryInfoModel(
                     type,
-                    "1",
+                     1,
                     "Book",
                     R.drawable.ic_books
                 )
@@ -232,7 +232,7 @@ object CategoryInfoModelCreator {
             categories.add(
                 CategoryInfoModel(
                     type,
-                    "1",
+                     1,
                     "Fitness",
                     R.drawable.ic_fitness
                 )
@@ -241,7 +241,7 @@ object CategoryInfoModelCreator {
             categories.add(
                 CategoryInfoModel(
                     type,
-                    "1",
+                     1,
                     "Child",
                     R.drawable.ic_child
                 )
@@ -250,7 +250,7 @@ object CategoryInfoModelCreator {
             categories.add(
                 CategoryInfoModel(
                     type,
-                    "1",
+                     1,
                     "Medical",
                     R.drawable.ic_medical
                 )
@@ -259,7 +259,7 @@ object CategoryInfoModelCreator {
             categories.add(
                 CategoryInfoModel(
                     type,
-                    "1",
+                     1,
                     "Others"
                     ,
                     R.drawable.ic_others

@@ -150,7 +150,7 @@ class DashboardView(val activity: AppCompatActivity) : LinearLayout(activity) {
                     IncomeExpenseModel(
                         categoryInfoModel = CategoryInfoModel(
                             categoryType = Constants.INCOME,
-                            categoryId = "1",
+                            categoryId = 1,
                             categoryTitle = "Salary",
                             categoryImage = R.drawable.ic_salary
                         ),
@@ -164,7 +164,7 @@ class DashboardView(val activity: AppCompatActivity) : LinearLayout(activity) {
                     IncomeExpenseModel(
                         categoryInfoModel = CategoryInfoModel(
                             categoryType = Constants.EXPENSE,
-                            categoryId = "1",
+                            categoryId = 1,
                             categoryTitle = "Shopping",
                             categoryImage = R.drawable.ic_shopping_cart
                         ),
