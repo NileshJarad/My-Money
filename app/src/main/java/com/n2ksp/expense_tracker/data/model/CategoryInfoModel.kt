@@ -14,8 +14,22 @@ data class CategoryInfoModel(
     val categoryId: Int,
     val categoryTitle: String,
     val categoryImage: Int,
-    val categoryColor: Int
-)
+    val categoryColor: Int,
+    var selected: Boolean = false
+) {
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is CategoryInfoModel) return false
+
+        if (categoryId != other.categoryId) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        return categoryId
+    }
+}
 
 object CategoryInfoModelCreator {
 

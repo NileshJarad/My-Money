@@ -22,6 +22,7 @@ import kotlinx.android.synthetic.main.fragment_categories.*
 
 class CategoriesFragment : Fragment() {
 
+    private var allowSelection: Boolean = false
     private lateinit var viewModel: CategoryViewModel
 
     override fun onCreateView(
@@ -37,6 +38,12 @@ class CategoriesFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        arguments?.let { arg ->
+            if (arg.containsKey("allowSelection")) {
+                allowSelection = arg.getBoolean("allowSelection", false)
+            }
+        }
+
         categoriesRecyclerView.layoutManager = GridLayoutManager(context, 3)
 
         val dividerItemDecoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
@@ -48,6 +55,7 @@ class CategoriesFragment : Fragment() {
         categoriesRecyclerView.addItemDecoration(dividerItemDecoration)
 
         val adapter = CategoriesAdapter()
+        adapter.setAllowSelection(allowSelection = allowSelection)
         viewModel = ViewModelProviders.of(this).get(CategoryViewModel::class.java)
 
         Observable.just((activity as ETBaseActivity).getAppDatabase())

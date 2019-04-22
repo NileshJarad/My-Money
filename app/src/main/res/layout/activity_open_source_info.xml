@@ -10,7 +10,7 @@
         tools:context=".ui.open_source.OpenSourceInfoActivity">
 
     <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbarOpenSource"
+            android:id="@+id/openSourceToolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorPrimary"

@@ -4,20 +4,17 @@ import android.annotation.SuppressLint
 import android.view.View
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.n2ksp.expense_tracker.R
-import com.n2ksp.expense_tracker.data.model.CategoryInfoModel
-import com.n2ksp.expense_tracker.data.model.IncomeExpenseModel
 import com.n2ksp.expense_tracker.di.component.DaggerDashboardViewComponent
 import com.n2ksp.expense_tracker.di.module.ContextModule
 import com.n2ksp.expense_tracker.ui.custom.DateSelectorWheel
 import com.n2ksp.expense_tracker.utils.AmountUtils
-import com.n2ksp.expense_tracker.utils.Constants
 import com.n2ksp.expense_tracker.utils.DateUtils
 import kotlinx.android.synthetic.main.fragment_dashboard.view.*
-import java.util.*
 import javax.inject.Inject
 
 
@@ -141,45 +138,49 @@ class DashboardView(val activity: AppCompatActivity) : LinearLayout(activity) {
 
 
         addExpenseOrIncomeFAB.setOnClickListener {
-            emptyViewLinearLayout.visibility = View.GONE
-            incomeExpenseRecyclerView.visibility = View.VISIBLE
+
+            Navigation.findNavController(activity, R.id.navHostFragment).navigate(R.id.addIncomeExpenseActivity)
+
+//            emptyViewLinearLayout.visibility = View.GONE
+//            incomeExpenseRecyclerView.visibility = View.VISIBLE
 
 
-            if (adapter.itemCount == 3) {
-                adapter.addData(
-                    IncomeExpenseModel(
-                        categoryInfoModel = CategoryInfoModel(
-                            categoryType = Constants.INCOME,
-                            categoryId = 1,
-                            categoryTitle = "Salary",
-                            categoryImage = R.drawable.ic_salary,
-                            categoryColor = R.color.teal_800
-                        ),
-                        memo = "Salary for month April",
-                        amount = 120000f,
-                        date = Date().time
-                    )
-                )
-            } else {
-                adapter.addData(
-                    IncomeExpenseModel(
-                        categoryInfoModel = CategoryInfoModel(
-                            categoryType = Constants.EXPENSE,
-                            categoryId = 1,
-                            categoryTitle = "Shopping",
-                            categoryImage = R.drawable.ic_shopping_cart,
-                            categoryColor = R.color.pink_a400
-                        ),
-                        memo = "Sunglasses",
-                        amount = 2230.89f,
-                        date = Date().time
-                    )
-                )
-            }
+//            if (adapter.itemCount == 3) {
+//                adapter.addData(
+//                    IncomeExpenseModel(
+//                        categoryInfoModel = CategoryInfoModel(
+//                            categoryType = Constants.INCOME,
+//                            categoryId = 1,
+//                            categoryTitle = "Salary",
+//                            categoryImage = R.drawable.ic_salary,
+//                            categoryColor = R.color.teal_800
+//                        ),
+//                        memo = "Salary for month April",
+//                        amount = 120000f,
+//                        date = Date().time
+//                    )
+//                )
+//            }
+//            else {
+//                adapter.addData(
+//                    IncomeExpenseModel(
+//                        categoryInfoModel = CategoryInfoModel(
+//                            categoryType = Constants.EXPENSE,
+//                            categoryId = 1,
+//                            categoryTitle = "Shopping",
+//                            categoryImage = R.drawable.ic_shopping_cart,
+//                            categoryColor = R.color.pink_a400
+//                        ),
+//                        memo = "Sunglasses",
+//                        amount = 2230.89f,
+//                        date = Date().time
+//                    )
+//                )
+//            }
 
-            val incomeExpenseAmounts = adapter.getIncomeExpenseAmounts()
+//            val incomeExpenseAmounts = adapter.getIncomeExpenseAmounts()
 
-            setIncomeExpenseAmounts(income = incomeExpenseAmounts.first, expense = incomeExpenseAmounts.second)
+//            setIncomeExpenseAmounts(income = incomeExpenseAmounts.first, expense = incomeExpenseAmounts.second)
 
         }
 

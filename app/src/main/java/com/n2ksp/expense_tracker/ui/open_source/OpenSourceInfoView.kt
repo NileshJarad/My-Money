@@ -39,7 +39,7 @@ class OpenSourceInfoView(private val activity: OpenSourceInfoActivity) : LinearL
 
         View.inflate(activity, R.layout.activity_open_source_info, this)
 
-        activity.setSupportActionBar(toolbarOpenSource)
+        activity.setSupportActionBar(openSourceToolbar)
 
         activity.supportActionBar?.let {
             it.setDisplayHomeAsUpEnabled(true)
