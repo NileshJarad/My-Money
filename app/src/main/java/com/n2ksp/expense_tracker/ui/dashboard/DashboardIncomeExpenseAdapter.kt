@@ -56,7 +56,7 @@ class DashboardIncomeExpenseAdapter @Inject constructor() :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val incomeExpenseModel = incomeExpenseModelList[position]
-        var color = if (incomeExpenseModel.categoryInfoModel.categoryType == Constants.INCOME) {
+        val color = if (incomeExpenseModel.categoryInfoModel.categoryType == Constants.INCOME) {
             ContextCompat.getColor(
                 holder.itemView.context,
                 R.color.colorIncome
@@ -83,7 +83,12 @@ class DashboardIncomeExpenseAdapter @Inject constructor() :
         holder.incomeOrExpenseCategoryTextView.text = incomeExpenseModel.categoryInfoModel.categoryTitle
         holder.incomeOrExpenseCategoryTextView.text = incomeExpenseModel.categoryInfoModel.categoryTitle
         holder.incomeOrExpenseImageView.setImageResource(incomeExpenseModel.categoryInfoModel.categoryImage)
-//        holder.incomeOrExpenseImageView.setColorFilter(incomeExpenseModel.categoryInfoModel.categoryColor)
+        holder.incomeOrExpenseImageView.setColorFilter(
+            ContextCompat.getColor(
+                holder.itemView.context,
+                incomeExpenseModel.categoryInfoModel.categoryColor
+            )
+        )
 
     }
 

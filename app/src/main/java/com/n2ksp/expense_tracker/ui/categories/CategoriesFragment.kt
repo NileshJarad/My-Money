@@ -1,6 +1,7 @@
 package com.n2ksp.expense_tracker.ui.categories
 
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,7 +16,6 @@ import com.n2ksp.expense_tracker.base.ETBaseActivity
 import com.n2ksp.expense_tracker.data.model.CategoryInfoModelCreator
 import com.n2ksp.expense_tracker.utils.Constants
 import io.reactivex.Observable
-import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_categories.*
 
@@ -23,7 +23,6 @@ import kotlinx.android.synthetic.main.fragment_categories.*
 class CategoriesFragment : Fragment() {
 
     private lateinit var viewModel: CategoryViewModel
-    private val disposable = CompositeDisposable()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,6 +33,7 @@ class CategoriesFragment : Fragment() {
     }
 
 
+    @SuppressLint("CheckResult")
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
@@ -83,11 +83,11 @@ class CategoriesFragment : Fragment() {
 
             if (isChecked) {
                 buttonView.setTextColor(ContextCompat.getColor(context!!, R.color.colorExpense))
-                buttonView.text = "Expense"
+                buttonView.text = resources.getString(R.string.expense)
                 getAndAttachCategory(Constants.EXPENSE)
             } else {
                 buttonView.setTextColor(ContextCompat.getColor(context!!, R.color.colorIncome))
-                buttonView.text = "Income"
+                buttonView.text = resources.getString(R.string.income)
                 getAndAttachCategory(Constants.INCOME)
             }
 
@@ -95,7 +95,8 @@ class CategoriesFragment : Fragment() {
         }
     }
 
-    fun getAndAttachCategory(type: String) {
+    @SuppressLint("CheckResult")
+    private fun getAndAttachCategory(type: String) {
         Observable.just((activity as ETBaseActivity).getAppDatabase())
             .subscribeOn(Schedulers.io())
             .subscribe {

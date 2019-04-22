@@ -8,13 +8,12 @@ import com.n2ksp.expense_tracker.R
 import com.n2ksp.expense_tracker.data.model.CategoryInfoModel
 import kotlinx.android.synthetic.main.item_categoris.view.*
 import timber.log.Timber
-import java.lang.Exception
 
 class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.ViewHolder>() {
 
-    lateinit var categories : MutableList<CategoryInfoModel>
+    private lateinit var categories: MutableList<CategoryInfoModel>
 
-    fun attachCategories(categories : MutableList<CategoryInfoModel>){
+    fun attachCategories(categories: MutableList<CategoryInfoModel>) {
         this.categories = categories
     }
 
@@ -33,11 +32,17 @@ class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.ViewHolder>() {
 
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(category : CategoryInfoModel){
+        fun bind(category: CategoryInfoModel) {
             Timber.e("bind : ${category.categoryImage} ${category.categoryTitle} ")
             try {
-                itemView.catgegoryImageView.setImageResource(category.categoryImage)
-            } catch (e : Exception){
+                itemView.categoryImageView.setImageResource(category.categoryImage)
+//                itemView.categoryImageView.setColorFilter(
+//                    ContextCompat.getColor(
+//                        itemView.context,
+//                        category.categoryColor
+//                    )
+//                )
+            } catch (e: Exception) {
                 e.printStackTrace()
             }
             itemView.categoryTextVIew.text = category.categoryTitle

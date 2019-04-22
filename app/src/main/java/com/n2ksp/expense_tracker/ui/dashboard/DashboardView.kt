@@ -152,7 +152,8 @@ class DashboardView(val activity: AppCompatActivity) : LinearLayout(activity) {
                             categoryType = Constants.INCOME,
                             categoryId = 1,
                             categoryTitle = "Salary",
-                            categoryImage = R.drawable.ic_salary
+                            categoryImage = R.drawable.ic_salary,
+                            categoryColor = R.color.teal_800
                         ),
                         memo = "Salary for month April",
                         amount = 120000f,
@@ -166,7 +167,8 @@ class DashboardView(val activity: AppCompatActivity) : LinearLayout(activity) {
                             categoryType = Constants.EXPENSE,
                             categoryId = 1,
                             categoryTitle = "Shopping",
-                            categoryImage = R.drawable.ic_shopping_cart
+                            categoryImage = R.drawable.ic_shopping_cart,
+                            categoryColor = R.color.pink_a400
                         ),
                         memo = "Sunglasses",
                         amount = 2230.89f,

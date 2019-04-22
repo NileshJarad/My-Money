@@ -66,32 +66,32 @@ object RoomDrawableMappingUtil {
     fun getRoomNameToDrawable(name: String): Pair<Int, Int> {
         return when (name) {
             //common categories name
-            OTHER_ROOM_NAME -> Pair(R.drawable.ic_others, R.color.colorPrimary) //1
-            LENDING_ROOM_NAME -> Pair(R.drawable.ic_lending, R.color.colorPrimary) //2
+            OTHER_ROOM_NAME -> Pair(R.drawable.ic_others, R.color.orange_a400) //1
+            LENDING_ROOM_NAME -> Pair(R.drawable.ic_lending, R.color.purple_a400) //2
 
             // income categories
-            SALARY_ROOM_NAME -> Pair(R.drawable.ic_salary, R.color.colorPrimary) //1
-            FREELANCING_ROOM_NAME -> Pair(R.drawable.ic_freelancing, R.color.colorPrimary) //2
+            SALARY_ROOM_NAME -> Pair(R.drawable.ic_salary, R.color.teal_800) //1
+            FREELANCING_ROOM_NAME -> Pair(R.drawable.ic_freelancing, R.color.cyan_800) //2
 
             // expense categories
-            FOOD_ROOM_NAME -> Pair(R.drawable.ic_food, R.color.colorPrimary) //1
-            BILL_ROOM_NAME -> Pair(R.drawable.ic_bill, R.color.colorPrimary) //2
-            CREDIT_CARD_ROOM_NAME -> Pair(R.drawable.ic_credit_card, R.color.colorPrimary) //3
-            BEAUTIFICATION_ROOM_NAME -> Pair(R.drawable.ic_spa, R.color.colorPrimary) //4
-            BIKE_ROOM_NAME -> Pair(R.drawable.ic_bike, R.color.colorPrimary) //5
-            TRANSPORT_ROOM_NAME -> Pair(R.drawable.ic_transport, R.color.colorPrimary) //6
-            HOME_ROOM_NAME -> Pair(R.drawable.ic_home, R.color.colorPrimary) //7
-            CAR_ROOM_NAME -> Pair(R.drawable.ic_car, R.color.colorPrimary) //8
-            ENTERTAINMENT_ROOM_NAME -> Pair(R.drawable.ic_film, R.color.colorPrimary) //9
-            SHOPPING_ROOM_NAME -> Pair(R.drawable.ic_shopping_cart, R.color.colorPrimary) //10
-            CLOTHING_ROOM_NAME -> Pair(R.drawable.ic_clothing, R.color.colorPrimary) //11
-            TAX_ROOM_NAME -> Pair(R.drawable.ic_tax, R.color.colorPrimary) //12
-            TELEPHONE_ROOM_NAME -> Pair(R.drawable.ic_phone, R.color.colorPrimary) //13
-            EDUCATION_ROOM_NAME -> Pair(R.drawable.ic_school, R.color.colorPrimary) //14
-            BOOK_ROOM_NAME -> Pair(R.drawable.ic_books, R.color.colorPrimary) //15
-            FITNESS_ROOM_NAME -> Pair(R.drawable.ic_fitness, R.color.colorPrimary) //16
-            CHILD_ROOM_NAME -> Pair(R.drawable.ic_child, R.color.colorPrimary) //17
-            MEDICAL_ROOM_NAME -> Pair(R.drawable.ic_medical, R.color.colorPrimary) //18
+            FOOD_ROOM_NAME -> Pair(R.drawable.ic_food, R.color.pink_a400) //1
+            BILL_ROOM_NAME -> Pair(R.drawable.ic_bill, R.color.green_900) //2
+            CREDIT_CARD_ROOM_NAME -> Pair(R.drawable.ic_credit_card, R.color.light_blue_a400) //3
+            BEAUTIFICATION_ROOM_NAME -> Pair(R.drawable.ic_spa, R.color.deep_orange_a400) //4
+            BIKE_ROOM_NAME -> Pair(R.drawable.ic_bike, R.color.orange_a400) //5
+            TRANSPORT_ROOM_NAME -> Pair(R.drawable.ic_transport, R.color.cyan_600) //6
+            HOME_ROOM_NAME -> Pair(R.drawable.ic_home, R.color.indigo_a400) //7
+            CAR_ROOM_NAME -> Pair(R.drawable.ic_car, R.color.cyan_800) //8
+            ENTERTAINMENT_ROOM_NAME -> Pair(R.drawable.ic_film, R.color.purple_a400) //9
+            SHOPPING_ROOM_NAME -> Pair(R.drawable.ic_shopping_cart, R.color.orange_a400) //10
+            CLOTHING_ROOM_NAME -> Pair(R.drawable.ic_clothing, R.color.deep_purple_a400) //11
+            TAX_ROOM_NAME -> Pair(R.drawable.ic_tax, R.color.pink_a400) //12
+            TELEPHONE_ROOM_NAME -> Pair(R.drawable.ic_phone, R.color.green_900) //13
+            EDUCATION_ROOM_NAME -> Pair(R.drawable.ic_school, R.color.purple_a400) //14
+            BOOK_ROOM_NAME -> Pair(R.drawable.ic_books, R.color.cyan_600) //15
+            FITNESS_ROOM_NAME -> Pair(R.drawable.ic_fitness, R.color.indigo_a200) //16
+            CHILD_ROOM_NAME -> Pair(R.drawable.ic_child, R.color.pink_a200) //17
+            MEDICAL_ROOM_NAME -> Pair(R.drawable.ic_medical, R.color.indigo_a400) //18
             else -> {
                 val message = "No mapping found for Room Name To Drawable,Color"
                 RuntimeException(message)

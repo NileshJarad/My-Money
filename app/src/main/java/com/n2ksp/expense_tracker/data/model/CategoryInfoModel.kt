@@ -1,11 +1,9 @@
 package com.n2ksp.expense_tracker.data.model
 
-import android.graphics.Color
 import com.n2ksp.expense_tracker.R
 import com.n2ksp.expense_tracker.data.room.CategoryDBModel
 import com.n2ksp.expense_tracker.utils.Constants
 import com.n2ksp.expense_tracker.utils.RoomDrawableMappingUtil
-import timber.log.Timber
 
 /**
  * Created by SHRIKANT EKADE on 20/04/19.
@@ -16,22 +14,22 @@ data class CategoryInfoModel(
     val categoryId: Int,
     val categoryTitle: String,
     val categoryImage: Int,
-    val categoryColor: Int = Color.CYAN
+    val categoryColor: Int
 )
 
 object CategoryInfoModelCreator {
 
-    fun convertToCategoryInfoModel(categories:List<CategoryDBModel>) : ArrayList<CategoryInfoModel> {
+    fun convertToCategoryInfoModel(categories: List<CategoryDBModel>): ArrayList<CategoryInfoModel> {
         val categoriesModel = ArrayList<CategoryInfoModel>()
         categories.forEach {
-            Timber.e("convertToCategoryInfoModel : ${it.categoryId} ${it.categoryTitle} ${it.categoryImage}")
-            Timber.e("convertToCategoryInfoModel : ${RoomDrawableMappingUtil.getRoomNameToDrawable(it.categoryImage!!)} ${RoomDrawableMappingUtil.getRoomNameToDrawable(it.categoryImage!!).first}")
+            val roomNameToDrawable = RoomDrawableMappingUtil.getRoomNameToDrawable(it.categoryImage ?: "")
             categoriesModel.add(
                 CategoryInfoModel(
-                    it.categoryType!!,
+                    it.categoryType ?: "",
                     it.categoryId,
-                    it.categoryTitle!!,
-                    RoomDrawableMappingUtil.getRoomNameToDrawable(it.categoryImage!!).first
+                    it.categoryTitle ?: "",
+                    roomNameToDrawable.first,
+                    roomNameToDrawable.second
                 )
             )
         }
@@ -40,7 +38,6 @@ object CategoryInfoModelCreator {
     }
 
     fun getCategoryInfoModel(type: String): ArrayList<CategoryInfoModel> {
-        val categories = ArrayList<CategoryInfoModel>()
 
 //        if (type.equals(Constants.INCOME, ignoreCase = true)) {
 //
@@ -289,7 +286,7 @@ object CategoryInfoModelCreator {
 //            )
 //        }
 
-        return categories
+        return ArrayList()
     }
 
     fun getCategoriesToAddInDatabase(): ArrayList<CategoryDBModel> {

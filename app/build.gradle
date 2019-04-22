@@ -49,6 +49,9 @@ dependencies {
     kapt 'android.arch.persistence.room:compiler:1.1.1'
     implementation 'android.arch.persistence.room:runtime:1.1.1'
 
+    // To watch entries in browser
+    debugImplementation 'com.amitshekhar.android:debug-db:1.0.6'
+
 
     //Android navigation controller
     implementation "androidx.navigation:navigation-fragment-ktx:2.0.0" // For Kotlin use navigation-fragment-ktx
