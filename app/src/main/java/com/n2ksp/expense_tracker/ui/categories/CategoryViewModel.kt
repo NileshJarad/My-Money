@@ -12,11 +12,11 @@ import io.reactivex.Completable
 
 class CategoryViewModel : ViewModel() {
 
-    lateinit var originalCategories : ArrayList<CategoryInfoModel>
-    val filteredCategories: MutableList<CategoryInfoModel> = mutableListOf()
-    val oldFilteredCategories: MutableList<CategoryInfoModel> = mutableListOf()
+    private lateinit var originalCategories : ArrayList<CategoryInfoModel>
+    private val filteredCategories: MutableList<CategoryInfoModel> = mutableListOf()
+    private val oldFilteredCategories: MutableList<CategoryInfoModel> = mutableListOf()
 
-    fun search(query: String): Completable = Completable.create {
+    fun search(query: String): Completable = Completable.create { it ->
         val wanted = originalCategories.filter {
             it.categoryTitle.contains(query,true) || it.categoryTitle.equals(query,true)
         }.toList()

@@ -9,7 +9,12 @@
     <fragment android:id="@+id/navigationDashboard"
               android:name="com.n2ksp.expense_tracker.ui.dashboard.DashboardFragment"
               android:label="Dashboard"
-              tools:layout="@layout/fragment_dashboard"/>
+              tools:layout="@layout/fragment_dashboard">
+        <action android:id="@+id/action_navigationDashboard_to_addIncomeExpenseActivity"
+                app:destination="@+id/addIncomeExpenseActivity" app:popExitAnim="@anim/nav_default_pop_exit_anim"
+                app:enterAnim="@anim/nav_default_enter_anim" app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+                app:exitAnim="@anim/nav_default_exit_anim" app:popUpTo="@+id/navigation"/>
+    </fragment>
 
     <fragment android:id="@+id/navigationChart"
               android:name="com.n2ksp.expense_tracker.ui.chart.ChartFragment"
@@ -28,6 +33,9 @@
     <activity android:id="@+id/openSourceInfoActivity"
               android:name="com.n2ksp.expense_tracker.ui.open_source.OpenSourceInfoActivity"
               android:label="activity_open_source_info" tools:layout="@layout/activity_open_source_info"/>
+    <activity android:id="@+id/addIncomeExpenseActivity"
+              android:name="com.n2ksp.expense_tracker.ui.add_income_expense.AddIncomeExpenseActivity"
+              android:label="Add Income Or Expnese " tools:layout="@layout/activity_add_income_expense"/>
 
 
 </navigation>

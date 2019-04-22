@@ -7,7 +7,7 @@
     <dist:module dist:instant="true"/>
 
     <application
-            android:name=".ExpenseTrackerApplication"
+            android:name=".MyMoneyApplication"
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
@@ -15,7 +15,8 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
-
+        <activity android:name=".ui.add_income_expense.AddIncomeExpenseActivity">
+        </activity>
         <activity android:name=".ui.intro.IntroScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -23,7 +24,6 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
         <activity
                 android:name=".ui.open_source.OpenSourceInfoActivity"
                 android:label="Open Source Library"
@@ -32,17 +32,15 @@
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".ui.main.MainActivity"/>
         </activity>
+        <activity android:name=".ui.main.MainActivity">
 
-        <activity
-                android:name=".ui.main.MainActivity"
-        >
-            <!--<intent-filter>-->
-            <!--<action android:name="android.intent.action.MAIN"/>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN"/> -->
 
-            <!--<category android:name="android.intent.category.LAUNCHER"/>-->
-            <!--</intent-filter>-->
+
+            <!-- <category android:name="android.intent.category.LAUNCHER"/> -->
+            <!-- </intent-filter> -->
         </activity>
-
     </application>
 
 </manifest>
