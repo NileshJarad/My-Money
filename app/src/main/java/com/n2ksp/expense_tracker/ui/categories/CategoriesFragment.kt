@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import com.n2ksp.expense_tracker.R
@@ -23,7 +22,6 @@ import kotlinx.android.synthetic.main.fragment_categories.*
 class CategoriesFragment : Fragment() {
 
     private var allowSelection: Boolean = false
-    private lateinit var viewModel: CategoryViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -56,34 +54,16 @@ class CategoriesFragment : Fragment() {
 
         val adapter = CategoriesAdapter()
         adapter.setAllowSelection(allowSelection = allowSelection)
-        viewModel = ViewModelProviders.of(this).get(CategoryViewModel::class.java)
 
         Observable.just((activity as ETBaseActivity).getAppDatabase())
             .subscribeOn(Schedulers.io())
             .subscribe {
-                val categories = it.userDao().findByType(Constants.EXPENSE)
+                val categories = it.categoryDao().findByType(Constants.EXPENSE)
                 (activity as ETBaseActivity).runOnUiThread {
                     adapter.attachCategories(CategoryInfoModelCreator.convertToCategoryInfoModel(categories))
                     categoriesRecyclerView.adapter = adapter
                 }
             }
-
-
-//        searchEditText.
-//            textChanges().
-//            debounce(200, TimeUnit.MILLISECONDS)
-//            .subscribe {
-//                viewModel
-//                    .search(it.toString())
-//                    .subscribeOn(Schedulers.computation())
-//                    .observeOn(AndroidSchedulers.mainThread())
-//                    .subscribe {
-//                        val diffResult = DiffUtil.calculateDiff(CategoryDiffUtilCallback(viewModel.oldFilteredCategories, viewModel.filteredCategories))
-//                        viewModel.oldFilteredCategories.clear()
-//                        viewModel.oldFilteredCategories.addAll(viewModel.filteredCategories)
-//                        diffResult.dispatchUpdatesTo(categoriesRecyclerView.adapter as CategoriesAdapter)
-//                    }.addTo(disposable)
-//            }.addTo(disposable)
 
         expenseOrIncomeSwitch.setOnCheckedChangeListener { buttonView, isChecked ->
 
@@ -109,7 +89,7 @@ class CategoriesFragment : Fragment() {
             .subscribeOn(Schedulers.io())
             .subscribe {
 
-                val categories = it.userDao().findByType(type)
+                val categories = it.categoryDao().findByType(type)
 
                 (activity as ETBaseActivity).runOnUiThread {
                     //                adapter.attachCategories(viewModel.getCategories(Constants.EXPENSE))

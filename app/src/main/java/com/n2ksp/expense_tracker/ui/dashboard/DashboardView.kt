@@ -3,15 +3,16 @@ package com.n2ksp.expense_tracker.ui.dashboard
 import android.annotation.SuppressLint
 import android.view.View
 import android.widget.LinearLayout
-import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.n2ksp.expense_tracker.R
+import com.n2ksp.expense_tracker.data.model.CategoryInfoModel
 import com.n2ksp.expense_tracker.di.component.DaggerDashboardViewComponent
 import com.n2ksp.expense_tracker.di.module.ContextModule
 import com.n2ksp.expense_tracker.ui.custom.DateSelectorWheel
+import com.n2ksp.expense_tracker.ui.main.MainActivity
 import com.n2ksp.expense_tracker.utils.AmountUtils
 import com.n2ksp.expense_tracker.utils.DateUtils
 import kotlinx.android.synthetic.main.fragment_dashboard.view.*
@@ -19,7 +20,7 @@ import javax.inject.Inject
 
 
 @SuppressLint("ViewConstructor")
-class DashboardView(val activity: AppCompatActivity) : LinearLayout(activity) {
+class DashboardView(val activity: MainActivity) : LinearLayout(activity) {
     @Inject
     lateinit var adapter: DashboardIncomeExpenseAdapter
 
@@ -35,6 +36,10 @@ class DashboardView(val activity: AppCompatActivity) : LinearLayout(activity) {
     private val threshold = 2
     private var SCROLL_SPEED_DOWNSCALE = 4
 
+
+    @SuppressLint("UseSparseArrays")
+    private val categories = HashMap<Int, CategoryInfoModel>()
+
     init {
 
         DaggerDashboardViewComponent.builder()
@@ -49,15 +54,11 @@ class DashboardView(val activity: AppCompatActivity) : LinearLayout(activity) {
 
         View.inflate(activity, R.layout.fragment_dashboard, this)
 
-        incomeExpenseRecyclerView.layoutManager = linearLayoutManager
-
-        incomeExpenseRecyclerView.adapter = adapter
-
-        incomeExpenseRecyclerView.addItemDecoration(dividerItemDecoration)
+        setupRecyclerView()
 
         setIncomeExpenseAmounts()
 
-        setDate()
+        setDates()
 
         dateSelectorWheel.setListener(object : DateSelectorWheel.DateSelectedListener {
             override fun onDateSelected(dayOfMonth: Int, month: String) {
@@ -78,7 +79,22 @@ class DashboardView(val activity: AppCompatActivity) : LinearLayout(activity) {
             heightOfDateSelector = dateSelectorWheel.height
         }
 
-        incomeExpenseRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+        incomeExpenseRecyclerView.addOnScrollListener(scrollListener)
+        
+        addExpenseOrIncomeFAB.setOnClickListener {
+            Navigation.findNavController(activity, R.id.navHostFragment).navigate(R.id.addIncomeExpenseActivity)
+        }
+
+    }
+
+    private fun setupRecyclerView() {
+        incomeExpenseRecyclerView.layoutManager = linearLayoutManager
+        incomeExpenseRecyclerView.adapter = adapter
+        incomeExpenseRecyclerView.addItemDecoration(dividerItemDecoration)
+    }
+
+    private val scrollListener =
+        object : RecyclerView.OnScrollListener() {
 
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
@@ -127,66 +143,27 @@ class DashboardView(val activity: AppCompatActivity) : LinearLayout(activity) {
                     }
 
                     RecyclerView.SCROLL_STATE_DRAGGING -> {
-//                        addExpenseOrIncomeFAB.animate().y(-10f)
-//                            .setDuration(100).start()
                     }
                 }
                 super.onScrollStateChanged(recyclerView, newState)
             }
 
-        })
-
-
-        addExpenseOrIncomeFAB.setOnClickListener {
-
-            Navigation.findNavController(activity, R.id.navHostFragment).navigate(R.id.addIncomeExpenseActivity)
-
-//            emptyViewLinearLayout.visibility = View.GONE
-//            incomeExpenseRecyclerView.visibility = View.VISIBLE
-
-
-//            if (adapter.itemCount == 3) {
-//                adapter.addData(
-//                    IncomeExpenseModel(
-//                        categoryInfoModel = CategoryInfoModel(
-//                            categoryType = Constants.INCOME,
-//                            categoryId = 1,
-//                            categoryTitle = "Salary",
-//                            categoryImage = R.drawable.ic_salary,
-//                            categoryColor = R.color.teal_800
-//                        ),
-//                        memo = "Salary for month April",
-//                        amount = 120000f,
-//                        date = Date().time
-//                    )
-//                )
-//            }
-//            else {
-//                adapter.addData(
-//                    IncomeExpenseModel(
-//                        categoryInfoModel = CategoryInfoModel(
-//                            categoryType = Constants.EXPENSE,
-//                            categoryId = 1,
-//                            categoryTitle = "Shopping",
-//                            categoryImage = R.drawable.ic_shopping_cart,
-//                            categoryColor = R.color.pink_a400
-//                        ),
-//                        memo = "Sunglasses",
-//                        amount = 2230.89f,
-//                        date = Date().time
-//                    )
-//                )
-//            }
-
-//            val incomeExpenseAmounts = adapter.getIncomeExpenseAmounts()
-
-//            setIncomeExpenseAmounts(income = incomeExpenseAmounts.first, expense = incomeExpenseAmounts.second)
-
         }
 
+    private fun showEmptyScreen() {
+        incomeExpenseRecyclerView.visibility = View.GONE
+        emptyViewLinearLayout.visibility = View.VISIBLE
+        setIncomeExpenseAmounts(0f, 0f)
     }
 
-    private fun setDate() {
+    fun showData() {
+        val income = adapter.getIncomeExpenseAmounts()
+        setIncomeExpenseAmounts(income = income.first, expense = income.second)
+        incomeExpenseRecyclerView.visibility = View.VISIBLE
+        emptyViewLinearLayout.visibility = View.GONE
+    }
+
+    private fun setDates() {
         currentDayTextView.text = "${DateUtils.getCurrentDayOfMonth()}"
         currentMonthTextView.text = DateUtils.getCurrentMonth()
     }

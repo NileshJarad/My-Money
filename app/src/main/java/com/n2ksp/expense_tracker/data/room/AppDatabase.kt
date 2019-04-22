@@ -4,12 +4,16 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
+import com.n2ksp.expense_tracker.utils.SqlLiteUtil
 
 
-@Database(entities = [CategoryDBModel::class], version = 1)
+@Database(entities = [CategoryDBModel::class, IncomeExpenseDBModel::class], version = 2)
 abstract class AppDatabase : RoomDatabase() {
 
-    abstract fun userDao(): CategoryDao
+    abstract fun categoryDao(): CategoryDao
+    abstract fun incomeExpenseDao(): IncomeExpenseDao
 
     companion object {
         private const val DATA_BASE_NAME = "my_money_db"
@@ -20,6 +24,7 @@ abstract class AppDatabase : RoomDatabase() {
 
                 INSTANCE =
                     Room.databaseBuilder(context.applicationContext, AppDatabase::class.java, DATA_BASE_NAME)
+                        .addMigrations(MIGRATION_1_2)
                         .build()
             }
             return INSTANCE as AppDatabase
@@ -28,5 +33,12 @@ abstract class AppDatabase : RoomDatabase() {
         fun destroyInstance() {
             INSTANCE = null
         }
+    }
+}
+
+
+val MIGRATION_1_2 = object : Migration(1, 2) {
+    override fun migrate(database: SupportSQLiteDatabase) {
+        database.execSQL(SqlLiteUtil.createExpenseTable)
     }
 }
