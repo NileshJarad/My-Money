@@ -93,13 +93,16 @@ class DashboardView(val activity: MainActivity) : LinearLayout(activity) {
             Navigation.findNavController(activity, R.id.navHostFragment).navigate(R.id.addIncomeExpenseActivity)
         }
 
+        getDataForExpenseIncome()
+    }
+
+    private fun getDataForExpenseIncome() {
         viewModel.getListForDay(45, 7).observe(activity, Observer {
             adapter.addAllData(it)
             showData()
-//                incomeExpenseRecyclerView?.removeOnScrollListener(scrollListener)
-//                incomeExpenseRecyclerView?.addOnScrollListener(scrollListener)
+            //                incomeExpenseRecyclerView?.removeOnScrollListener(scrollListener)
+            //                incomeExpenseRecyclerView?.addOnScrollListener(scrollListener)
         })
-
     }
 
     private fun setupRecyclerView() {
@@ -171,7 +174,7 @@ class DashboardView(val activity: MainActivity) : LinearLayout(activity) {
         setIncomeExpenseAmounts(0f, 0f)
     }
 
-    fun showData() {
+    private fun showData() {
         val income = adapter.getIncomeExpenseAmounts()
         setIncomeExpenseAmounts(income = income.first, expense = income.second)
         incomeExpenseRecyclerView.visibility = View.VISIBLE
@@ -208,6 +211,10 @@ class DashboardView(val activity: MainActivity) : LinearLayout(activity) {
             0
         )
         dateSelectorWheel.layoutParams = params
+    }
+
+    fun onResume() {
+        getDataForExpenseIncome()
     }
 
 
