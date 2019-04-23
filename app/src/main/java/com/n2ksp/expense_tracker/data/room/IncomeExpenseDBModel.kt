@@ -22,7 +22,7 @@ class IncomeExpenseDBModel {
     var memo: String? = ""
 
     @ColumnInfo(name = "amount")
-    var amount: Int = 0
+    var amount: Float = 0.0f
 
     @ColumnInfo(name = "date")
     var date = Date()

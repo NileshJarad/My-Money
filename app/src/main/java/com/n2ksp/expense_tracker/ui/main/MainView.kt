@@ -10,7 +10,6 @@ import androidx.navigation.NavController
 import androidx.navigation.ui.NavigationUI
 import com.n2ksp.expense_tracker.R
 import com.n2ksp.expense_tracker.data.model.CategoryInfoModelCreator
-import com.n2ksp.expense_tracker.data.room.IncomeExpenseDBModel
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.view.*
@@ -40,15 +39,6 @@ class MainView @Inject constructor(val activity: MainActivity) : LinearLayout(ac
                 if (it.categoryDao().countCategories() == 0) {
                     it.categoryDao().insertAll(CategoryInfoModelCreator.getCategoriesToAddInDatabase())
                 }
-
-                it.incomeExpenseDao().insert(
-                    IncomeExpenseDBModel().apply {
-                        categoryId = 8
-                        amount = 3000
-                        memo = "Random"
-                    }
-
-                )
             }
 
 

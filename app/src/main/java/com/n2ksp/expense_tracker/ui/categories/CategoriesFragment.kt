@@ -8,11 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import com.n2ksp.expense_tracker.R
 import com.n2ksp.expense_tracker.base.ETBaseActivity
 import com.n2ksp.expense_tracker.data.model.CategoryInfoModelCreator
+import com.n2ksp.expense_tracker.ui.add_income_expense.SharedIncomeExpenseViewModel
 import com.n2ksp.expense_tracker.utils.Constants
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
@@ -21,6 +23,7 @@ import kotlinx.android.synthetic.main.fragment_categories.*
 
 class CategoriesFragment : Fragment() {
 
+    private lateinit var sharedViewModel: SharedIncomeExpenseViewModel
     private var allowSelection: Boolean = false
 
     override fun onCreateView(
@@ -35,6 +38,9 @@ class CategoriesFragment : Fragment() {
     @SuppressLint("CheckResult")
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        sharedViewModel =
+            ViewModelProviders.of(activity!!).get(SharedIncomeExpenseViewModel::class.java)
 
         arguments?.let { arg ->
             if (arg.containsKey("allowSelection")) {
@@ -54,6 +60,7 @@ class CategoriesFragment : Fragment() {
 
         val adapter = CategoriesAdapter()
         adapter.setAllowSelection(allowSelection = allowSelection)
+        adapter.setViewModel(sharedViewModel = sharedViewModel)
 
         Observable.just((activity as ETBaseActivity).getAppDatabase())
             .subscribeOn(Schedulers.io())

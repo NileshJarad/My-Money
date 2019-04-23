@@ -3,6 +3,7 @@ package com.n2ksp.expense_tracker.ui.dashboard
 import android.annotation.SuppressLint
 import android.view.View
 import android.widget.LinearLayout
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,6 +22,9 @@ import javax.inject.Inject
 
 @SuppressLint("ViewConstructor")
 class DashboardView(val activity: MainActivity) : LinearLayout(activity) {
+
+    private lateinit var viewModel: IncomeExpensesViewModel
+
     @Inject
     lateinit var adapter: DashboardIncomeExpenseAdapter
 
@@ -54,6 +58,10 @@ class DashboardView(val activity: MainActivity) : LinearLayout(activity) {
 
         View.inflate(activity, R.layout.fragment_dashboard, this)
 
+
+      viewModel  = ViewModelProviders.of(activity).get(IncomeExpensesViewModel::class.java)
+
+
         setupRecyclerView()
 
         setIncomeExpenseAmounts()
@@ -80,7 +88,7 @@ class DashboardView(val activity: MainActivity) : LinearLayout(activity) {
         }
 
         incomeExpenseRecyclerView.addOnScrollListener(scrollListener)
-        
+
         addExpenseOrIncomeFAB.setOnClickListener {
             Navigation.findNavController(activity, R.id.navHostFragment).navigate(R.id.addIncomeExpenseActivity)
         }
