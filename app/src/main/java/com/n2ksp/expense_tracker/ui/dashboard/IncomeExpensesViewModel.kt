@@ -2,6 +2,7 @@ package com.n2ksp.expense_tracker.ui.dashboard
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.n2ksp.expense_tracker.data.model.CategoryInfoModelCreator
 import com.n2ksp.expense_tracker.data.model.IncomeExpenseModel
@@ -20,7 +21,7 @@ class IncomeExpensesViewModel(application: Application) : AndroidViewModel(appli
     var compositeDisposable = CompositeDisposable()
     private var repository = IncomeExpensesRepository(application)
 
-    lateinit var list: MutableLiveData<ArrayList<IncomeExpenseModel>>
+    private var list: MutableLiveData<ArrayList<IncomeExpenseModel>> = MutableLiveData()
 
 
     fun addExpense(incomeExpense: IncomeExpenseModel) {
@@ -40,7 +41,11 @@ class IncomeExpensesViewModel(application: Application) : AndroidViewModel(appli
     }
 
 
-    fun getListForDay(day: Int, month: Int) {
+//    fun getIncomeExpenseListForDate() : LiveData<ArrayList<IncomeExpenseModel>> {
+//
+//    }
+
+    fun getListForDay(day: Int, month: Int): LiveData<ArrayList<IncomeExpenseModel>> {
         val dates = DateUtils.getDatesForDay(day = day, month = month)
         val disposable: Disposable = Observable.just(repository)
             .subscribeOn(Schedulers.io())
@@ -48,7 +53,8 @@ class IncomeExpensesViewModel(application: Application) : AndroidViewModel(appli
 
                 val tempList = ArrayList<IncomeExpenseModel>()
 
-                var data = repositoryInner.getAllEntriesForDate(dates.first.time, dates.second.time)
+//                var data = repositoryInner.getAllEntriesForDate(dates.first.time, dates.second.time)
+                var data = repositoryInner.getAll()
 
                 data.forEach {
                     tempList.add(
@@ -65,10 +71,11 @@ class IncomeExpensesViewModel(application: Application) : AndroidViewModel(appli
                     )
                 }
 
-                list.value = tempList
+                list.postValue(tempList)
             }
 
         compositeDisposable.add(disposable)
+        return list
     }
 
 

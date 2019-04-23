@@ -9,7 +9,7 @@ import androidx.room.Query
 @Dao
 interface IncomeExpenseDao {
     @Query("SELECT * FROM income_expense")
-    fun getAll(): List<CategoryDBModel>
+    fun getAll(): List<IncomeExpenseDBModel>
 
     @Query("SELECT * FROM income_expense where date > :startDate and date < :endDate")
     fun findEntriesForDate(startDate: Long, endDate: Long): List<IncomeExpenseDBModel>

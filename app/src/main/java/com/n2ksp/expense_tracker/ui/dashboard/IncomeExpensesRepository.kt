@@ -15,6 +15,10 @@ class IncomeExpensesRepository(application: Application) {
         return incomeExpenseDao.findEntriesForDate(startDate, endDate)
     }
 
+    fun getAll(): List<IncomeExpenseDBModel> {
+        return incomeExpenseDao.getAll()
+    }
+
     fun getSingleCategory(id: Int): CategoryDBModel {
         return categoryDao.findById(id)
     }
