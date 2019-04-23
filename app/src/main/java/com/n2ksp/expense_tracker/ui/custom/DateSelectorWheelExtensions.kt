@@ -24,11 +24,11 @@ import timber.log.Timber
  * It takes {income and expense} as parameter calculates the balance sets it
  */
 @SuppressLint("SetTextI18n", "StringFormatInvalid")
-fun DateSelectorWheel.setAmounts(income: Int, expense: Int) {
-    expenseValueTextView.text = AmountUtils.getAmountFormatted(expense.toFloat())
-    incomeValueTextView.text = AmountUtils.getAmountFormatted(income.toFloat())
-    amountProgressView.max = income
-    amountProgressView.progress = expense
+fun DateSelectorWheel.setAmounts(income: Float, expense: Float) {
+    expenseValueTextView.text = AmountUtils.getAmountFormatted(expense)
+    incomeValueTextView.text = AmountUtils.getAmountFormatted(income)
+    amountProgressView.max = income.toInt()
+    amountProgressView.progress = expense.toInt()
     balanceValueTextView.text =
         AmountUtils.getAmountFormatted((income - expense).toFloat())
 }

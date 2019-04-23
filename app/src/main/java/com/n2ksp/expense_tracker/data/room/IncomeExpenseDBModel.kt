@@ -19,13 +19,16 @@ class IncomeExpenseDBModel {
     var categoryId: Int = 0
 
     @ColumnInfo(name = "memo")
-    var memo: String? = ""
+    var memo: String = ""
 
     @ColumnInfo(name = "amount")
     var amount: Float = 0.0f
 
     @ColumnInfo(name = "date")
     var date = Date()
+
+    @ColumnInfo(name = "type")
+    var type: String = ""
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

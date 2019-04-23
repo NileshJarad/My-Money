@@ -83,7 +83,7 @@ class DateSelectorWheel : FrameLayout {
     private fun init() {
         inflate(context, R.layout.layout_date_selector_wheel, this)
 
-        setAmounts(income = 130000, expense = 80000)
+//        setAmounts(income = 130000, expense = 80000)
         addView(dummyCircleLayout, 0)
         addCenteredTextView()
         addTextView()
@@ -102,6 +102,12 @@ class DateSelectorWheel : FrameLayout {
 
     fun setListener(callback: DateSelectedListener) {
         this.callback = callback
+    }
+
+    fun setIncomeExpenseForMonth(incomeExpense: Pair<Float, Float>?) {
+        incomeExpense?.let {
+            setAmounts(income = it.first, expense = it.second)
+        }
     }
 
 //    private val simpleGestureListener = object : GestureDetector.SimpleOnGestureListener() {

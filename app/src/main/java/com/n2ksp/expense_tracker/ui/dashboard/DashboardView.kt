@@ -24,6 +24,8 @@ import javax.inject.Inject
 @SuppressLint("ViewConstructor")
 class DashboardView(val activity: MainActivity) : LinearLayout(activity) {
 
+    private var currentSelectedDay: Int = 0
+    private var currentSelectedMonth: Int = DateUtils.getCurrentMonthInt()
     private lateinit var viewModel: IncomeExpensesViewModel
 
     @Inject
@@ -59,27 +61,18 @@ class DashboardView(val activity: MainActivity) : LinearLayout(activity) {
 
         View.inflate(activity, R.layout.fragment_dashboard, this)
 
-
         viewModel = ViewModelProviders.of(activity).get(IncomeExpensesViewModel::class.java)
-
 
         setupRecyclerView()
 
         setIncomeExpenseAmounts()
 
-        setDates()
-
         dateSelectorWheel.setListener(object : DateSelectorWheel.DateSelectedListener {
             override fun onDateSelected(dayOfMonth: Int, month: String) {
+                currentSelectedDay = dayOfMonth
                 currentDayTextView.text = "$dayOfMonth"
                 currentMonthTextView.text = month
-                if (DateUtils.isToday(dayOfMonth)) {
-                    emptyViewLinearLayout.visibility = View.GONE
-                    incomeExpenseRecyclerView.visibility = View.VISIBLE
-                } else {
-                    emptyViewLinearLayout.visibility = View.VISIBLE
-                    incomeExpenseRecyclerView.visibility = View.GONE
-                }
+                getDataForExpenseIncome(dayOfMonth)
             }
         })
 
@@ -93,15 +86,24 @@ class DashboardView(val activity: MainActivity) : LinearLayout(activity) {
             Navigation.findNavController(activity, R.id.navHostFragment).navigate(R.id.addIncomeExpenseActivity)
         }
 
-        getDataForExpenseIncome()
+        setMonthDataExpenseIncome()
+        setDates()
     }
 
-    private fun getDataForExpenseIncome() {
-        viewModel.getListForDay(45, 7).observe(activity, Observer {
-            adapter.addAllData(it)
-            showData()
-            //                incomeExpenseRecyclerView?.removeOnScrollListener(scrollListener)
-            //                incomeExpenseRecyclerView?.addOnScrollListener(scrollListener)
+    private fun setMonthDataExpenseIncome() {
+        viewModel.getIncomeAndExpenseTotalForMonth(currentSelectedMonth).observe(activity, Observer {
+            dateSelectorWheel.setIncomeExpenseForMonth(it)
+        })
+    }
+
+    private fun getDataForExpenseIncome(dayOfMonth: Int) {
+        viewModel.getListForDay(dayOfMonth, currentSelectedMonth).observe(activity, Observer {
+            if (it.size == 0) {
+                showEmptyScreen()
+            } else {
+                adapter.addAllData(it)
+                showData()
+            }
         })
     }
 
@@ -182,8 +184,10 @@ class DashboardView(val activity: MainActivity) : LinearLayout(activity) {
     }
 
     private fun setDates() {
-        currentDayTextView.text = "${DateUtils.getCurrentDayOfMonth()}"
+        currentSelectedDay = DateUtils.getCurrentDayOfMonth()
+        currentDayTextView.text = "$currentSelectedDay"
         currentMonthTextView.text = DateUtils.getCurrentMonth()
+        getDataForExpenseIncome(currentSelectedDay)
     }
 
     private fun setIncomeExpenseAmounts(income: Float = 0.0f, expense: Float = 0.0f) {
@@ -214,7 +218,8 @@ class DashboardView(val activity: MainActivity) : LinearLayout(activity) {
     }
 
     fun onResume() {
-        getDataForExpenseIncome()
+        getDataForExpenseIncome(currentSelectedDay)
+        setMonthDataExpenseIncome()
     }
 
 

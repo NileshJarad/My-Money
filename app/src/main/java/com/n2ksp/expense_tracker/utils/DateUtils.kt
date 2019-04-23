@@ -30,7 +30,7 @@ object DateUtils {
         return getCurrentDayOfMonth() == day
     }
 
-    fun getDatesForDay(day: Int, month: Int): Pair<Date, Date> {
+    fun getStartAndEndDatesForDay(day: Int, month: Int): Pair<Date, Date> {
         val dateToday = GregorianCalendar()
         // reset hour, minutes, seconds and millis
 
@@ -53,6 +53,32 @@ object DateUtils {
         val endDayToday = dateToday.time
 
         return Pair(startDayToday, endDayToday)
+    }
+
+    fun getStartAndEndDatesForDay(month: Int): Pair<Date, Date> {
+        val dateMonth = GregorianCalendar()
+        // reset hour, minutes, seconds and millis
+
+        dateMonth.set(Calendar.MONTH, month)
+        dateMonth.set(Calendar.DAY_OF_MONTH, 1)
+
+
+        dateMonth.set(Calendar.HOUR_OF_DAY, 0)
+        dateMonth.set(Calendar.MINUTE, 0)
+        dateMonth.set(Calendar.SECOND, 0)
+        dateMonth.set(Calendar.MILLISECOND, 0)
+
+        val startDayMonth = dateMonth.time
+
+        dateMonth.set(Calendar.DAY_OF_MONTH, dateMonth.getActualMaximum(Calendar.DAY_OF_MONTH))
+        dateMonth.set(Calendar.HOUR_OF_DAY, 23)
+        dateMonth.set(Calendar.MINUTE, 59)
+        dateMonth.set(Calendar.SECOND, 59)
+        dateMonth.set(Calendar.SECOND, 999)
+
+        val endDayMonth = dateMonth.time
+
+        return Pair(startDayMonth, endDayMonth)
     }
 
 }

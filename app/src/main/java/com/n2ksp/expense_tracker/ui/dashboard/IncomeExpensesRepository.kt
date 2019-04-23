@@ -23,4 +23,8 @@ class IncomeExpensesRepository(application: Application) {
         return categoryDao.findById(id)
     }
 
+    fun getTotalForMonthUsingType(timeStartMonth: Long, timeEndMonth: Long, type: String): Float {
+        return incomeExpenseDao.getTotalForMonthByType(timeStartMonth, timeEndMonth, type)
+    }
+
 }
