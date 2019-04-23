@@ -7,10 +7,12 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.n2ksp.expense_tracker.R
 import com.n2ksp.expense_tracker.data.model.CategoryInfoModel
+import com.n2ksp.expense_tracker.ui.add_income_expense.SharedIncomeExpenseViewModel
 import kotlinx.android.synthetic.main.item_categoris.view.*
 
 class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.ViewHolder>() {
 
+    private lateinit var sharedViewModel: SharedIncomeExpenseViewModel
     private var allowSelection: Boolean = false
     private lateinit var categories: MutableList<CategoryInfoModel>
     private var lastCategoryCheckedId = -99
@@ -55,7 +57,9 @@ class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.ViewHolder>() {
             holder.itemView.deleteImageButton.visibility = View.INVISIBLE
 
             holder.itemView.setOnClickListener {
+
                 val adapterPosition = holder.adapterPosition
+                sharedViewModel.categoryModel?.value = categories[adapterPosition]
 
                 val indexOf = categories.indexOf(
                     CategoryInfoModel(
@@ -87,6 +91,10 @@ class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.ViewHolder>() {
 
     fun setAllowSelection(allowSelection: Boolean) {
         this.allowSelection = allowSelection
+    }
+
+    fun setViewModel(sharedViewModel: SharedIncomeExpenseViewModel) {
+        this.sharedViewModel = sharedViewModel
     }
 
 

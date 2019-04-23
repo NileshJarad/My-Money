@@ -7,8 +7,8 @@ import com.n2ksp.expense_tracker.di.component.DaggerAddIncomeExpenseAcitivtyComp
 import com.n2ksp.expense_tracker.di.module.AddIncomeExpenseAcitivtyModule
 import javax.inject.Inject
 
-class AddIncomeExpenseActivity : ETBaseActivity() {
 
+class AddIncomeExpenseActivity : ETBaseActivity() {
 
     @Inject
     lateinit var view: AddIncomeExpenseView
@@ -19,8 +19,9 @@ class AddIncomeExpenseActivity : ETBaseActivity() {
             .addIncomeExpenseAcitivtyModule(AddIncomeExpenseAcitivtyModule(this))
             .build()
             .inject(this)
-
         setContentView(view)
+
+
     }
 
 

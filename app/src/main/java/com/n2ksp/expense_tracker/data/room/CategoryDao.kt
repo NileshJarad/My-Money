@@ -15,7 +15,7 @@ interface CategoryDao {
     fun findByType(type: String): List<CategoryDBModel>
 
     @Query("SELECT * FROM category where category_id LIKE  :id")
-    fun findById(id: Int): List<CategoryDBModel>
+    fun findById(id: Int): CategoryDBModel
 
     @Query("SELECT COUNT(*) from category")
     fun countCategories(): Int
