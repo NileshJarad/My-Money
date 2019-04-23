@@ -96,7 +96,7 @@ class DashboardIncomeExpenseAdapter @Inject constructor() :
         var incomeOrExpenseCategoryTextView: TextView = itemView.findViewById(R.id.incomeOrExpenseCategoryTextView)
         var incomeOrExpenseIndicatorView: View = itemView.findViewById(R.id.incomeOrExpenseIndicatorView)
         var incomeOrExpenseAmount: TextView = itemView.findViewById(R.id.incomeOrExpenseAmount)
-        var memoTextView: TextView = itemView.findViewById(R.id.memoTextView)
+        var memoTextView: TextView = itemView.findViewById(R.id.topLinearLayout)
         var incomeOrExpenseImageView: ImageView = itemView.findViewById(R.id.incomeOrExpenseImageView)
 
     }

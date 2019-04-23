@@ -32,5 +32,9 @@ class DashboardFragment : Fragment() {
         return view
     }
 
+    override fun onResume() {
+        super.onResume()
+        view.onResume()
+    }
 
 }

@@ -23,4 +23,8 @@ interface IncomeExpenseDao {
     @Delete
     fun delete(incomeExpense: IncomeExpenseDBModel)
 
+//    @Query("SELECT COUNT(*) FROM income_expense where date > :timeStartMonth and date < :timeEndMonth and type == :type")
+    @Query("SELECT SUM(amount) FROM income_expense where date > :timeStartMonth and date < :timeEndMonth and type == :type")
+    fun getTotalForMonthByType(timeStartMonth: Long, timeEndMonth: Long, type: String) :Float
+
 }
