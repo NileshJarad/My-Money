@@ -81,4 +81,11 @@ object DateUtils {
         return Pair(startDayMonth, endDayMonth)
     }
 
+    @SuppressLint("SimpleDateFormat")
+    fun getMonthName(monthOfYear: Int): String {
+        val cal = Calendar.getInstance()
+        cal.set(Calendar.MONTH, monthOfYear)
+        return SimpleDateFormat("MMM").format(cal.time)
+    }
+
 }

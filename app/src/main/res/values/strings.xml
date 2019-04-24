@@ -22,4 +22,18 @@
     <string name="dashboard_empty_action">Click on + to add your Expense/Income</string>
     <string name="content_description_dashboard_empty_image">Dashboard empty ImageView</string>
     <string name="search_category">Search category</string>
+    <string name="content_description_income_or_expense_image_on_dashboard">Income or Expense image on dashboard
+    </string>
+    <string name="memo">Memo</string>
+    <string name="one">1</string>
+    <string name="two">2</string>
+    <string name="five">5</string>
+    <string name="eight">8</string>
+    <string name="period">.</string>
+    <string name="zero">0</string>
+    <string name="three">3</string>
+    <string name="nine">9</string>
+    <string name="six">6</string>
+    <string name="four">4</string>
+    <string name="seven">7</string>
 </resources>
