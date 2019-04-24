@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
+        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
         app:behavior_hideable="true"
         app:behavior_peekHeight="0dp"
         android:elevation="4dp"
@@ -12,41 +12,52 @@
         android:layout_height="wrap_content">
 
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:ems="10"
-            android:id="@+id/topLinearLayout" app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/topConstraintLayout" app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="0.5dp" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" style="@style/AppSubTitleStyleBlack"
-            android:hint="Memo"
+            style="@style/AppSubTitleStyleBlack"
+            android:hint="@string/memo"
             android:minHeight="40dp" android:background="@color/colorScreenBackground"
-            android:paddingStart="10dp">
+            android:paddingStart="10dp" app:layout_constraintEnd_toEndOf="parent">
 
         <ImageView
                 android:id="@+id/hideNumberPadImageView"
                 android:layout_width="40dp"
                 android:src="@drawable/ic_keyboard_arrow_down"
-                android:layout_height="40dp"/>
+                android:layout_height="40dp" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="10dp" app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
         <EditText
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
                 android:ems="10"
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
-                app:layout_constraintEnd_toEndOf="parent"
                 style="@style/AppSubTitleStyleBlack"
                 android:hint="Memo"
                 android:maxLines="1"
                 android:singleLine="true"
                 android:minHeight="40dp"
                 android:background="@color/colorScreenBackground"
-                android:id="@+id/memoEditText"/>
+                android:id="@+id/memoEditText" app:layout_constraintStart_toEndOf="@+id/hideNumberPadImageView"
+                android:layout_marginStart="8dp" app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/dateButton" android:layout_marginEnd="22dp"/>
+        <Button
+                android:text="todya"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/dateButton"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:background="@color/grey_50" style="@style/AppBodyStyleBlack"
+                app:layout_constraintEnd_toEndOf="parent"/>
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     <ImageView
@@ -55,7 +66,7 @@
             android:id="@+id/selectedCategoryImageView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="@+id/amountTextView"
-            app:layout_constraintTop_toBottomOf="@+id/topLinearLayout"
+            app:layout_constraintTop_toBottomOf="@+id/topConstraintLayout"
             app:layout_constraintEnd_toStartOf="@+id/amountTextView"
             android:layout_marginStart="0.5dp"
             android:layout_marginEnd="0.5dp"
@@ -68,7 +79,7 @@
             android:id="@+id/deleteNumberImageView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="@+id/amountTextView"
-            app:layout_constraintTop_toBottomOf="@+id/topLinearLayout"
+            app:layout_constraintTop_toBottomOf="@+id/topConstraintLayout"
             app:layout_constraintStart_toEndOf="@+id/amountTextView" android:padding="4dp"
             android:background="@color/colorScreenBackground" android:layout_marginTop="0.5dp"/>
     <TextView
@@ -78,7 +89,7 @@
             android:clickable="true"
             android:focusable="true"
             android:id="@+id/amountTextView"
-            app:layout_constraintTop_toBottomOf="@+id/topLinearLayout"
+            app:layout_constraintTop_toBottomOf="@+id/topConstraintLayout"
             app:layout_constraintEnd_toStartOf="@+id/deleteNumberImageView"
             app:layout_constraintStart_toEndOf="@+id/selectedCategoryImageView"
             style="@style/AppTitleStyleBlack"
@@ -87,6 +98,7 @@
             android:layout_marginStart="0.5dp"
             android:layout_marginEnd="0.5dp"
             android:minHeight="40dp"
+            android:ellipsize="start"
             android:gravity="center_vertical|end" android:paddingStart="16dp"
             android:paddingEnd="16dp"/>
     <androidx.constraintlayout.widget.Guideline
@@ -105,7 +117,7 @@
             android:layout_height="wrap_content" android:id="@+id/guideline75"
             app:layout_constraintGuide_percent="0.75"/>
     <Button
-            android:text="1"
+            android:text="@string/one"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/oneButton"
@@ -116,7 +128,7 @@
             android:layout_marginTop="0.5dp"
     />
     <Button
-            android:text="2"
+            android:text="@string/two"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/twoButton"
@@ -128,7 +140,7 @@
             android:layout_marginTop="0.5dp" android:layout_marginStart="0.5dp" android:layout_marginEnd="0.5dp"
     />
     <Button
-            android:text="5"
+            android:text="@string/five"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/fiveButton"
@@ -141,7 +153,7 @@
             android:layout_marginTop="0.5dp" android:layout_marginStart="0.5dp" android:layout_marginEnd="0.5dp"
     />
     <Button
-            android:text="8"
+            android:text="@string/eight"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/eightButton"
@@ -167,7 +179,7 @@
             android:layout_marginTop="0.5dp"
             app:layout_constraintBottom_toBottomOf="parent"/>
     <Button
-            android:text="."
+            android:text="@string/period"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/decimalButton"
@@ -179,7 +191,7 @@
             app:layout_constraintTop_toBottomOf="@+id/zeroButton" android:background="@color/grey_50"
             android:layout_marginTop="0.5dp"/>
     <Button
-            android:text="0"
+            android:text="@string/zero"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/zeroButton"
@@ -190,7 +202,7 @@
             android:minHeight="60dp" android:background="@color/grey_50" android:layout_marginTop="0.5dp"
     />
     <Button
-            android:text="3"
+            android:text="@string/three"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/threeButton"
@@ -201,7 +213,7 @@
             app:layout_constraintTop_toBottomOf="@+id/amountTextView" android:background="@color/grey_50"
             android:layout_marginTop="0.5dp" android:layout_marginEnd="0.5dp"/>
     <Button
-            android:text="9"
+            android:text="@string/nine"
             android:layout_width="0dp"
             android:minHeight="60dp"
             android:layout_height="wrap_content"
@@ -214,7 +226,7 @@
             app:layout_constraintBottom_toBottomOf="parent" android:layout_marginEnd="0.5dp"
     />
     <Button
-            android:text="6"
+            android:text="@string/six"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/sixButton"
@@ -226,7 +238,7 @@
             app:layout_constraintTop_toBottomOf="@+id/threeButton" android:background="@color/grey_50"
             android:layout_marginTop="0.5dp" android:layout_marginEnd="0.5dp"/>
     <Button
-            android:text="4"
+            android:text="@string/four"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/fourButton"
@@ -237,7 +249,7 @@
             app:layout_constraintTop_toBottomOf="@+id/oneButton" android:background="@color/grey_50"
             android:layout_marginTop="0.5dp"/>
     <Button
-            android:text="7"
+            android:text="@string/seven"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:minHeight="60dp"
