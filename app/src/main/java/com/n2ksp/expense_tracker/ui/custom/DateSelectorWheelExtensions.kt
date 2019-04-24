@@ -15,7 +15,6 @@ import com.n2ksp.expense_tracker.utils.DateUtils
 import com.n2ksp.expense_tracker.utils.ScreenDisplayUtils
 import com.n2ksp.expense_tracker.utils.ViewUtils
 import kotlinx.android.synthetic.main.layout_date_selector_wheel.view.*
-import timber.log.Timber
 
 
 /**
@@ -122,7 +121,6 @@ fun DateSelectorWheel.getTextView(number: Int, size: Float, angle: Float, radius
             textSize.second
         )
             .apply {
-                Timber.e("centeredTopHorizontalTextView == ${centeredTopHorizontalTextView == null}")
                 circleConstraint = centeredTextViewForConstraintToAttach.id
                 circleAngle = angle
                 circleRadius = radius

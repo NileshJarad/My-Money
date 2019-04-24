@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.n2ksp.expense_tracker.R
-import com.n2ksp.expense_tracker.data.model.CategoryInfoModel
 import com.n2ksp.expense_tracker.di.component.DaggerDashboardViewComponent
 import com.n2ksp.expense_tracker.di.module.ContextModule
 import com.n2ksp.expense_tracker.ui.custom.DateSelectorWheel
@@ -42,10 +41,6 @@ class DashboardView(val activity: MainActivity) : LinearLayout(activity) {
     var currentTopMargin = 0
     private val threshold = 2
     private var SCROLL_SPEED_DOWNSCALE = 4
-
-
-    @SuppressLint("UseSparseArrays")
-    private val categories = HashMap<Int, CategoryInfoModel>()
 
     init {
 
@@ -103,6 +98,8 @@ class DashboardView(val activity: MainActivity) : LinearLayout(activity) {
             } else {
                 adapter.addAllData(it)
                 showData()
+                incomeExpenseRecyclerView.removeOnScrollListener(scrollListener)
+                incomeExpenseRecyclerView.addOnScrollListener(scrollListener)
             }
         })
     }
@@ -187,7 +184,6 @@ class DashboardView(val activity: MainActivity) : LinearLayout(activity) {
         currentSelectedDay = DateUtils.getCurrentDayOfMonth()
         currentDayTextView.text = "$currentSelectedDay"
         currentMonthTextView.text = DateUtils.getCurrentMonth()
-        getDataForExpenseIncome(currentSelectedDay)
     }
 
     private fun setIncomeExpenseAmounts(income: Float = 0.0f, expense: Float = 0.0f) {
