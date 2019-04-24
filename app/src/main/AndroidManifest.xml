@@ -15,9 +15,10 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.add_income_expense.AddIncomeExpenseActivity"
-                  android:windowSoftInputMode="adjustPan"
-        >
+        <activity
+                android:name=".ui.add_income_expense.AddIncomeExpenseActivity"
+                android:windowSoftInputMode="adjustPan"
+        android:label="Add Income/Expense">
         </activity>
         <activity android:name=".ui.intro.IntroScreenActivity">
             <intent-filter>
