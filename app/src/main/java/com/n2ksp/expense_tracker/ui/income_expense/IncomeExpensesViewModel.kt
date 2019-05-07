@@ -1,4 +1,4 @@
-package com.n2ksp.expense_tracker.ui.dashboard
+package com.n2ksp.expense_tracker.ui.income_expense
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -25,7 +25,7 @@ class IncomeExpensesViewModel(application: Application) : AndroidViewModel(appli
     private var list: MutableLiveData<ArrayList<IncomeExpenseModel>> = MutableLiveData()
     private var incomeExpense: MutableLiveData<Pair<Float, Float>> = MutableLiveData()
 
-    fun addExpense(incomeExpense: IncomeExpenseModel) {
+    fun addEntry(incomeExpense: IncomeExpenseModel) {
         val disposable: Disposable = Observable.just(repository)
             .subscribeOn(Schedulers.io())
             .subscribe {
@@ -35,6 +35,24 @@ class IncomeExpensesViewModel(application: Application) : AndroidViewModel(appli
                     memo = incomeExpense.memo
                     date = Date(incomeExpense.date)
                     type = incomeExpense.categoryInfoModel.categoryType
+                })
+            }
+
+        compositeDisposable.add(disposable)
+
+    }
+
+    fun deleteEntry(incomeExpense: IncomeExpenseModel) {
+        val disposable: Disposable = Observable.just(repository)
+            .subscribeOn(Schedulers.io())
+            .subscribe {
+                it.delete(incomeExpense = IncomeExpenseDBModel().apply {
+                    categoryId = incomeExpense.categoryInfoModel.categoryId
+                    amount = incomeExpense.amount
+                    memo = incomeExpense.memo
+                    date = Date(incomeExpense.date)
+                    type = incomeExpense.categoryInfoModel.categoryType
+                    id = incomeExpense.id
                 })
             }
 
@@ -59,7 +77,8 @@ class IncomeExpensesViewModel(application: Application) : AndroidViewModel(appli
                             ),
                             memo = it.memo,
                             amount = it.amount,
-                            date = it.date.time
+                            date = it.date.time,
+                            id = it.id
                         )
                     )
                 }
@@ -90,7 +109,7 @@ class IncomeExpensesViewModel(application: Application) : AndroidViewModel(appli
                     Constants.EXPENSE
                 )
 
-                incomeExpense.postValue(Pair(incomeAmount,expenseAmount))
+                incomeExpense.postValue(Pair(incomeAmount, expenseAmount))
             }
 
         compositeDisposable.add(disposable)

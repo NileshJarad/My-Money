@@ -15,6 +15,7 @@ import com.n2ksp.expense_tracker.R
 import com.n2ksp.expense_tracker.di.component.DaggerDashboardViewComponent
 import com.n2ksp.expense_tracker.di.module.ContextModule
 import com.n2ksp.expense_tracker.ui.custom.DateSelectorWheel
+import com.n2ksp.expense_tracker.ui.income_expense.IncomeExpensesViewModel
 import com.n2ksp.expense_tracker.ui.income_expense.detail.IncomeExpenseDetailActivity
 import com.n2ksp.expense_tracker.ui.income_expense.list.DashboardIncomeExpenseAdapter
 import com.n2ksp.expense_tracker.ui.main.MainActivity

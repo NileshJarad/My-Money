@@ -1,4 +1,4 @@
-package com.n2ksp.expense_tracker.ui.dashboard
+package com.n2ksp.expense_tracker.ui.income_expense
 
 import android.app.Application
 import com.n2ksp.expense_tracker.data.room.*
@@ -9,6 +9,10 @@ class IncomeExpensesRepository(application: Application) {
 
     fun insert(incomeExpense: IncomeExpenseDBModel) {
         incomeExpenseDao.insert(incomeExpense)
+    }
+
+    fun delete(incomeExpense: IncomeExpenseDBModel) {
+        incomeExpenseDao.delete(incomeExpense)
     }
 
     fun getAllEntriesForDate(startDate: Long, endDate: Long): List<IncomeExpenseDBModel> {

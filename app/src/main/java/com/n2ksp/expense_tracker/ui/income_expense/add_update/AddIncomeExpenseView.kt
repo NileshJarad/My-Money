@@ -16,7 +16,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.n2ksp.expense_tracker.R
 import com.n2ksp.expense_tracker.data.model.CategoryInfoModel
 import com.n2ksp.expense_tracker.data.model.IncomeExpenseModel
-import com.n2ksp.expense_tracker.ui.dashboard.IncomeExpensesViewModel
+import com.n2ksp.expense_tracker.ui.income_expense.IncomeExpensesViewModel
 import com.n2ksp.expense_tracker.utils.AmountUtils
 import com.n2ksp.expense_tracker.utils.DateUtils
 import kotlinx.android.synthetic.main.activity_add_income_expense.view.*
@@ -101,12 +101,13 @@ class AddIncomeExpenseView(val activity: AddIncomeExpenseActivity) : LinearLayou
             val memo = memoEditText.text.toString().trim()
 
             selectedCategoryModel?.let {
-                addIncomeExpense.addExpense(
+                addIncomeExpense.addEntry(
                     IncomeExpenseModel(
                         categoryInfoModel = it,
                         amount = amount,
                         memo = memo,
-                        date = selectedDate.time
+                        date = selectedDate.time,
+                        id = -99
                     )
                 )
 

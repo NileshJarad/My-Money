@@ -7,13 +7,15 @@ data class IncomeExpenseModel(
     val categoryInfoModel: CategoryInfoModel,
     val memo: String,
     val amount: Float,
-    val date: Long
-) : Parcelable{
+    val date: Long,
+    val id : Int
+) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readParcelable(CategoryInfoModel::class.java.classLoader),
         parcel.readString(),
         parcel.readFloat(),
-        parcel.readLong()
+        parcel.readLong(),
+        parcel.readInt()
     ) {
     }
 
@@ -22,6 +24,7 @@ data class IncomeExpenseModel(
         parcel.writeString(memo)
         parcel.writeFloat(amount)
         parcel.writeLong(date)
+        parcel.writeInt(id)
     }
 
     override fun describeContents(): Int {

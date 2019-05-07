@@ -15,7 +15,9 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.income_expense.detail.IncomeExpenseDetailActivity">
+        <activity android:name=".ui.income_expense.detail.IncomeExpenseDetailActivity"
+                  android:label="Income/Expense Detail"
+        >
         </activity>
         <activity
                 android:name=".ui.income_expense.add_update.AddIncomeExpenseActivity"
