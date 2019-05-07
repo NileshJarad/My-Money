@@ -6,6 +6,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowContentTransitions">true</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
@@ -77,6 +78,12 @@
 
     <style name="AppBodyStyleBlack">
         <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Body1</item>
+        <item name="android:fontFamily">@font/muli_regular</item>
+    </style>
+
+    <style name="AppBodyStyleGrey">
+        <item name="android:textColor">@color/grey_600</item>
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Body1</item>
         <item name="android:fontFamily">@font/muli_regular</item>
     </style>

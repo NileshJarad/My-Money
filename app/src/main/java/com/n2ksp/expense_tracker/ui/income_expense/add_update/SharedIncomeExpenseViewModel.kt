@@ -1,4 +1,4 @@
-package com.n2ksp.expense_tracker.ui.add_income_expense
+package com.n2ksp.expense_tracker.ui.income_expense.add_update
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

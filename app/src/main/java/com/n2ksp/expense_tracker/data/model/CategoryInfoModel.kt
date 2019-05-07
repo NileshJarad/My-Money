@@ -1,5 +1,7 @@
 package com.n2ksp.expense_tracker.data.model
 
+import android.os.Parcel
+import android.os.Parcelable
 import com.n2ksp.expense_tracker.R
 import com.n2ksp.expense_tracker.data.room.CategoryDBModel
 import com.n2ksp.expense_tracker.utils.Constants
@@ -16,7 +18,17 @@ data class CategoryInfoModel(
     val categoryImage: Int,
     val categoryColor: Int,
     var selected: Boolean = false
-) {
+) : Parcelable {
+    constructor(parcel: Parcel) : this(
+        parcel.readString(),
+        parcel.readInt(),
+        parcel.readString(),
+        parcel.readInt(),
+        parcel.readInt(),
+        parcel.readByte() != 0.toByte()
+    ) {
+    }
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other !is CategoryInfoModel) return false
@@ -28,6 +40,29 @@ data class CategoryInfoModel(
 
     override fun hashCode(): Int {
         return categoryId
+    }
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(categoryType)
+        parcel.writeInt(categoryId)
+        parcel.writeString(categoryTitle)
+        parcel.writeInt(categoryImage)
+        parcel.writeInt(categoryColor)
+        parcel.writeByte(if (selected) 1 else 0)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<CategoryInfoModel> {
+        override fun createFromParcel(parcel: Parcel): CategoryInfoModel {
+            return CategoryInfoModel(parcel)
+        }
+
+        override fun newArray(size: Int): Array<CategoryInfoModel?> {
+            return arrayOfNulls(size)
+        }
     }
 }
 
@@ -88,6 +123,14 @@ object CategoryInfoModelCreator {
                 categoryTitle = "Lending"
                 categoryType = Constants.INCOME
                 categoryImage = RoomDrawableMappingUtil.getDrawableToRoomName(R.drawable.ic_lending)
+            }
+        )
+
+        categories.add(
+            CategoryDBModel().apply {
+                categoryTitle = "Investment"
+                categoryType = Constants.INCOME
+                categoryImage = RoomDrawableMappingUtil.getDrawableToRoomName(R.drawable.ic_investment)
             }
         )
 
@@ -257,6 +300,14 @@ object CategoryInfoModelCreator {
                 categoryTitle = "Medical"
                 categoryType = Constants.EXPENSE
                 categoryImage = RoomDrawableMappingUtil.getDrawableToRoomName(R.drawable.ic_medical)
+            }
+        )
+
+        categories.add(
+            CategoryDBModel().apply {
+                categoryTitle = "Investment"
+                categoryType = Constants.EXPENSE
+                categoryImage = RoomDrawableMappingUtil.getDrawableToRoomName(R.drawable.ic_investment)
             }
         )
 

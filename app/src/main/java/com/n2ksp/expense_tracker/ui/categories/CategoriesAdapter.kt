@@ -7,7 +7,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.n2ksp.expense_tracker.R
 import com.n2ksp.expense_tracker.data.model.CategoryInfoModel
-import com.n2ksp.expense_tracker.ui.add_income_expense.SharedIncomeExpenseViewModel
+import com.n2ksp.expense_tracker.ui.income_expense.add_update.SharedIncomeExpenseViewModel
 import kotlinx.android.synthetic.main.item_categoris.view.*
 
 class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.ViewHolder>() {

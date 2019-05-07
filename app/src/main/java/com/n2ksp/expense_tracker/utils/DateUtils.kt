@@ -88,4 +88,12 @@ object DateUtils {
         return SimpleDateFormat("MMM").format(cal.time)
     }
 
+    @SuppressLint("SimpleDateFormat")
+    fun getDateInDDMMMYYY(dateLong: Long): String {
+        val date = Date(dateLong)
+        val df = SimpleDateFormat("dd MMM, yyyy")
+        return df.format(date)
+    }
+
+
 }

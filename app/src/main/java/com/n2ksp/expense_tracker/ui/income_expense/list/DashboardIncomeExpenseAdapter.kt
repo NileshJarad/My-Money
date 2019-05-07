@@ -1,4 +1,4 @@
-package com.n2ksp.expense_tracker.ui.dashboard
+package com.n2ksp.expense_tracker.ui.income_expense.list
 
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +17,7 @@ class DashboardIncomeExpenseAdapter @Inject constructor() :
     RecyclerView.Adapter<DashboardIncomeExpenseAdapter.ViewHolder>() {
 
 
+    private lateinit var param: (IncomeExpenseModel,View) -> Unit
     private var incomeExpenseModelList = ArrayList<IncomeExpenseModel>()
 
     fun addAllData(incomeExpenseModelList: ArrayList<IncomeExpenseModel>) {
@@ -90,6 +91,15 @@ class DashboardIncomeExpenseAdapter @Inject constructor() :
             )
         )
 
+
+        holder.itemView.setOnClickListener {
+            param.invoke(incomeExpenseModelList[holder.adapterPosition],holder.itemView)
+        }
+
+    }
+
+    fun setItemCallBack(param: (IncomeExpenseModel,View) -> Unit) {
+        this.param = param
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

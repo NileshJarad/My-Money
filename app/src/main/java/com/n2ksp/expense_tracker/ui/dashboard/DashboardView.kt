@@ -3,6 +3,8 @@ package com.n2ksp.expense_tracker.ui.dashboard
 import android.annotation.SuppressLint
 import android.view.View
 import android.widget.LinearLayout
+import androidx.core.app.ActivityOptionsCompat
+import androidx.core.util.Pair
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
@@ -13,6 +15,8 @@ import com.n2ksp.expense_tracker.R
 import com.n2ksp.expense_tracker.di.component.DaggerDashboardViewComponent
 import com.n2ksp.expense_tracker.di.module.ContextModule
 import com.n2ksp.expense_tracker.ui.custom.DateSelectorWheel
+import com.n2ksp.expense_tracker.ui.income_expense.detail.IncomeExpenseDetailActivity
+import com.n2ksp.expense_tracker.ui.income_expense.list.DashboardIncomeExpenseAdapter
 import com.n2ksp.expense_tracker.ui.main.MainActivity
 import com.n2ksp.expense_tracker.utils.AmountUtils
 import com.n2ksp.expense_tracker.utils.DateUtils
@@ -108,6 +112,37 @@ class DashboardView(val activity: MainActivity) : LinearLayout(activity) {
         incomeExpenseRecyclerView.layoutManager = linearLayoutManager
         incomeExpenseRecyclerView.adapter = adapter
         incomeExpenseRecyclerView.addItemDecoration(dividerItemDecoration)
+
+        adapter.setItemCallBack { data, view ->
+            var options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                activity,
+                Pair(
+                    view.findViewById(R.id.incomeOrExpenseAmount) as View,
+                    IncomeExpenseDetailActivity.VIEW_NAME_AMOUNT
+                ),
+                Pair(
+                    view.findViewById(R.id.memoTextView) as View,
+                    IncomeExpenseDetailActivity.VIEW_NAME_MEMO
+                ),
+                Pair(
+                    view.findViewById(R.id.incomeOrExpenseImageView) as View,
+                    IncomeExpenseDetailActivity.VIEW_NAME_IMAGE
+                )
+                , Pair(
+                    view.findViewById(R.id.incomeOrExpenseCategoryTextView) as View,
+                    IncomeExpenseDetailActivity.VIEW_NAME_CATEGORY
+                ), Pair(
+                    view.findViewById(R.id.incomeOrExpenseIndicatorView) as View,
+                    IncomeExpenseDetailActivity.VIEW_NAME_TYPE
+                ), Pair(
+                    currentDayTextView,
+                    IncomeExpenseDetailActivity.VIEW_NAME_DATE
+                )
+            )
+
+            IncomeExpenseDetailActivity.start(activity, options, data)
+
+        }
     }
 
     private val scrollListener =

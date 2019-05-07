@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.n2ksp.expense_tracker.R
 import com.n2ksp.expense_tracker.base.ETBaseActivity
 import com.n2ksp.expense_tracker.data.model.CategoryInfoModelCreator
-import com.n2ksp.expense_tracker.ui.add_income_expense.SharedIncomeExpenseViewModel
+import com.n2ksp.expense_tracker.ui.income_expense.add_update.SharedIncomeExpenseViewModel
 import com.n2ksp.expense_tracker.utils.Constants
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers

@@ -1,4 +1,4 @@
-package com.n2ksp.expense_tracker.ui.add_income_expense
+package com.n2ksp.expense_tracker.ui.income_expense.add_update
 
 import android.os.Bundle
 import android.view.MenuItem

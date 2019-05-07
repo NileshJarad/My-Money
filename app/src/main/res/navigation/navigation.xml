@@ -34,7 +34,7 @@
               android:name="com.n2ksp.expense_tracker.ui.open_source.OpenSourceInfoActivity"
               android:label="activity_open_source_info" tools:layout="@layout/activity_open_source_info"/>
     <activity android:id="@+id/addIncomeExpenseActivity"
-              android:name="com.n2ksp.expense_tracker.ui.add_income_expense.AddIncomeExpenseActivity"
+              android:name="com.n2ksp.expense_tracker.ui.income_expense.add_update.AddIncomeExpenseActivity"
               android:label="Add Income Or Expnese " tools:layout="@layout/activity_add_income_expense"/>
 
 

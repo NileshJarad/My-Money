@@ -5,7 +5,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.add_income_expense.AddIncomeExpenseActivity">
+        tools:context=".ui.income_expense.add_update.AddIncomeExpenseActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
