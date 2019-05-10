@@ -11,6 +11,10 @@ class IncomeExpensesRepository(application: Application) {
         incomeExpenseDao.insert(incomeExpense)
     }
 
+    fun update(incomeExpense: IncomeExpenseDBModel) {
+        incomeExpenseDao.update(incomeExpense)
+    }
+
     fun delete(incomeExpense: IncomeExpenseDBModel) {
         incomeExpenseDao.delete(incomeExpense)
     }
@@ -29,6 +33,10 @@ class IncomeExpensesRepository(application: Application) {
 
     fun getTotalForMonthUsingType(timeStartMonth: Long, timeEndMonth: Long, type: String): Float {
         return incomeExpenseDao.getTotalForMonthByType(timeStartMonth, timeEndMonth, type)
+    }
+
+    fun getEntry(id: Int): IncomeExpenseDBModel {
+        return  incomeExpenseDao.getEntry(id)
     }
 
 }

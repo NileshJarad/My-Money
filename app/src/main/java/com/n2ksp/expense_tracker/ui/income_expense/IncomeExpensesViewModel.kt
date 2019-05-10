@@ -23,6 +23,7 @@ class IncomeExpensesViewModel(application: Application) : AndroidViewModel(appli
     private var repository = IncomeExpensesRepository(application)
 
     private var list: MutableLiveData<ArrayList<IncomeExpenseModel>> = MutableLiveData()
+    private var singleEntry: MutableLiveData<IncomeExpenseModel> = MutableLiveData()
     private var incomeExpense: MutableLiveData<Pair<Float, Float>> = MutableLiveData()
 
     fun addEntry(incomeExpense: IncomeExpenseModel) {
@@ -33,6 +34,24 @@ class IncomeExpensesViewModel(application: Application) : AndroidViewModel(appli
                     categoryId = incomeExpense.categoryInfoModel.categoryId
                     amount = incomeExpense.amount
                     memo = incomeExpense.memo
+                    date = Date(incomeExpense.date)
+                    type = incomeExpense.categoryInfoModel.categoryType
+                })
+            }
+
+        compositeDisposable.add(disposable)
+
+    }
+
+    fun updateEntry(incomeExpense: IncomeExpenseModel) {
+        val disposable: Disposable = Observable.just(repository)
+            .subscribeOn(Schedulers.io())
+            .subscribe {
+                it.update(incomeExpense = IncomeExpenseDBModel().apply {
+                    id = incomeExpense.id
+                    categoryId = incomeExpense.categoryInfoModel.categoryId
+                    memo = incomeExpense.memo
+                    amount = incomeExpense.amount
                     date = Date(incomeExpense.date)
                     type = incomeExpense.categoryInfoModel.categoryType
                 })
@@ -59,6 +78,32 @@ class IncomeExpensesViewModel(application: Application) : AndroidViewModel(appli
         compositeDisposable.add(disposable)
 
     }
+
+    fun getEntry(id: Int): LiveData<IncomeExpenseModel> {
+        val disposable: Disposable = Observable.just(repository)
+            .subscribeOn(Schedulers.io())
+            .subscribe { repositoryInner ->
+                val data = repositoryInner.getEntry(id)
+
+                singleEntry.postValue(
+                    IncomeExpenseModel(
+                        categoryInfoModel = CategoryInfoModelCreator.mapToCategoryInfoModel(
+                            repository.getSingleCategory(
+                                data.categoryId
+                            )
+                        ),
+                        memo = data.memo,
+                        amount = data.amount,
+                        date = data.date.time,
+                        id = data.id
+                    )
+                )
+            }
+
+        compositeDisposable.add(disposable)
+        return singleEntry
+    }
+
 
     fun getListForDay(day: Int, month: Int): LiveData<ArrayList<IncomeExpenseModel>> {
         val dates = DateUtils.getStartAndEndDatesForDay(day = day, month = month)
@@ -121,4 +166,6 @@ class IncomeExpensesViewModel(application: Application) : AndroidViewModel(appli
         compositeDisposable.dispose()
         super.onCleared()
     }
+
+
 }

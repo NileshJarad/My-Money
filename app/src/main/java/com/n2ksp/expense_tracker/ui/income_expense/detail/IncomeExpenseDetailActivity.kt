@@ -8,13 +8,25 @@ import androidx.core.app.ActivityCompat
 import androidx.core.app.ActivityOptionsCompat
 import com.n2ksp.expense_tracker.base.ETBaseActivity
 import com.n2ksp.expense_tracker.data.model.IncomeExpenseModel
+import com.n2ksp.expense_tracker.di.component.DaggerIncomeExpenseDetailComponent
+import com.n2ksp.expense_tracker.di.module.IncomeExpenseDetailModule
+import javax.inject.Inject
 
 class IncomeExpenseDetailActivity : ETBaseActivity() {
-    private lateinit var incomeExpenseDetailView: IncomeExpenseDetailView
+
+    @Inject
+    lateinit var incomeExpenseDetailView: IncomeExpenseDetailView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        incomeExpenseDetailView = IncomeExpenseDetailView(this)
+
+        DaggerIncomeExpenseDetailComponent.builder()
+            .incomeExpenseDetailModule(IncomeExpenseDetailModule(this))
+            .build()
+            .inject(this)
+
+//        incomeExpenseDetailView = IncomeExpenseDetailView(this)
         setContentView(incomeExpenseDetailView)
 //        setContentView(R.layout.activity_income_expense_detail)
     }
@@ -41,5 +53,10 @@ class IncomeExpenseDetailActivity : ETBaseActivity() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         incomeExpenseDetailView.onOptionsItemSelected(item)
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onResume() {
+        incomeExpenseDetailView.onResume()
+        super.onResume()
     }
 }

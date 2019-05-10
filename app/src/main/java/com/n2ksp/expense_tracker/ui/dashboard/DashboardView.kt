@@ -115,7 +115,7 @@ class DashboardView(val activity: MainActivity) : LinearLayout(activity) {
         incomeExpenseRecyclerView.addItemDecoration(dividerItemDecoration)
 
         adapter.setItemCallBack { data, view ->
-            var options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
                 activity,
                 Pair(
                     view.findViewById(R.id.incomeOrExpenseAmount) as View,

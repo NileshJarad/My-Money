@@ -17,6 +17,7 @@ import com.n2ksp.expense_tracker.R
 import com.n2ksp.expense_tracker.data.model.CategoryInfoModel
 import com.n2ksp.expense_tracker.data.model.IncomeExpenseModel
 import com.n2ksp.expense_tracker.ui.income_expense.IncomeExpensesViewModel
+import com.n2ksp.expense_tracker.ui.income_expense.add_update.AddIncomeExpenseActivity.Companion.EXTRA_EDIT_INCOME_EXPENSE_ENTRY
 import com.n2ksp.expense_tracker.utils.AmountUtils
 import com.n2ksp.expense_tracker.utils.DateUtils
 import kotlinx.android.synthetic.main.activity_add_income_expense.view.*
@@ -35,7 +36,11 @@ class AddIncomeExpenseView(val activity: AddIncomeExpenseActivity) : LinearLayou
     private var selectedDate = Date()
     private val myCalendar = GregorianCalendar()
 
+    private var isAddEntryScreen = true
+
     private var bottomSheetBehaviour: BottomSheetBehavior<ConstraintLayout>? = null
+
+    lateinit var data: IncomeExpenseModel
 
     init {
         initView(activity)
@@ -44,19 +49,21 @@ class AddIncomeExpenseView(val activity: AddIncomeExpenseActivity) : LinearLayou
     private fun initView(activity: AddIncomeExpenseActivity) {
         View.inflate(activity, R.layout.activity_add_income_expense, this)
 
-        activity.setSupportActionBar(addIncomeExpenseToolbar)
-
-        activity.supportActionBar?.let {
-            it.setDisplayHomeAsUpEnabled(true)
-            it.setDisplayShowHomeEnabled(true)
-        }
-
-        sharedViewModel = ViewModelProviders.of(activity).get(SharedIncomeExpenseViewModel::class.java)
-        addIncomeExpense = ViewModelProviders.of(activity).get(IncomeExpensesViewModel::class.java)
-
 
         bottomSheetBehaviour = BottomSheetBehavior.from(incomeExpensePad)
 
+        setupToolbar()
+
+        createViewModels()
+
+        addObserverForCategorySelection()
+
+        addButtonListener()
+
+        retrieveData()
+    }
+
+    private fun addObserverForCategorySelection() {
         sharedViewModel.categoryModel?.observe(activity, Observer {
             this.selectedCategoryModel = it
             bottomSheetBehaviour?.state = BottomSheetBehavior.STATE_EXPANDED
@@ -64,22 +71,52 @@ class AddIncomeExpenseView(val activity: AddIncomeExpenseActivity) : LinearLayou
             selectedCategoryImageView.setColorFilter(ContextCompat.getColor(context, it.categoryColor))
             hideKeyboardFrom(context, this)
         })
+    }
 
-        addButtonListener()
+    private fun createViewModels() {
+        sharedViewModel = ViewModelProviders.of(activity).get(SharedIncomeExpenseViewModel::class.java)
+        addIncomeExpense = ViewModelProviders.of(activity).get(IncomeExpensesViewModel::class.java)
+    }
+
+    private fun retrieveData() {
+        if (activity.intent.hasExtra(EXTRA_EDIT_INCOME_EXPENSE_ENTRY)) {
+
+            activity.supportActionBar?.title = "Edit Entry"
+
+            isAddEntryScreen = false
+
+            data = activity.intent.getParcelableExtra(EXTRA_EDIT_INCOME_EXPENSE_ENTRY)
+            bottomSheetBehaviour?.state = BottomSheetBehavior.STATE_EXPANDED
+
+            amountTextView.text = "${data.amount}"
+            memoEditText.setText(data.memo)
+
+            selectedCategoryImageView.setColorFilter(
+                ContextCompat.getColor(
+                    context,
+                    data.categoryInfoModel.categoryColor
+                )
+            )
+            selectedCategoryImageView.setImageResource(data.categoryInfoModel.categoryImage)
+
+            dateButton.text = DateUtils.getDayAndMonth(data.date)
+
+            selectedDate = Date(data.date)
+
+            selectedCategoryModel = data.categoryInfoModel
+        }
+    }
+
+    private fun setupToolbar() {
+        activity.setSupportActionBar(addIncomeExpenseToolbar)
+        activity.supportActionBar?.let {
+            it.setDisplayHomeAsUpEnabled(true)
+            it.setDisplayShowHomeEnabled(true)
+        }
     }
 
     private fun addButtonListener() {
-        oneButton.setOnClickListener(this)
-        twoButton.setOnClickListener(this)
-        threeButton.setOnClickListener(this)
-        fourButton.setOnClickListener(this)
-        fiveButton.setOnClickListener(this)
-        sixButton.setOnClickListener(this)
-        sevenButton.setOnClickListener(this)
-        eightButton.setOnClickListener(this)
-        nineButton.setOnClickListener(this)
-        zeroButton.setOnClickListener(this)
-        decimalButton.setOnClickListener(this)
+        numberPadListeners()
 
         deleteNumberImageView.setOnClickListener {
             val str = amountTextView.text.toString()
@@ -101,15 +138,28 @@ class AddIncomeExpenseView(val activity: AddIncomeExpenseActivity) : LinearLayou
             val memo = memoEditText.text.toString().trim()
 
             selectedCategoryModel?.let {
-                addIncomeExpense.addEntry(
-                    IncomeExpenseModel(
-                        categoryInfoModel = it,
-                        amount = amount,
-                        memo = memo,
-                        date = selectedDate.time,
-                        id = -99
+
+                if (isAddEntryScreen) {
+                    addIncomeExpense.addEntry(
+                        IncomeExpenseModel(
+                            categoryInfoModel = it,
+                            amount = amount,
+                            memo = memo,
+                            date = selectedDate.time,
+                            id = -99
+                        )
                     )
-                )
+                } else {
+                    addIncomeExpense.updateEntry(
+                        IncomeExpenseModel(
+                            categoryInfoModel = it,
+                            amount = amount,
+                            memo = memo,
+                            date = selectedDate.time,
+                            id = data.id
+                        )
+                    )
+                }
 
                 activity.finish()
             }
@@ -117,15 +167,29 @@ class AddIncomeExpenseView(val activity: AddIncomeExpenseActivity) : LinearLayou
 
         dateButton.setOnClickListener {
             DatePickerDialog(
-                context, date, myCalendar
+                context, dateListener, myCalendar
                     .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                 myCalendar.get(Calendar.DAY_OF_MONTH)
             ).show()
         }
     }
 
+    private fun numberPadListeners() {
+        oneButton.setOnClickListener(this)
+        twoButton.setOnClickListener(this)
+        threeButton.setOnClickListener(this)
+        fourButton.setOnClickListener(this)
+        fiveButton.setOnClickListener(this)
+        sixButton.setOnClickListener(this)
+        sevenButton.setOnClickListener(this)
+        eightButton.setOnClickListener(this)
+        nineButton.setOnClickListener(this)
+        zeroButton.setOnClickListener(this)
+        decimalButton.setOnClickListener(this)
+    }
+
     @SuppressLint("SetTextI18n")
-    var date: DatePickerDialog.OnDateSetListener =
+    var dateListener: DatePickerDialog.OnDateSetListener =
         DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
             myCalendar.set(Calendar.YEAR, year)
             myCalendar.set(Calendar.MONTH, monthOfYear)

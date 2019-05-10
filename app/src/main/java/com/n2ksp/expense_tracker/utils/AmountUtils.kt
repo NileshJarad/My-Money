@@ -4,7 +4,7 @@ import java.text.DecimalFormat
 
 object AmountUtils {
     //    private const val rupeeSymbol = "\u20A8"
-    const val rupeeSymbol = "\u20B9"
+    private const val rupeeSymbol = "\u20B9"
 
     fun getAmountFormatted(amount: Float = 0.0f): String {
         val formatter = DecimalFormat("##,##,###.##")

@@ -1,9 +1,6 @@
 package com.n2ksp.expense_tracker.data.room
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 
 
 @Dao
@@ -20,10 +17,17 @@ interface IncomeExpenseDao {
     @Insert
     fun insert(incomeExpense: IncomeExpenseDBModel)
 
+    @Update
+    fun update(incomeExpense: IncomeExpenseDBModel)
+
     @Delete
     fun delete(incomeExpense: IncomeExpenseDBModel)
 
     @Query("SELECT SUM(amount) FROM income_expense where date > :timeStartMonth and date < :timeEndMonth and type == :type")
-    fun getTotalForMonthByType(timeStartMonth: Long, timeEndMonth: Long, type: String) :Float
+    fun getTotalForMonthByType(timeStartMonth: Long, timeEndMonth: Long, type: String): Float
+
+    @Query("SELECT * FROM income_expense where  id = :id")
+    fun getEntry(id: Int): IncomeExpenseDBModel
+
 
 }

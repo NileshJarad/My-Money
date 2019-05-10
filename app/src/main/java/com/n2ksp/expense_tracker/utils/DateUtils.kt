@@ -96,4 +96,16 @@ object DateUtils {
     }
 
 
+    @SuppressLint("SimpleDateFormat")
+    fun getDayAndMonth(dateLong: Long): String {
+        return if (android.text.format.DateUtils.isToday(dateLong)) {
+            "Today"
+        } else {
+            val date = Date(dateLong)
+            val df = SimpleDateFormat("dd\nMMM")
+            df.format(date)
+        }
+    }
+
+
 }
