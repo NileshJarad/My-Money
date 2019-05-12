@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="title_fab_add_income_expense_walk_through">Add entry for Income/Expense</string>
+    <string name="message_fab_add_income_expense_walk_through">Tap to start adding your Income or Expense entries
+    </string>
+
+
+    <string name="title_category_switch_walk_through">Choose Category</string>
+    <string name="message_category_switch_walk_through">Tap to change Category</string>
+
+
+    <string name="title_search_category_walk_through">Search Category</string>
+    <string name="message_search_category_walk_through">Tap to start search Category</string>
+
+
+    <string name="title_select_category_walk_through">Select Category</string>
+    <string name="message_select_category_walk_through">Tap to select search Category</string>
+
+
+    <string name="title_enter_memo_walk_through">Enter Memo</string>
+    <string name="message_enter_memo_walk_through">Tap to enter memo about entry</string>
+
+
+    <string name="title_select_date_walk_through">Select Date</string>
+    <string name="message_select_date_walk_through">Tap to select date for entry</string>
+</resources>

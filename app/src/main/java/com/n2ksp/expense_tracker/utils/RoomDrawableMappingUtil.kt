@@ -25,13 +25,14 @@ object RoomDrawableMappingUtil {
     private const val FITNESS_ROOM_NAME = "fitness"
     private const val CHILD_ROOM_NAME = "child"
     private const val MEDICAL_ROOM_NAME = "medical"
+    private const val INVESTMENT_ROOM_NAME = "investment"
 
     fun getDrawableToRoomName(drawable: Int): String {
         return when (drawable) {
             //common categories name
             R.drawable.ic_others -> OTHER_ROOM_NAME //1
             R.drawable.ic_lending -> LENDING_ROOM_NAME //2
-
+            R.drawable.ic_investment -> INVESTMENT_ROOM_NAME //19
             // income categories
             R.drawable.ic_salary -> SALARY_ROOM_NAME //1
             R.drawable.ic_freelancing -> FREELANCING_ROOM_NAME//2
@@ -68,6 +69,7 @@ object RoomDrawableMappingUtil {
             //common categories name
             OTHER_ROOM_NAME -> Pair(R.drawable.ic_others, R.color.orange_a400) //1
             LENDING_ROOM_NAME -> Pair(R.drawable.ic_lending, R.color.purple_a400) //2
+            INVESTMENT_ROOM_NAME -> Pair(R.drawable.ic_lending, R.color.light_blue_a400) //3
 
             // income categories
             SALARY_ROOM_NAME -> Pair(R.drawable.ic_salary, R.color.teal_800) //1
@@ -94,8 +96,7 @@ object RoomDrawableMappingUtil {
             MEDICAL_ROOM_NAME -> Pair(R.drawable.ic_medical, R.color.indigo_a400) //18
             else -> {
                 val message = "No mapping found for Room Name To Drawable,Color"
-                RuntimeException(message)
-                return Pair(-99, -99)
+                throw RuntimeException(message)
             }
         }
     }

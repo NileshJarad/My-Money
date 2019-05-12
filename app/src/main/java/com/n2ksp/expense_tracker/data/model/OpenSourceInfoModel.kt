@@ -71,6 +71,15 @@ object OpenSourceInfoModelCreator {
             )
         )
 
+        data.add(
+            OpenSourceInfoModel(
+                libName = "MaterialTapTargetPrompt",
+                copyright = "Copyright (C) 2016-2018 Samuel Wall",
+                license = "Apache License, Version 2.0",
+                website = "https://github.com/sjwall/MaterialTapTargetPrompt"
+            )
+        )
+
         return data
     }
 }
