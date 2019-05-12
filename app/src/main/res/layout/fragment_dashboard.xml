@@ -115,7 +115,7 @@
             <ImageView
                     android:layout_marginTop="20dp"
                     android:layout_width="wrap_content"
-                    android:src="@drawable/ic_empty"
+                    app:srcCompat="@drawable/ic_empty"
                     android:tint="@color/colorAccent"
                     android:contentDescription="@string/content_description_dashboard_empty_image"
                     android:layout_height="wrap_content"/>
@@ -163,7 +163,6 @@
             app:srcCompat="@drawable/ic_add"
             android:id="@+id/addExpenseOrIncomeFAB"
             android:layout_gravity="bottom|end" android:focusable="true"
-            android:backgroundTint="@color/colorButtonBackground"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"/>
 

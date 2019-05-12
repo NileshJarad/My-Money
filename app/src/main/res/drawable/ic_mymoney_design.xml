@@ -3,13 +3,9 @@
         android:viewportHeight="150"
         android:viewportWidth="150"
         android:width="24dp">
-    <path android:fillColor="@color/colorPrimaryDark"
+    <path android:fillColor="@color/colorBlack"
           android:pathData="M75,75m-75,0a75,75 0,1 1,150 0a75,75 0,1 1,-150 0"/>
-    <group>
-        <clip-path android:pathData="M75,75m-75,0a75,75 0,1 1,150 0a75,75 0,1 1,-150 0 M 0,0"/>
-        <path android:fillColor="#0D1E33"
-              android:pathData="M150.0,71.1l-42.800003,-42.699997l-1.5,1.6000004l-2.199997,-2.2999992l-1.9000015,1.8999996l-3.9000015,-3.8000011l-60.899998,74.2l50.000004,50.0l63.199997,0.0z"/>
-    </group>
+
     <path android:fillColor="#079D85"
           android:pathData="M100.1,89.3c0,0 0.9,-10.2 1.1,-13.6c0.3,-3.4 1.1,-13.6 1.1,-13.6l-1.1,-0.1c2.5,-15.3 6,-33.7 6,-33.7L66.8,25c0,0 0.4,18.9 0.3,34.2l-0.7,-0.1c0,0 -0.9,10.7 -1.2,14.2c-0.3,3.2 -1.1,12.9 -1.1,12.9l0.9,0.1c-2.3,14.4 -6.3,33.7 -6.3,33.7l40.4,3.4c0,0 -0.7,-19.9 -0.6,-34.3L100.1,89.3z"/>
     <path android:fillColor="#44BA8F"

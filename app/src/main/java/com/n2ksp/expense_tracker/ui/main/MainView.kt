@@ -47,6 +47,25 @@ class MainView @Inject constructor(val activity: MainActivity) : LinearLayout(ac
         activity.setSupportActionBar(toolbarMain)
         setupDrawerLayout(activity)
         attachNavigationMenuListener()
+
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//            if (LocalNotificationUtils.checkBatteryOptimized(activity)) {
+//                val message =
+//                    "Please turn on Battery optimization"
+//                val snackbar = Snackbar.make(bottomNavigationView, message, Snackbar.LENGTH_INDEFINITE).setAction("Ok") {
+//                    val intent = Intent(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS)
+//                    context.startActivity(intent)
+//                }.setAction("Cancel") {
+//
+//                }
+//
+//                val viewSnack = snackbar.view
+//                viewSnack.elevation = 10f
+//                snackbar.show()
+//
+//
+//            }
+//        }
     }
 
     private fun setupDrawerLayout(activity: MainActivity) {
