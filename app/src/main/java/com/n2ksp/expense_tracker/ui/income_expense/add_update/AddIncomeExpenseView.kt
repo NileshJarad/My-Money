@@ -19,6 +19,7 @@ import com.n2ksp.expense_tracker.data.model.IncomeExpenseModel
 import com.n2ksp.expense_tracker.ui.income_expense.IncomeExpensesViewModel
 import com.n2ksp.expense_tracker.ui.income_expense.add_update.AddIncomeExpenseActivity.Companion.EXTRA_EDIT_INCOME_EXPENSE_ENTRY
 import com.n2ksp.expense_tracker.utils.AmountUtils
+import com.n2ksp.expense_tracker.utils.AppWalkThroughUtils
 import com.n2ksp.expense_tracker.utils.DateUtils
 import kotlinx.android.synthetic.main.activity_add_income_expense.view.*
 import kotlinx.android.synthetic.main.add_income_expense_pad.view.*
@@ -70,6 +71,16 @@ class AddIncomeExpenseView(val activity: AddIncomeExpenseActivity) : LinearLayou
             selectedCategoryImageView.setImageResource(it.categoryImage)
             selectedCategoryImageView.setColorFilter(ContextCompat.getColor(context, it.categoryColor))
             hideKeyboardFrom(context, this)
+
+            dateButton.requestFocus()
+            AppWalkThroughUtils.showEnterMemo(activity as Activity, memoEditText) {
+                // enter memo
+                memoEditText.isFocusableInTouchMode = true
+                AppWalkThroughUtils.showSelectDate(activity as Activity, dateButton) {
+                }
+
+            }
+
         })
     }
 
@@ -130,39 +141,45 @@ class AddIncomeExpenseView(val activity: AddIncomeExpenseActivity) : LinearLayou
         }
 
         doneImageButton.setOnClickListener {
-            var amount: Float
-            amountTextView.text.toString().trim().also {
-                amount = it.toFloat()
-            }
-
-            val memo = memoEditText.text.toString().trim()
-
-            selectedCategoryModel?.let {
-
-                if (isAddEntryScreen) {
-                    addIncomeExpense.addEntry(
-                        IncomeExpenseModel(
-                            categoryInfoModel = it,
-                            amount = amount,
-                            memo = memo,
-                            date = selectedDate.time,
-                            id = -99
-                        )
-                    )
-                } else {
-                    addIncomeExpense.updateEntry(
-                        IncomeExpenseModel(
-                            categoryInfoModel = it,
-                            amount = amount,
-                            memo = memo,
-                            date = selectedDate.time,
-                            id = data.id
-                        )
-                    )
+            val amountStr = amountTextView.text.toString().trim()
+            if (amountStr.isNotEmpty()) {
+                var amount: Float
+                amountStr.also {
+                    amount = it.toFloat()
                 }
 
+                val memo = memoEditText.text.toString().trim()
+
+                selectedCategoryModel?.let {
+
+                    if (isAddEntryScreen) {
+                        addIncomeExpense.addEntry(
+                            IncomeExpenseModel(
+                                categoryInfoModel = it,
+                                amount = amount,
+                                memo = memo,
+                                date = selectedDate.time,
+                                id = -99
+                            )
+                        )
+                    } else {
+                        addIncomeExpense.updateEntry(
+                            IncomeExpenseModel(
+                                categoryInfoModel = it,
+                                amount = amount,
+                                memo = memo,
+                                date = selectedDate.time,
+                                id = data.id
+                            )
+                        )
+                    }
+
+                    activity.finish()
+                }
+            } else {
                 activity.finish()
             }
+
         }
 
         dateButton.setOnClickListener {

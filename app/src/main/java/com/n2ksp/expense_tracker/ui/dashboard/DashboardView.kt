@@ -20,6 +20,7 @@ import com.n2ksp.expense_tracker.ui.income_expense.detail.IncomeExpenseDetailAct
 import com.n2ksp.expense_tracker.ui.income_expense.list.DashboardIncomeExpenseAdapter
 import com.n2ksp.expense_tracker.ui.main.MainActivity
 import com.n2ksp.expense_tracker.utils.AmountUtils
+import com.n2ksp.expense_tracker.utils.AppWalkThroughUtils
 import com.n2ksp.expense_tracker.utils.DateUtils
 import com.n2ksp.expense_tracker.utils.LocalNotificationUtils
 import kotlinx.android.synthetic.main.fragment_dashboard.view.*
@@ -90,6 +91,9 @@ class DashboardView(val activity: MainActivity) : LinearLayout(activity) {
 
         setMonthDataExpenseIncome()
         setDates()
+
+        AppWalkThroughUtils.showFabAddIncomeExpenseEntry(activity, addExpenseOrIncomeFAB) {}
+
     }
 
 
@@ -256,6 +260,5 @@ class DashboardView(val activity: MainActivity) : LinearLayout(activity) {
         getDataForExpenseIncome(currentSelectedDay)
         setMonthDataExpenseIncome()
     }
-
 
 }
