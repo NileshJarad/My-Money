@@ -20,7 +20,7 @@
             <item
                     android:id="@+id/navMenuAbout"
                     android:icon="@drawable/ic_nav_settings"
-                    android:title="About"/>
+                    android:title="Hire Us"/>
             <item
                     android:id="@+id/navMenuOpenSource"
                     android:icon="@drawable/ic_nav_settings"
