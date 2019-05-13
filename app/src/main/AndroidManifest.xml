@@ -15,10 +15,11 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
+
         <activity
                 android:name=".ui.add_income_expense.AddIncomeExpenseActivity"
-                android:windowSoftInputMode="adjustPan"
-        android:label="Add Income/Expense">
+                android:label="Add Income/Expense"
+                android:windowSoftInputMode="adjustPan">
         </activity>
         <activity android:name=".ui.intro.IntroScreenActivity">
             <intent-filter>
@@ -35,7 +36,18 @@
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".ui.main.MainActivity"/>
         </activity>
+
+        <activity android:name=".ui.about_us.AboutUsActivity"
+                  android:label="Hire Us"
+                  android:parentActivityName=".ui.main.MainActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".ui.main.MainActivity"/>
+        </activity>
+
         <activity android:name=".ui.main.MainActivity">
+
+
 
             <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN"/> -->
