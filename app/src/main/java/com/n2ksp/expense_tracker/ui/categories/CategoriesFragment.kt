@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.n2ksp.expense_tracker.R
 import com.n2ksp.expense_tracker.base.ETBaseActivity
 import com.n2ksp.expense_tracker.data.model.CategoryInfoModelCreator
+import com.n2ksp.expense_tracker.data.sharedpreference.SharedPrefUtil
 import com.n2ksp.expense_tracker.ui.income_expense.add_update.SharedIncomeExpenseViewModel
 import com.n2ksp.expense_tracker.utils.AppWalkThroughUtils
 import com.n2ksp.expense_tracker.utils.Constants
@@ -27,6 +28,7 @@ class CategoriesFragment : Fragment() {
 
     private lateinit var sharedViewModel: SharedIncomeExpenseViewModel
     private var allowSelection: Boolean = false
+    lateinit var sharedPrefUtil: SharedPrefUtil
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,6 +51,8 @@ class CategoriesFragment : Fragment() {
                 allowSelection = arg.getBoolean("allowSelection", false)
             }
         }
+
+        sharedPrefUtil = SharedPrefUtil(activity!!)
 
         val gridLayoutManager = GridLayoutManager(context, 3)
         categoriesRecyclerView.layoutManager = gridLayoutManager
@@ -90,17 +94,14 @@ class CategoriesFragment : Fragment() {
             }
         }
 
-        AppWalkThroughUtils.showSelectCategoryType(activity as Activity, expenseOrIncomeSwitch) {
-            // shown for the category switch
+        if(!sharedPrefUtil.isCategoryTypeAndCategorySelectionIntroShown()) {
+            AppWalkThroughUtils.showSelectCategoryType(activity as Activity, expenseOrIncomeSwitch) {
 
-            AppWalkThroughUtils.showSearchCategory(activity as Activity, searchEditText) {
-                // search category
-
+                // shown for the category switch
                 AppWalkThroughUtils.showSelectCategory(activity as Activity, gridLayoutManager.getChildAt(0)) {
                     // select category
+                    sharedPrefUtil.setCategoryTypeAndCategorySelectionIntroShown()
                 }
-
-
             }
         }
 

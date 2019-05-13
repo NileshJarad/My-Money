@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.n2ksp.expense_tracker.R
+import com.n2ksp.expense_tracker.data.sharedpreference.SharedPrefUtil
 import com.n2ksp.expense_tracker.di.component.DaggerDashboardViewComponent
 import com.n2ksp.expense_tracker.di.module.ContextModule
 import com.n2ksp.expense_tracker.ui.custom.DateSelectorWheel
@@ -42,6 +43,9 @@ class DashboardView(val activity: MainActivity) : LinearLayout(activity) {
 
     @Inject
     lateinit var linearLayoutManager: LinearLayoutManager
+
+    @Inject
+    lateinit var sharedPrefUtil: SharedPrefUtil
 
 
     private var heightOfDateSelector = 0
@@ -92,7 +96,11 @@ class DashboardView(val activity: MainActivity) : LinearLayout(activity) {
         setMonthDataExpenseIncome()
         setDates()
 
-        AppWalkThroughUtils.showFabAddIncomeExpenseEntry(activity, addExpenseOrIncomeFAB) {}
+        if (!sharedPrefUtil.isFabIntroScreenShown()) {
+            AppWalkThroughUtils.showFabAddIncomeExpenseEntry(activity, addExpenseOrIncomeFAB) {
+                sharedPrefUtil.setFabIntroShown()
+            }
+        }
 
     }
 

@@ -29,10 +29,7 @@ class MainView @Inject constructor(val activity: MainActivity) : LinearLayout(ac
 
     @SuppressLint("CheckResult")
     private fun initView(activity: MainActivity) {
-
-
         Observable.just(activity.getAppDatabase())
-
             .subscribeOn(Schedulers.io())
             .subscribe {
                 Timber.e("Category count : ${it.categoryDao().countCategories()}")
