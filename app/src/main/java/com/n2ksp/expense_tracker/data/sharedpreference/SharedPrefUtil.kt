@@ -1,35 +1,39 @@
 package com.n2ksp.expense_tracker.data.sharedpreference
 
 import android.content.Context
-import javax.inject.Inject
-import android.R.id.edit
-import android.content.SharedPreferences
-import android.text.TextUtils
 import android.preference.PreferenceManager
-import android.R.attr.defaultValue
+import android.text.TextUtils
+import javax.inject.Inject
 
 
 class SharedPrefUtil @Inject constructor(context: Context) {
 
     companion object {
         const val INTRO_SCREEN_KEY = "intro_screen_shown"
+        const val ADD_FAB_INTRO = "add_fab_intro"
+        const val SELECT_CATEGORY_TYPE_AND_CATEGORY = "select_category_type_and_category"
+        const val DATA_ENTRY = "data_entry"
     }
 
     private val preferences = PreferenceManager.getDefaultSharedPreferences(context)
 
 
     fun introScreenShown(): Boolean {
-        var value: Boolean = false
-        if (preferences != null) {
-            value = preferences.getBoolean(INTRO_SCREEN_KEY, false)
-        }
-        return value
+        return preferences.getBoolean(INTRO_SCREEN_KEY, false)
     }
 
     fun setintroScreenShown() {
         setBooleanPreference(INTRO_SCREEN_KEY, true)
     }
 
+
+    fun setFabIntroShown() {
+        setBooleanPreference(ADD_FAB_INTRO, value = true)
+    }
+
+    fun isFabIntroScreenShown(): Boolean {
+        return preferences.getBoolean(ADD_FAB_INTRO, false)
+    }
 
     private fun setStringPreference(key: String, value: String): Boolean {
         if (preferences != null && !TextUtils.isEmpty(key)) {
@@ -47,6 +51,23 @@ class SharedPrefUtil @Inject constructor(context: Context) {
             return editor.commit()
         }
         return false
+    }
+
+    fun setCategoryTypeAndCategorySelectionIntroShown() {
+        setBooleanPreference(SELECT_CATEGORY_TYPE_AND_CATEGORY, value = true)
+    }
+
+    fun isCategoryTypeAndCategorySelectionIntroShown(): Boolean {
+        return preferences.getBoolean(SELECT_CATEGORY_TYPE_AND_CATEGORY, false)
+    }
+
+
+    fun setDateEntryIntroShown() {
+        setBooleanPreference(DATA_ENTRY, value = true)
+    }
+
+    fun isDateEntryIntroShown(): Boolean {
+        return preferences.getBoolean(DATA_ENTRY, false)
     }
 
 

@@ -16,6 +16,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.n2ksp.expense_tracker.R
 import com.n2ksp.expense_tracker.data.model.CategoryInfoModel
 import com.n2ksp.expense_tracker.data.model.IncomeExpenseModel
+import com.n2ksp.expense_tracker.data.sharedpreference.SharedPrefUtil
 import com.n2ksp.expense_tracker.ui.income_expense.IncomeExpensesViewModel
 import com.n2ksp.expense_tracker.ui.income_expense.add_update.AddIncomeExpenseActivity.Companion.EXTRA_EDIT_INCOME_EXPENSE_ENTRY
 import com.n2ksp.expense_tracker.utils.AmountUtils
@@ -43,6 +44,8 @@ class AddIncomeExpenseView(val activity: AddIncomeExpenseActivity) : LinearLayou
 
     lateinit var data: IncomeExpenseModel
 
+    lateinit var sharedPrefUtil: SharedPrefUtil
+
     init {
         initView(activity)
     }
@@ -62,6 +65,8 @@ class AddIncomeExpenseView(val activity: AddIncomeExpenseActivity) : LinearLayou
         addButtonListener()
 
         retrieveData()
+
+        sharedPrefUtil = SharedPrefUtil(activity!!)
     }
 
     private fun addObserverForCategorySelection() {
@@ -72,13 +77,17 @@ class AddIncomeExpenseView(val activity: AddIncomeExpenseActivity) : LinearLayou
             selectedCategoryImageView.setColorFilter(ContextCompat.getColor(context, it.categoryColor))
             hideKeyboardFrom(context, this)
 
-            dateButton.requestFocus()
-            AppWalkThroughUtils.showEnterMemo(activity as Activity, memoEditText) {
-                // enter memo
-                memoEditText.isFocusableInTouchMode = true
-                AppWalkThroughUtils.showSelectDate(activity as Activity, dateButton) {
-                }
+            memoEditText.showSoftInputOnFocus = false
 
+            if (!sharedPrefUtil.isDateEntryIntroShown()) {
+                AppWalkThroughUtils.showEnterMemo(activity as Activity, memoEditText) {
+                    AppWalkThroughUtils.showSelectDate(activity as Activity, dateButton) {
+                        memoEditText.showSoftInputOnFocus = true
+                        sharedPrefUtil.setDateEntryIntroShown()
+                    }
+
+
+                }
             }
 
         })
