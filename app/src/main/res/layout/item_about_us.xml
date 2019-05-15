@@ -1,64 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
         xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:orientation="vertical"
+        xmlns:tools="http://schemas.android.com/tools" android:orientation="vertical"
         android:layout_width="match_parent"
         app:cardCornerRadius="8dp"
         app:cardElevation="2dp"
         app:cardUseCompatPadding="true"
         app:cardBackgroundColor="@color/colorCardBackground"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content" android:id="@+id/cardView">
 
-    <LinearLayout
-            android:padding="@dimen/about_us_margin"
+    <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:orientation="vertical"
+            android:padding="7dp"
             android:layout_height="wrap_content">
 
-        <LinearLayout
-                android:gravity="center_vertical"
-                android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:weightSum="1"
-                android:layout_height="wrap_content">
-
-
-            <de.hdodenhof.circleimageview.CircleImageView
-
-                    android:id="@+id/profile_image"
-                    android:layout_width="65dp"
-                    android:layout_height="65dp"
-                    android:src="@drawable/dummy_profile"
-                    app:civ_border_width="2dp"
-                    app:civ_border_color="#FF000000"/>
-            <LinearLayout android:layout_width="0dp"
-                          android:layout_weight="0.8"
-                          android:orientation="vertical"
-                          android:layout_marginStart="8dp"
-                          android:layout_height="wrap_content">
-                <TextView
-                        android:id="@+id/contributorNameTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="Name"
-                        style="@style/AppSubTitleStyleBlackBold"/>
-
-
-                <TextView
-                        android:id="@+id/contributoDescTextView"
-                        android:layout_marginTop="3dp"
-                        android:layout_width="match_parent"
-                        style="@style/AppSubTitleStyleBlack"
-                        android:text="desc"
-                        android:layout_height="wrap_content"/>
-
-
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-
-    </LinearLayout>
+        <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:id="@+id/profile_image"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:src="@drawable/dummy_profile"
+                app:civ_border_width="2dp"
+                app:civ_border_color="#FF000000"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/contributorNameTextView"
+                app:layout_constraintStart_toEndOf="@+id/profile_image"
+                android:layout_marginStart="12dp"
+                app:layout_constraintBottom_toTopOf="@+id/contributorDescTextView"
+                android:text="Name"
+                style="@style/AppSubTitleStyleBlackBold"
+                app:layout_constraintTop_toTopOf="@+id/profile_image" android:layout_marginTop="10dp"/>
+        <TextView
+                android:text="Desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/contributorDescTextView"
+                app:layout_constraintStart_toEndOf="@+id/profile_image"
+                app:layout_constraintTop_toBottomOf="@+id/contributorNameTextView"
+                android:layout_marginStart="12dp" android:layout_marginTop="7dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

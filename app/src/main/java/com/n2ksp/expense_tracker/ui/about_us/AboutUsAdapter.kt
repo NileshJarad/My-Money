@@ -7,7 +7,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.n2ksp.expense_tracker.R
 import com.n2ksp.expense_tracker.data.model.AboutUsModel
-import com.n2ksp.expense_tracker.data.model.OpenSourceInfoModel
 import javax.inject.Inject
 
 class AboutUsAdapter @Inject constructor() : RecyclerView.Adapter<AboutUsAdapter.ViewHolder>() {
@@ -39,7 +38,7 @@ class AboutUsAdapter @Inject constructor() : RecyclerView.Adapter<AboutUsAdapter
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var contributorNameTextView: TextView = itemView.findViewById(R.id.contributorNameTextView)
-        var contributoDescTextView: TextView = itemView.findViewById(R.id.contributoDescTextView)
+        var contributoDescTextView: TextView = itemView.findViewById(R.id.contributorDescTextView)
 
 
     }
