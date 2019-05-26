@@ -9,6 +9,7 @@ import com.n2ksp.expense_tracker.R
 import com.n2ksp.expense_tracker.data.model.CategoryInfoModel
 import com.n2ksp.expense_tracker.ui.income_expense.add_update.SharedIncomeExpenseViewModel
 import kotlinx.android.synthetic.main.item_categoris.view.*
+import timber.log.Timber
 
 class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.ViewHolder>() {
 
@@ -33,8 +34,9 @@ class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val category = categories[position]
 
+        Timber.e("Data category : $category")
         holder.itemView.categoryImageView.setImageResource(category.categoryImage)
-
+        Timber.e("Data category After")
         var color = ContextCompat.getColor(
             holder.itemView.context,
             R.color.grey_600

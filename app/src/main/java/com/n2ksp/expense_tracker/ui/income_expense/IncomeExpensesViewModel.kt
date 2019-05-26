@@ -13,6 +13,9 @@ import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -27,20 +30,30 @@ class IncomeExpensesViewModel(application: Application) : AndroidViewModel(appli
     private var incomeExpense: MutableLiveData<Pair<Float, Float>> = MutableLiveData()
 
     fun addEntry(incomeExpense: IncomeExpenseModel) {
-        val disposable: Disposable = Observable.just(repository)
-            .subscribeOn(Schedulers.io())
-            .subscribe {
-                it.insert(incomeExpense = IncomeExpenseDBModel().apply {
-                    categoryId = incomeExpense.categoryInfoModel.categoryId
-                    amount = incomeExpense.amount
-                    memo = incomeExpense.memo
-                    date = Date(incomeExpense.date)
-                    type = incomeExpense.categoryInfoModel.categoryType
-                })
-            }
+//        val disposable: Disposable = Observable.just(repository)
+////            .subscribeOn(Schedulers.io())
+////            .subscribe {
+////                it.insert(incomeExpense = IncomeExpenseDBModel().apply {
+////                    categoryId = incomeExpense.categoryInfoModel.categoryId
+////                    amount = incomeExpense.amount
+////                    memo = incomeExpense.memo
+////                    date = Date(incomeExpense.date)
+////                    type = incomeExpense.categoryInfoModel.categoryType
+////                })
+////            }
+////
+////        compositeDisposable.add(disposable)
 
-        compositeDisposable.add(disposable)
 
+        GlobalScope.launch(Dispatchers.Default) {
+            repository.insert(incomeExpense = IncomeExpenseDBModel().apply {
+                categoryId = incomeExpense.categoryInfoModel.categoryId
+                amount = incomeExpense.amount
+                memo = incomeExpense.memo
+                date = Date(incomeExpense.date)
+                type = incomeExpense.categoryInfoModel.categoryType
+            })
+        }
     }
 
     fun updateEntry(incomeExpense: IncomeExpenseModel) {

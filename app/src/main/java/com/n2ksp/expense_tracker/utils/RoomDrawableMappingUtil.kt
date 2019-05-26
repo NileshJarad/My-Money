@@ -5,6 +5,7 @@ import com.n2ksp.expense_tracker.R
 object RoomDrawableMappingUtil {
     private const val OTHER_ROOM_NAME = "other"
     private const val SALARY_ROOM_NAME = "salary"
+    private const val INVESTMENT = "investment"
     private const val FREELANCING_ROOM_NAME = "freelancing"
     private const val LENDING_ROOM_NAME = "lending"
     private const val FOOD_ROOM_NAME = "food"
@@ -31,6 +32,7 @@ object RoomDrawableMappingUtil {
             //common categories name
             R.drawable.ic_others -> OTHER_ROOM_NAME //1
             R.drawable.ic_lending -> LENDING_ROOM_NAME //2
+            R.drawable.ic_investment -> INVESTMENT //3
 
             // income categories
             R.drawable.ic_salary -> SALARY_ROOM_NAME //1
@@ -68,6 +70,8 @@ object RoomDrawableMappingUtil {
             //common categories name
             OTHER_ROOM_NAME -> Pair(R.drawable.ic_others, R.color.orange_a400) //1
             LENDING_ROOM_NAME -> Pair(R.drawable.ic_lending, R.color.purple_a400) //2
+            INVESTMENT -> Pair(R.drawable.ic_investment, R.color.pink_a200) //2
+
 
             // income categories
             SALARY_ROOM_NAME -> Pair(R.drawable.ic_salary, R.color.teal_800) //1
