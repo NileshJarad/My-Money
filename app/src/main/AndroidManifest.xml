@@ -39,7 +39,18 @@
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".ui.main.MainActivity"/>
         </activity>
+
+        <activity android:name=".ui.about_us.AboutUsActivity"
+                  android:label="Hire Us"
+                  android:parentActivityName=".ui.main.MainActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".ui.main.MainActivity"/>
+        </activity>
+
         <activity android:name=".ui.main.MainActivity">
+
+
 
             <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN"/> -->

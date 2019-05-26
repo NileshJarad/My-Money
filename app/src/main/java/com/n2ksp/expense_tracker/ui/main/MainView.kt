@@ -109,6 +109,10 @@ class MainView @Inject constructor(val activity: MainActivity) : LinearLayout(ac
             R.id.navMenuOpenSource -> {
                 navController.navigate(R.id.openSourceInfoActivity)
             }
+
+            R.id.navMenuAbout -> {
+                navController.navigate(R.id.aboutUsActivity)
+            }
         }
         drawerLayout.closeDrawer(GravityCompat.START)
         return true

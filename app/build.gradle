@@ -80,6 +80,9 @@ dependencies {
     //Chart
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
+    //Circular Imageview
+    implementation 'de.hdodenhof:circleimageview:3.0.0'
+
     // App walk through
     implementation 'uk.co.samuelwall:material-tap-target-prompt:2.14.0'
 
