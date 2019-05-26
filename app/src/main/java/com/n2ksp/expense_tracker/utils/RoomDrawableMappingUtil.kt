@@ -98,8 +98,7 @@ object RoomDrawableMappingUtil {
             MEDICAL_ROOM_NAME -> Pair(R.drawable.ic_medical, R.color.indigo_a400) //18
             else -> {
                 val message = "No mapping found for Room Name To Drawable,Color"
-                RuntimeException(message)
-                return Pair(-99, -99)
+                throw RuntimeException(message)
             }
         }
     }

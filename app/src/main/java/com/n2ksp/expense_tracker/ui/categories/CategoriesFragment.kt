@@ -2,6 +2,7 @@ package com.n2ksp.expense_tracker.ui.categories
 
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +15,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.n2ksp.expense_tracker.R
 import com.n2ksp.expense_tracker.base.ETBaseActivity
 import com.n2ksp.expense_tracker.data.model.CategoryInfoModelCreator
+import com.n2ksp.expense_tracker.data.sharedpreference.SharedPrefUtil
 import com.n2ksp.expense_tracker.ui.income_expense.add_update.SharedIncomeExpenseViewModel
+import com.n2ksp.expense_tracker.utils.AppWalkThroughUtils
 import com.n2ksp.expense_tracker.utils.Constants
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
@@ -25,6 +28,7 @@ class CategoriesFragment : Fragment() {
 
     private lateinit var sharedViewModel: SharedIncomeExpenseViewModel
     private var allowSelection: Boolean = false
+    lateinit var sharedPrefUtil: SharedPrefUtil
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,7 +52,10 @@ class CategoriesFragment : Fragment() {
             }
         }
 
-        categoriesRecyclerView.layoutManager = GridLayoutManager(context, 3)
+        sharedPrefUtil = SharedPrefUtil(activity!!)
+
+        val gridLayoutManager = GridLayoutManager(context, 3)
+        categoriesRecyclerView.layoutManager = gridLayoutManager
 
         val dividerItemDecoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
         val drawable = ContextCompat.getDrawable(context!!, R.drawable.divider_open_source)
@@ -85,9 +92,27 @@ class CategoriesFragment : Fragment() {
                 buttonView.text = resources.getString(R.string.income)
                 getAndAttachCategory(Constants.INCOME)
             }
-
-
         }
+
+        if(!sharedPrefUtil.isCategoryTypeAndCategorySelectionIntroShown()) {
+            AppWalkThroughUtils.showSelectCategoryType(activity as Activity, expenseOrIncomeSwitch) {
+
+                // shown for the category switch
+                AppWalkThroughUtils.showSelectCategory(activity as Activity, gridLayoutManager.getChildAt(0)) {
+                    // select category
+                    sharedPrefUtil.setCategoryTypeAndCategorySelectionIntroShown()
+                }
+            }
+        }
+
+
+    }
+
+
+    override fun onResume() {
+        super.onResume()
+
+
     }
 
     @SuppressLint("CheckResult")
@@ -109,5 +134,6 @@ class CategoriesFragment : Fragment() {
                 }
             }
     }
+
 
 }
